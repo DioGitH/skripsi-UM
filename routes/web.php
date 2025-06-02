@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\SessionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('login', [SessionController::class, 'index'])->name('login');
+Route::get('register', [SessionController::class, 'register'])->name('register');
 
 Route::get('/hello2', function () {
     return 'Hello World';
