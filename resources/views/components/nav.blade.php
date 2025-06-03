@@ -20,21 +20,21 @@
 
     <!-- Menu Navigasi -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
-      <ul class="navbar-nav gap-2">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Beranda</a>
+      <ul class="navbar-nav gap-2 fw-bold px-5">
+        <li class="nav-item {{ (request()->is('/')) ? 'active' : '' }}">
+          <a class="nav-link active" href="{{route('home')}}">Beranda</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Panduan Unggah</a>
+          <a class="nav-link"href="{{route('guide')}}">Panduan Unggah</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Tentang Kami</a>
+          <a class="nav-link" href="{{route('about')}}">Tentang Kami</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">FAQ</a>
+          <a class="nav-link" href="{{route('faq')}}">FAQ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Aktifitas</a>
+          <a class="nav-link" href="{{route('activity')}}">Aktifitas</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-danger" href="#">Logout</a>
