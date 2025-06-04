@@ -29,14 +29,51 @@
     </div>
 
     <div class="modal fade" id="modal-unggah" tabindex="-1" aria-labelledby="modalLabel-unggah" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content border border-secondary border-2 p-4">
-                <div class="modal-header">
-                    <h5 class="modal-title">Ganti Password</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog modal-xl modal-dialog-centered ">
+            <div class="modal-content p-3">
+                <div class="modal-header justify-content-center">
+                    <h5 class="modal-title text-center">Pilih Jenis Karya</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row flex-column-reverse">
+                            @foreach($jenisKaryas->chunk(4)->reverse() as $row)
+                                <div class="d-flex flex-wrap justify-content-center mb-4 w-100">
+                                    @foreach($row as $jenis)
+                                        <div class="col-md-3 mb-4 text-center">
+                                            <div class="fw-bold" >{{ ucfirst($jenis->nama) }}</div>
+                                            @if($jenis->foto_path)
+                                                <img src="{{ asset('storage/' . $jenis->foto_path) }}" alt="{{ $jenis->nama }}" class="img-fluid m-auto rounded mb-2" style="max-height: 150px; object-fit: cover;">
+                                            @else
+                                                <img src="https://via.placeholder.com/150x100?text=No+Image" alt="No image" class="img-fluid rounded mb-2">
+                                            @endif
+
+                                            <a href="{{ route('karya.create', $jenis->nama) }}" class="btn btn-outline-dark w-75 text-black m-auto fw-bold d-flex align-items-center justify-content-center gap-2">
+                                                <img src="{{ asset('assets/img/upload.png') }}" alt="Unggah" style="width: 32px; height: 32px;">
+                                                <span>Unggah</span>
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 </div>
+<style>
+    .modal-content {
+        background-color: white; /* transparan putih */
+        border: none;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-backdrop.show {
+        background-color: rgba(0, 0, 0, 0.4); /* latar belakang transparan */
+    }
+</style>
 @endsection

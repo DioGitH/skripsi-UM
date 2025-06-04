@@ -16,95 +16,93 @@
         
     </head>
     <body class="d-flex justify-content-center align-items-center vh-100" style="background-color: #efefef;">
+        @if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $item)
+            <li>{{$item}}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
     <div class="m-auto bg-white d-flex flex-column justify-content-center py-4 px-5" style="border-radius: 2rem; width: 100%; max-width: 1000px;">
         <h1 class="text-center my-4 fw-bold">Formulir pendaftaran Pengguna</h1>
         
-        <form action="">
-            <!-- Username input -->
+        <form action="{{ route('register.store') }}" method="POST">
+            @csrf
+            <!-- Username -->
             <div class="form-floating mt-4 mb-3">
-                <input name="name" type="text" class="form-control" id="floatingInput" placeholder="Nama Pengguna">
-                <label for="floatingInput">Nama Pengguna</label>
+                <input name="name" type="text" class="form-control" id="nameInput" placeholder="Nama Pengguna">
+                <label for="nameInput">Nama Pengguna</label>
             </div>
-            <!-- Password input -->
+
+            <!-- Password -->
             <div class="form-floating mt-4 mb-3 position-relative">
                 <input name="password" type="password" class="form-control" id="passwordInput" placeholder="Kata Sandi">
                 <label for="passwordInput">Kata Sandi</label>
-
-                <!-- Toggle button (mata) -->
                 <button type="button" class="btn position-absolute top-50 end-0 translate-middle-y me-3 border-0 bg-transparent" onclick="togglePassword()" tabindex="-1">
-                    <i id="eyeIcon" class="bi bi-eye"></i>
+                    <i class="bi bi-eye" id="eyeIcon"></i>
                 </button>
             </div>
-            <!-- Password Try input -->
-            <div class="form-floating mt-4 mb-2 position-relative">
-                <input name="password" type="password" class="form-control" id="passwordInputTry" placeholder="Kata Sandi">
-                <label for="passwordInput">Kata Sandi Ulang</label>
 
-                <!-- Toggle button (mata) -->
-                <button type="button" class="btn position-absolute top-50 end-0 translate-middle-y me-3 border-0 bg-transparent" onclick="togglePasswordTry()" tabindex="-1">
-                    <i id="eyeIcon" class="bi bi-eye"></i>
-                </button>
-            </div>
-            <!-- Email input -->
+            <!-- Konfirmasi Password -->
             <div class="form-floating mt-4 mb-3">
-                <input name="name" type="mail" class="form-control" id="floatingInput" placeholder="Nama Pengguna">
-                <label for="floatingInput">Email</label>
+                <input name="password_confirmation" type="password" class="form-control" id="passwordConfirm" placeholder="Ulangi Kata Sandi">
+                <label for="passwordConfirm">Kata Sandi Ulang</label>
             </div>
+
+            <!-- Email -->
+            <div class="form-floating mt-4 mb-3">
+                <input name="email" type="email" class="form-control" id="emailInput" placeholder="Email">
+                <label for="emailInput">Email</label>
+            </div>
+
             <!-- Profesi -->
-            <div class="mt-4 mb-3">
+            <div class="mb-3">
                 <label class="mb-2 fw-bold">Daftar Sebagai</label>
                 <div class="d-flex gap-4">
-
-                    <!-- Guru -->
                     <div class="form-check">
-                        <input class="form-check-input rounded-circle" type="radio" name="profesi" id="guruRadio" onchange="showInputs('guru')">
+                        <input class="form-check-input" type="radio" name="profesi" id="guruRadio" value="guru" onchange="showInputs('guru')">
                         <label class="form-check-label" for="guruRadio">Guru</label>
                     </div>
-
-                    <!-- Siswa -->
                     <div class="form-check">
-                        <input class="form-check-input rounded-circle" type="radio" name="profesi" id="siswaRadio" onchange="showInputs('siswa')">
+                        <input class="form-check-input" type="radio" name="profesi" id="siswaRadio" value="siswa" onchange="showInputs('siswa')">
                         <label class="form-check-label" for="siswaRadio">Siswa</label>
                     </div>
                 </div>
             </div>
 
-            <!-- Input tambahan -->
+            <!-- Input Guru -->
             <div id="guruInput" class="mb-3" style="display: none;">
-                <label for="guruKode" class="form-label">Mata Pelajaran</label>
-                <input type="text" class="form-control" id="guruKode" placeholder="Masukkan Kode Guru">
+                <label for="mata_pelajaran" class="form-label">Mata Pelajaran</label>
+                <input name="mata_pelajaran" type="text" class="form-control" id="mata_pelajaran" placeholder="Masukkan Mata Pelajaran">
             </div>
 
+            <!-- Input Siswa -->
             <div id="siswaInputs" class="mb-3" style="display: none;">
                 <label for="kelas" class="form-label">Kelas</label>
-                <select class="form-select mb-2" id="kelas" name="kelas">
+                <select class="form-select mb-2" name="kelas" id="kelas">
                     <option selected disabled>Pilih Kelas</option>
                     <option value="10">Kelas X</option>
                     <option value="11">Kelas XI</option>
                     <option value="12">Kelas XII</option>
                 </select>
-                
+
                 <label for="jurusan" class="form-label">Jurusan</label>
-                <select class="form-select mb-2" id="kelas" name="kelas">
+                <select class="form-select mb-2" name="jurusan" id="jurusan">
                     <option selected disabled>Pilih Jurusan</option>
-                    <option value="10">Kelas 10</option>
-                    <option value="11">Kelas 11</option>
-                    <option value="12">Kelas 12</option>
+                    <option value="Design dan Produksi Busana">Design dan Produksi Busana</option>
+                    <option value="Kuliner">Kuliner</option>
+                    <option value="Kecantikan">Kecantikan</option>
+                    <option value="Perhotelan">Perhotelan</option>
+                    <option value="Teknik Komputer dan Jaringan">Teknik Komputer dan Jaringan</option>
                 </select>
             </div>
-            <!-- Google reCAPTCHA -->
-            <div class="g-recaptcha" data-sitekey="6LfvDVIrAAAAAPNN46hmvrZxkUGt9ePxzoJU3K39"></div>
 
-            <!-- Checkbox + Forgot Password -->
-            <div class="d-flex justify-content-between align-items-center mt-2">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="showPasswordCheckbox" >
-                    <label class="form-check-label" for="showPasswordCheckbox">Pastikan kamu telah terdaftar sebelum melakukan unggah karya</label>
-                </div>
-                
-            </div>
+            <!-- reCAPTCHA (opsional, server side handle juga diperlukan) -->
+            <div class="g-recaptcha mb-3" data-sitekey="6LfvDVIrAAAAAPNN46hmvrZxkUGt9ePxzoJU3K39"></div>
 
-            <button class="w-100 mt-3 mb-3 btn btn-lg text-white" type="submit" style="background-color: #1F304B;">Masuk</button>
+            <button class="w-100 mt-3 mb-3 btn btn-lg text-white" type="submit" style="background-color: #1F304B;">Daftar</button>
         </form>
     </div>
 

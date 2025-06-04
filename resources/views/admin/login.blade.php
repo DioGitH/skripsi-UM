@@ -18,14 +18,23 @@
         
     </head>
     <body class="d-flex justify-content-center align-items-center vh-100" style="background-color: #efefef;">
+        @if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $item)
+            <li>{{$item}}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
     <div class="m-auto bg-white d-flex flex-column justify-content-center py-4 px-5" style="border-radius: 2rem; width: 100%; max-width: 500px;">
         <h1 class="text-center my-4 fw-bold">Masuk</h1>
         
-        <form action="/login/store" method="POST">
+        <form action="/admin/session/store" method="POST">
         @csrf
         <!-- Name input -->
         <div class="form-floating mt-4 mb-3">
-      <input name="name" type="text" value="{{ Session::get('name') }}" class="form-control">
+      <input name="username" type="text" value="{{ Session::get('username') }}" class="form-control">
 
             <label for="floatingInput">Nama Pengguna</label>
         </div>
@@ -53,7 +62,7 @@
         <!-- Daftar link -->
         <div class="d-flex justify-content-center mb-2 gap-1">
         <span>Belum punya akun?</span>
-        <a href="{{route('register')}}" class="text-decoration-none" style="color: black;" onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'">Daftar</a>
+        <a href="#" class="text-decoration-none" style="color: black;" onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'">Daftar</a>
         </div>
     </div>
 

@@ -2,10 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\SessionAdminController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DataKaryaController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GuideController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Middleware\IsLogin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,17 +22,25 @@ use App\Http\Controllers\ActivityController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->middleware(IsLogin::class)->name('home');
+Route::get('/unggah/{jenisKarya}', [HomeController::class, 'create'])->name('karya.create');
+Route::post('/unggah', [HomeController::class, 'store'])->name('karya.store');
 Route::get('login', [SessionController::class, 'index'])->name('login');
+Route::post('login/store', [SessionController::class, 'login']);
 Route::get('register', [SessionController::class, 'register'])->name('register');
-Route::get('guide', [GuideController::class, 'index'])->name('guide');
-Route::get('about', [AboutController::class, 'index'])->name('about');
-Route::get('faq', [FaqController::class, 'index'])->name('faq');
-Route::get('activity', [ActivityController::class, 'index'])->name('activity');
-Route::get('activitylist', [ActivityController::class, 'activityList'])->name('activitylist');
+Route::post('register/store', [SessionController::class, 'regisStore'])->name('register.store');
+Route::get('guide', [GuideController::class, 'index'])->middleware(IsLogin::class)->name('guide');
+Route::get('about', [AboutController::class, 'index'])->middleware(IsLogin::class)->name('about');
+Route::get('faq', [FaqController::class, 'index'])->middleware(IsLogin::class)->name('faq');
+Route::get('activity', [ActivityController::class, 'index'])->middleware(IsLogin::class)->name('activity');
+Route::get('activitylist', [ActivityController::class, 'activityList'])->middleware(IsLogin::class)->name('activitylist');
 
-Route::get('/hello2', function () {
-    return 'Hello World';
+Route::prefix('admin')->group(function () {
+        Route::get('/', [AdminController::class, 'index']);
+        Route::get('/data', [DataKaryaController::class, 'index'])->name('data.create');
+        Route::post('/data/store', [DataKaryaController::class, 'store'])->name('data.store');
+        Route::get('login', [SessionAdminController::class, 'index']);
+        Route::post('session/store', [SessionAdminController::class, 'store']);
+
 });
+

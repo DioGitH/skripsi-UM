@@ -12,13 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->id(); // Primary key, auto increment
+            $table->string('username', 100);
+            $table->string('password'); // Laravel default length is 255
+            $table->string('email', 150)->unique();
+            $table->enum('profesi', ['guru', 'siswa']);
+            $table->string('mata_pelajaran', 100)->nullable();
+            $table->enum('kelas', ['10', '11', '12'])->nullable();
+            $table->string('jurusan', 100)->nullable();
+            $table->timestamps(); // created_at & updated_at
         });
     }
 
