@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class KaryaFile extends Model
 {
     use HasFactory;
+        protected $fillable = [
+        'karya_id',
+        'file_path',
+        'format',
+        'size',
+    ];
     public function karya()
     {
         return $this->belongsTo(Karya::class);

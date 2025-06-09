@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class JenisKarya extends Model
 {
     use HasFactory;
-    protected $fillable = ['nama', 'foto_path'];
+protected $fillable = ['nama', 'foto_path'];
 
-    public function karyas()
+    protected $table = 'jenis_karyas'; // kalau kamu tetap ingin pakai nama ini
+public function karyas()
     {
-        return $this->hasMany(Karya::class);
+        return $this->hasMany(Karya::class, 'jenis_karya_id'); // pastikan nama foreign key benar
     }
+
 }

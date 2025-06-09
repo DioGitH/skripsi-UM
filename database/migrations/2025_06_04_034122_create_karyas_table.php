@@ -27,10 +27,9 @@ return new class extends Migration
                 $table->string('contributor')->nullable();
                 $table->string('rights')->nullable();
                 $table->string('relation')->nullable();
-                $table->string('format')->nullable(); // pdf, jpg, mp4, etc.
                 $table->string('language')->nullable(); // pdf, jpg, mp4, etc.
-                $table->string('tyoe')->nullable(); // pdf, jpg, mp4, etc.
-                $table->string('identifier')->nullable(); // DOI, link, atau kode
+                $table->integer('identifier')->nullable(); // DOI, link, atau kode
+                $table->enum('status', ['Menunggu', 'Terpublish', 'Ditolak','Arsip']);
                 $table->string('coverage')->nullable();
             $table->timestamps();
         });

@@ -17,53 +17,61 @@
 
         
     </head>
-    <body class="d-flex justify-content-center align-items-center vh-100" style="background-color: #efefef;">
-    <div class="m-auto bg-white d-flex flex-column justify-content-center py-4 px-5" style="border-radius: 2rem; width: 100%; max-width: 500px;">
-        <h1 class="text-center my-4 fw-bold">Masuk</h1>
-        
-        <form action="/login/store" method="POST">
-        @csrf
-        <!-- Name input -->
-        <div class="form-floating mt-4 mb-3">
-      <input name="name" type="text" value="{{ Session::get('name') }}" class="form-control">
+    <body class="p-3 d-flex flex-column justify-content-center align-items-center vh-100" style="background-color: #efefef;">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $item)
+                            <li>{{ $item }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        <div class="m-auto bg-white d-flex flex-column justify-content-center py-4 px-5" style="border-radius: 2rem; width: 100%; max-width: 500px;">
+            <h1 class="text-center my-4 fw-bold">Masuk</h1>
+            
+            <form action="/login/store" method="POST">
+                @csrf
+                <!-- Name input -->
+                <div class="form-floating mt-4 mb-3">
+                    <input name="name" type="text" value="{{ Session::get('name') }}" id="floatingInput" placeholder="Nama Pengguna" class="form-control">
+                    <label for="floatingInput">Nama Pengguna</label>
+                </div>
 
-            <label for="floatingInput">Nama Pengguna</label>
-        </div>
+                <!-- Password input -->
+                <div class="form-floating mt-4 mb-3">
+                    <input name="password" type="password" class="form-control" id="passwordInput" placeholder="Kata Sandi">
+                    <label for="passwordInput">Kata Sandi</label>
+                </div>
 
-        <!-- Password input -->
-        <div class="form-floating mt-4 mb-3">
-            <input name="password" type="password" class="form-control" id="passwordInput" placeholder="Kata Sandi">
-            <label for="passwordInput">Kata Sandi</label>
-        </div>
+                <!-- Checkbox + Forgot Password -->
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="showPasswordCheckbox" onclick="togglePassword()">
+                        <label class="form-check-label" for="showPasswordCheckbox">Tampilkan Kata Sandi</label>
+                    </div>
+                    <div>
+                        <a href="#" class="text-decoration-none" style="color: black;" onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'">Lupa Kata Sandi</a>
+                    </div>
+                </div>
 
-        <!-- Checkbox + Forgot Password -->
-        <div class="d-flex justify-content-between align-items-center mt-2">
-            <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="showPasswordCheckbox" onclick="togglePassword()">
-            <label class="form-check-label" for="showPasswordCheckbox">Tampilkan Kata Sandi</label>
+                <button class="w-100 mt-3 mb-3 btn btn-lg text-white" type="submit" style="background-color: #1F304B;">Masuk</button>
+            </form>
+
+            <!-- Daftar link -->
+            <div class="d-flex justify-content-center mb-2 gap-1">
+                <span>Belum punya akun?</span>
+                <a href="{{route('register')}}" class="text-decoration-none" style="color: black;" onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'">Daftar</a>
             </div>
-            <div>
-            <a href="#" class="text-decoration-none" style="color: black;" onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'">Lupa Kata Sandi</a>
-            </div>
         </div>
 
-        <button class="w-100 mt-3 mb-3 btn btn-lg text-white" type="submit" style="background-color: #1F304B;">Masuk</button>
-        </form>
-
-        <!-- Daftar link -->
-        <div class="d-flex justify-content-center mb-2 gap-1">
-        <span>Belum punya akun?</span>
-        <a href="{{route('register')}}" class="text-decoration-none" style="color: black;" onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'">Daftar</a>
-        </div>
-    </div>
-
-    <!-- JavaScript -->
-    <script>
-        function togglePassword() {
-        const passwordInput = document.getElementById("passwordInput");
-        passwordInput.type = passwordInput.type === "text" ? "password" : "text";
-        }
-    </script>
+        <!-- JavaScript -->
+        <script>
+            function togglePassword() {
+            const passwordInput = document.getElementById("passwordInput");
+            passwordInput.type = passwordInput.type === "text" ? "password" : "text";
+            }
+        </script>
     </body>
 
 </html>

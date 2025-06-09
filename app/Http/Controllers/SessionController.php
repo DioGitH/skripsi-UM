@@ -29,6 +29,8 @@ class SessionController extends Controller
             'mata_pelajaran' => 'nullable|string|max:100',
             'kelas' => 'nullable|in:10,11,12',
             'jurusan' => 'nullable|string|max:100',
+            'captcha' => 'required|captcha'
+
         ]);
 
         User::create([
@@ -41,7 +43,7 @@ class SessionController extends Controller
             'jurusan' => $request->profesi === 'siswa' ? $request->jurusan : null,
         ]);
 
-        return redirect()->back()->with('success', 'Pendaftaran berhasil!');
+        return redirect('login')->with('success', 'Pendaftaran berhasil!');
     }
 
    public function login(Request $request)
@@ -54,6 +56,7 @@ class SessionController extends Controller
     ], [
         'name.required' => "Username harus diisi",
         'password.required' => "Password harus diisi",
+
     ]);
 
     $infologin = [
@@ -64,7 +67,10 @@ class SessionController extends Controller
     if (Auth::attempt($infologin)) {
         return redirect('/')->with('success', 'Berhasil Login');
     } else {
-        return redirect('login')->with('error', 'Username atau Password salah');
+        return redirect('login')
+    ->withErrors(['login' => 'Username atau Password salah'])
+    ->withInput();
+
     }
 }
      public function logout(){

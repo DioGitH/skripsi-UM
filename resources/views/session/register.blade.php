@@ -15,7 +15,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
         
     </head>
-    <body class="d-flex justify-content-center align-items-center vh-100" style="background-color: #efefef;">
+    <body class="d-flex flex-column justify-content-center align-items-center vh-100" style="background-color: #efefef;">
         @if ($errors->any())
 <div class="alert alert-danger">
     <ul>
@@ -100,7 +100,14 @@
             </div>
 
             <!-- reCAPTCHA (opsional, server side handle juga diperlukan) -->
-            <div class="g-recaptcha mb-3" data-sitekey="6LfvDVIrAAAAAPNN46hmvrZxkUGt9ePxzoJU3K39"></div>
+            <div class="mb-3">
+                <label for="captcha">Captcha</label>
+                <div>
+                    <span>{!! captcha_img() !!}</span>
+                    <button type="button" class="btn btn-secondary btn-refresh">⟳</button>
+                </div>
+                <input type="text" name="captcha" class="form-control mt-2" placeholder="Masukkan captcha">
+            </div>
 
             <button class="w-100 mt-3 mb-3 btn btn-lg text-white" type="submit" style="background-color: #1F304B;">Daftar</button>
         </form>
@@ -109,6 +116,13 @@
     <!-- JavaScript -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
+            document.querySelector('.btn-refresh').addEventListener('click', function () {
+        fetch('/captcha-refresh')
+            .then(res => res.text())
+            .then(data => {
+                document.querySelector('span').innerHTML = data;
+            });
+    });
           function togglePassword() {
             const passwordInput = document.getElementById("passwordInput");
             const eyeIcon = document.getElementById("eyeIcon");

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container bg-white rounded mt-5 p-5">
+<div class="container bg-white p-5 mt-5" style="border-radius: 20px; border-top: 20px solid #1F304B">
     <h3>Unggah Karya: {{ $jenisKarya->nama }}</h3>
 
     <form action="{{ route('karya.store') }}" method="POST" enctype="multipart/form-data">
@@ -52,9 +52,13 @@
             <label class="w-25 fw-bold" style="font-size: 18px">Publisher</label>
             <div class="w-100">
                 <span>Masukkan sumber Penerbit karya  </span>
-                <input type="text" name="source" class="form-control">
+                <select name="publisher" class="form-select" required>
+                    <option disabled>-</option>
+                    <option value="SMKN 3 Malang ">SMKN 3 Malang</option>
+                </select>
             </div>
         </div>
+
 
         <div class="mb-3 d-flex flex-row">
             <label class="w-25 fw-bold" style="font-size: 18px">Date</label>
@@ -65,10 +69,10 @@
         </div>
 
         <div class="mb-3 d-flex flex-row">
-            <label class="w-25 fw-bold" style="font-size: 18px">Contribution</label>
+            <label class="w-25 fw-bold" style="font-size: 18px">contributor</label>
             <div class="w-100">
                 <span>Masukan nama penanggung jawab karya</span>
-                <input type="text" name="contribution" class="form-control">
+                <input type="text" name="contributor" class="form-control">
             </div>
         </div>
 
@@ -87,7 +91,7 @@
                 <input type="text" name="relation" class="form-control">
             </div>
         </div>
-
+{{-- 
         <div class="mb-3 d-flex flex-row">
             <label class="w-25 fw-bold" style="font-size: 18px">Format</label>
             <div class="w-100">
@@ -98,7 +102,7 @@
                     <option value="mp4">MP4</option>
                 </select>
             </div>
-        </div>
+        </div> --}}
 
         <div class="mb-3 d-flex flex-row">
             <label class="w-25 fw-bold" style="font-size: 18px">Language</label>
@@ -111,10 +115,7 @@
             <label class="w-25 fw-bold" style="font-size: 18px">Tyoe</label>
             <div class="w-100">
                 <span>Pilih jenis Karya anda</span>
-                <select name="type" class="form-select" required>
-                    <option value="Karya Guru">Karya Guru</option>
-                    <option value="Karya Siswa">Karya Siswa</option>
-                </select>
+                <div class="form-control" style="background-color: #efefef"> Karya {{$user->profesi}}</div>
             </div>
         </div>
         <div class="mb-3 d-flex flex-row">
@@ -132,16 +133,73 @@
                 <input type="text" name="coverage" class="form-control">
             </div>
         </div>
-
-        <div class="mb-3 d-flex flex-row">
-            <label class="w-25 fw-bold" style="font-size: 18px">File</label>
-            <div class="w-100">
-                <span>Unggha Karya Anda</span><span style="font-size: 12px"> *MAX FILE 50MX </span>
-                <input type="file" name="file" class="form-control" required>
+       <div id="file-upload-wrapper">
+            <div class="file-upload-group mb-3">
+                <div class="d-flex flex-row align-items-start">
+                    <label class="w-25 fw-bold" style="font-size: 18px">Format</label>
+                    <div class="w-100">
+                        <span>Pilih salah satu format karya anda</span>
+                        <select name="format[]" class="form-select" required>
+                            <option value="pdf">PDF</option>
+                            <option value="jpg">JPG</option>
+                            <option value="mp4">MP4</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-flex flex-row align-items-start mt-2">
+                    <label class="w-25 fw-bold" style="font-size: 18px">File</label>
+                    <div class="w-100 d-flex gap-2">
+                        <div class="flex-grow-1">
+                            <span>Unggah Karya Anda</span>
+                            <span style="font-size: 12px"> *MAX FILE 50MB </span>
+                            <input type="file" name="file[]" class="form-control" required>
+                        </div>
+                        <button type="button" class="btn btn-danger btn-sm mt-4" onclick="removeFileUpload(this)">Hapus</button>
+                    </div>
+                </div>
             </div>
         </div>
-
+<button type="button" class="btn btn-secondary mb-3" onclick="addFileUpload()">Tambah</button>
         <button class="btn btn-primary">Unggah</button>
     </form>
 </div>
+
+<script>
+function addFileUpload() {
+    const wrapper = document.getElementById('file-upload-wrapper');
+    const group = document.createElement('div');
+    group.classList.add('file-upload-group', 'mb-3');
+    group.innerHTML = `
+        <div class="d-flex flex-row align-items-start">
+            <label class="w-25 fw-bold" style="font-size: 18px">Format</label>
+            <div class="w-100">
+                <span>Pilih salah satu format karya anda</span>
+                <select name="format[]" class="form-select" required>
+                    <option value="pdf">PDF</option>
+                    <option value="jpg">JPG</option>
+                    <option value="mp4">MP4</option>
+                </select>
+            </div>
+        </div>
+        <div class="d-flex flex-row align-items-start mt-2">
+            <label class="w-25 fw-bold" style="font-size: 18px">File</label>
+            <div class="w-100 d-flex gap-2">
+                <div class="flex-grow-1">
+                    <span>Unggah Karya Anda</span>
+                    <span style="font-size: 12px"> *MAX FILE 50MB </span>
+                    <input type="file" name="file[]" class="form-control" required>
+                </div>
+                <button type="button" class="btn btn-danger btn-sm mt-4" onclick="removeFileUpload(this)">Hapus</button>
+            </div>
+        </div>
+    `;
+    wrapper.appendChild(group);
+}
+
+function removeFileUpload(button) {
+    const group = button.closest('.file-upload-group');
+    group.remove();
+}
+</script>
+
 @endsection

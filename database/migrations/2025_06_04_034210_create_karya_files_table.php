@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('karya_id')->constrained()->onDelete('cascade');
             $table->string('file_path');
-            $table->string('file_type')->nullable(); // optional: pdf, jpg, mp4
+            $table->string('format')->nullable(); // optional: pdf, jpg, mp4
+            $table->unsignedBigInteger('size')->nullable(); // ukuran dalam byte
             $table->timestamps();
         });
     }

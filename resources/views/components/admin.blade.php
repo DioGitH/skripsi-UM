@@ -1,0 +1,48 @@
+<div class="sidebar d-flex flex-column flex-shrink-0 text-white"
+     style="position: fixed; top: 0; bottom: 0; left: 0; width: 300px; background: #1F304B; z-index: 1030;">
+    <a href="/admin" class="mt-5  d-flex flex-column align-items-center justify-content-center text-white text-decoration-none text-center" style="margin: auto;">
+        <div style="font-size: 24px;">Admin</div>
+        <img class="logo-custom my-2 w-75" src="{{ asset('assets/img/logo-title.png') }}" alt="Logo">
+        <h6 class="mb-0">e Skill-Lib Repository <br> SMKN 3 Malang</h6>
+    </a>
+
+  <hr class="my-4">
+  <div class="collapse mx-3 mr-5 navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+    <ul class="nav w-100 nav-pills flex-column mb-auto">
+      <li class="">
+        <a class="nav-link text-white mt-1 d-flex gap-2" style="font-size: 20px" href="{{route('admin')}}"><i class="bi bi-house-door-fill"></i> Beranda</a>
+      </li>
+      <li class="">
+        <a class="nav-link text-white mt-1 d-flex gap-2" style="font-size: 20px" href="{{route('karya')}}">Karya Masuk</a>
+      </li>
+      <li class="nav-item dropdown w-100">
+        <a class="nav-link text-white mt-1 d-flex justify-content-between align-items-center" 
+          href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" 
+          style="font-size: 20px;">
+          <span class="d-flex gap-2 align-items-center">
+            <i class="bi bi-clipboard2-data-fill"></i> Verifikasi
+          </span>
+          <i class="bi bi-caret-down-fill"></i> <!-- Panah di kanan -->
+        </a>
+        <ul class="dropdown-menu dropdown-menu-start bg-light border-0 shadow">
+          <li><a class="dropdown-item" href="{{route('konfirmasi')}}">Konfirmasi</a></li>
+          <li><a class="dropdown-item" href="{{route('publikasi')}}">Publikasi</a></li>
+        </ul>
+      </li>
+
+
+      <li class="">
+        <a class="nav-link text-white mt-1 d-flex gap-2" style="font-size: 20px" href=""><i class="bi bi-person-lines-fill"></i> Arsip Karyaa</a>
+      </li>
+    </ul>
+  </div>
+  <hr>
+  <div class="px-2 mt-4">
+    <a href="/admin/logout" class="nav-link text-white"><i class="bi bi-box-arrow-left"></i> Logout</a>
+  </div>
+</div> 
+<style>
+    .sidebar .dropdown-menu {
+        width: 100%;
+    }
+</style>
