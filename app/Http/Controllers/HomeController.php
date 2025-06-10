@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\JenisKarya;
+use App\Models\Admin;
 use App\Models\Karya;
+use App\Notifications\KaryaBaruNotification;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
@@ -97,6 +99,12 @@ $karyaTerbaru = Karya::latest()->take(15)->get();
 
         $jenisKarya = JenisKarya::find($validated['jenis_karya_id']);
 
+        // Kirim notifikasi hanya ke admin
+       $adminUsers = Admin::all();
+        foreach ($adminUsers as $admin) {
+            $admin->notify(new KaryaBaruNotification($karya));
+        }
+        \Log::info('Notifikasi dikirim ke admin', ['admin_id' => $admin->id]);
         return redirect()->route('karya.create', ['jenisKarya' => $jenisKarya->nama])
             ->with('success', 'Karya berhasil diunggah.');
     }

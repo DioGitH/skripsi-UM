@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class admin extends Authenticatable
+class Admin extends Authenticatable
 {
     use Notifiable;
     protected $guard = 'admins';

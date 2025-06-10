@@ -3,7 +3,7 @@
 @section('admin')
 <div class="d-flex flex-column">
     <div class=" p-3 d-flex justify-content-between w-100">
-        <div class="fw-bold mx-2" style="font-size: 32px">Publikasi</div>
+        <div class="fw-bold mx-2" style="font-size: 32px">Arsip</div>
 
         <div class="d-flex gap-5 mx-5">
             <button style="width:33px"><img src="{{ asset('assets/img/notif.png') }}" alt=""></button>
@@ -67,15 +67,11 @@
                                 <span>Pratinjau</span>
                             </a>
                         </td>
-                        <td>
-                            <div class="text-dark py-1 px-2" style="background-color: #2BE317; border-radius: 14px; font-size: 14px">
-                                {{ $karya->status }}
-                            </div>
-                        </td>
+                        <td><div class="text-center fw-bold text-white py-1 px-2" style="background-color: #717F94; border-radius: 14px; font-size: 14px">{{$karya->status}}</div></td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="8" class="text-center">Belum ada karya untuk jenis ini.</td>
+                        <td colspan="7" class="text-center">Belum ada karya untuk jenis ini.</td>
                     </tr>
                 @endforelse
             </tbody>

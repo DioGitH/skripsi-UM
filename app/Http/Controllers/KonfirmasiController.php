@@ -52,4 +52,26 @@ public function arsip($id)
 
     return redirect()->route('konfirmasi')->with('success', 'Karya berhasil dipublikasikan.');
 }
+public function indexArsip(Request $request){
+        $query = Karya::query()->where('status', 'Arsip');
+
+    if ($request->kategori) {
+        $query->where('type', $request->kategori); // pastikan field 'type' menyimpan 'siswa' atau 'guru'
+    }
+
+    if ($request->search) {
+        $query->where(function($q) use ($request) {
+            $q->where('title', 'like', '%' . $request->search . '%')
+              ->orWhere('creator', 'like', '%' . $request->search . '%');
+        });
+    }
+
+    if ($request->tanggal) {
+        $query->whereDate('date', $request->tanggal);
+    }
+
+    $karyas = $query->get();
+
+    return view('admin.arsip', compact('karyas'));
+}
 }

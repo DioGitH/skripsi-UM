@@ -32,7 +32,7 @@
             @csrf
             <!-- Username -->
             <div class="form-floating mt-4 mb-3">
-                <input name="name" type="text" class="form-control" id="nameInput" placeholder="Nama Pengguna">
+                <input name="name" type="text" class="form-control" id="nameInput" value="{{ old('name') }}">
                 <label for="nameInput">Nama Pengguna</label>
             </div>
 
@@ -53,7 +53,7 @@
 
             <!-- Email -->
             <div class="form-floating mt-4 mb-3">
-                <input name="email" type="email" class="form-control" id="emailInput" placeholder="Email">
+                <input name="email" type="email" class="form-control" id="emailInput" placeholder="Email" value="{{ old('email') }}">
                 <label for="emailInput">Email</label>
             </div>
 
@@ -62,11 +62,11 @@
                 <label class="mb-2 fw-bold">Daftar Sebagai</label>
                 <div class="d-flex gap-4">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="profesi" id="guruRadio" value="guru" onchange="showInputs('guru')">
+                        <input class="form-check-input" type="radio" name="profesi" id="guruRadio" value="guru" onchange="showInputs('guru')" {{ old('profesi') == 'guru' ? 'checked' : '' }}>
                         <label class="form-check-label" for="guruRadio">Guru</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="profesi" id="siswaRadio" value="siswa" onchange="showInputs('siswa')">
+                        <input class="form-check-input" type="radio" name="profesi" id="siswaRadio" value="siswa" onchange="showInputs('siswa')" {{ old('profesi') == 'siswa' ? 'checked' : '' }}>
                         <label class="form-check-label" for="siswaRadio">Siswa</label>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
             <!-- Input Guru -->
             <div id="guruInput" class="mb-3" style="display: none;">
                 <label for="mata_pelajaran" class="form-label">Mata Pelajaran</label>
-                <input name="mata_pelajaran" type="text" class="form-control" id="mata_pelajaran" placeholder="Masukkan Mata Pelajaran">
+                <input name="mata_pelajaran" type="text" class="form-control" id="mata_pelajaran" placeholder="Masukkan Mata Pelajaran" value="{{ old('mata_pelajaran') }}">
             </div>
 
             <!-- Input Siswa -->
@@ -102,8 +102,8 @@
             <!-- reCAPTCHA (opsional, server side handle juga diperlukan) -->
             <div class="mb-3">
                 <label for="captcha">Captcha</label>
-                <div>
-                    <span>{!! captcha_img() !!}</span>
+                <div class="w-100 align-items-center d-flex flex-row">
+                    <div>{!! captcha_img() !!}</div>
                     <button type="button" class="btn btn-secondary btn-refresh">⟳</button>
                 </div>
                 <input type="text" name="captcha" class="form-control mt-2" placeholder="Masukkan captcha">
@@ -116,6 +116,19 @@
     <!-- JavaScript -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
+            document.addEventListener("DOMContentLoaded", function () {
+        const selectedProfesi = "{{ old('profesi') }}";
+        if (selectedProfesi) {
+            showInputs(selectedProfesi);
+        }
+    });
+            document.addEventListener("DOMContentLoaded", function () {
+        const img = document.querySelector('img[src*="/captcha"]');
+        if (img) {
+            img.style.width = '400px'; // ubah sesuai kebutuhan
+            img.style.height = 'auto';
+        }
+    });
             document.querySelector('.btn-refresh').addEventListener('click', function () {
         fetch('/captcha-refresh')
             .then(res => res.text())

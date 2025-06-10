@@ -61,12 +61,15 @@
                         <td>{{ $karya->creator }}</td>
                         <td>{{ $karya->date }}</td>
                         <td>
-                            <a href="{{ route('karya.pratinjau', $karya->id) }}" class="btn btn-sm btn-primary">Pratinjau</a>
+                            <a href="{{ route('karya.pratinjau', $karya->id) }}" class="btn btn-sm d-flex align-items-center gap-2">
+                                <img src="{{ asset('assets/img/search.png') }}" alt="Pratinjau" style="width: 16px; height: 16px;">
+                                <span>Pratinjau</span>
+                            </a>                        
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="text-center">Belum ada karya untuk jenis ini.</td>
+                        <td colspan="8" class="text-center">Belum ada karya untuk jenis ini.</td>
                     </tr>
                 @endforelse
             </tbody>

@@ -40,7 +40,7 @@
     </div>
     <div class="table-responsive mx-5 my-4">
         <table class="table table-bordered table-striped">
-            <thead class="table-dark text-center">
+            <thead class=" text-center text-white" style="background-color: #1F304B">
                 <tr>
                     <th>No</th>
                     <th>Title</th>
@@ -62,13 +62,16 @@
                         <td>{{ $karya->creator }}</td>
                         <td>{{ $karya->date }}</td>
                         <td>
-                            <a href="{{ route('karya.pratinjau', $karya->id) }}" class="btn btn-sm btn-primary">Pratinjau</a>
+                            <a href="{{ route('karya.pratinjau', $karya->id) }}" class="btn btn-sm d-flex align-items-center gap-2">
+                                <img src="{{ asset('assets/img/search.png') }}" alt="Pratinjau" style="width: 16px; height: 16px;">
+                                <span>Pratinjau</span>
+                            </a>
                         </td>
                         <td><div class="text-white py-1 px-2" style="background-color: #717F94; border-radius: 14px; font-size: 14px">{{$karya->status}}</div></td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="text-center">Belum ada karya untuk jenis ini.</td>
+                        <td colspan="8" class="text-center">Belum ada karya untuk jenis ini.</td>
                     </tr>
                 @endforelse
             </tbody>

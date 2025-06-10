@@ -1,3 +1,13 @@
+<style>
+  .dropdown-menu {
+    position: static !important;
+    display: none;
+  }
+
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+  }
+</style>
 <div class="sidebar d-flex flex-column flex-shrink-0 text-white"
      style="position: fixed; top: 0; bottom: 0; left: 0; width: 300px; background: #1F304B; z-index: 1030;">
     <a href="/admin" class="mt-5  d-flex flex-column align-items-center justify-content-center text-white text-decoration-none text-center" style="margin: auto;">
@@ -15,34 +25,53 @@
       <li class="">
         <a class="nav-link text-white mt-1 d-flex gap-2" style="font-size: 20px" href="{{route('karya')}}">Karya Masuk</a>
       </li>
-      <li class="nav-item dropdown w-100">
-        <a class="nav-link text-white mt-1 d-flex justify-content-between align-items-center" 
-          href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" 
-          style="font-size: 20px;">
+      <li class="nav-item dropdown position-relative">
+        <a class="nav-link text-white mt-1 d-flex justify-content-between align-items-center"
+          href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 20px;">
           <span class="d-flex gap-2 align-items-center">
             <i class="bi bi-clipboard2-data-fill"></i> Verifikasi
           </span>
-          <i class="bi bi-caret-down-fill"></i> <!-- Panah di kanan -->
+          <i class="bi bi-caret-down-fill"></i>
         </a>
-        <ul class="dropdown-menu dropdown-menu-start bg-light border-0 shadow">
-          <li><a class="dropdown-item" href="{{route('konfirmasi')}}">Konfirmasi</a></li>
-          <li><a class="dropdown-item" href="{{route('publikasi')}}">Publikasi</a></li>
+        <ul class="dropdown-menu border-0 shadow w-100 mt-1 static-dropdown" style="background-color: #1F304B;">
+          <li>
+            <a class="dropdown-item text-white nav-link mt-1" href="{{route('konfirmasi')}}">Konfirmasi</a>
+          </li>
+          <li>
+            <a class="dropdown-item text-white nav-link mt-1" href="{{route('publikasi')}}">Publikasi</a>
+          </li>
         </ul>
       </li>
-
-
       <li class="">
-        <a class="nav-link text-white mt-1 d-flex gap-2" style="font-size: 20px" href=""><i class="bi bi-person-lines-fill"></i> Arsip Karyaa</a>
+        <a class="nav-link text-white mt-1 d-flex gap-2" style="font-size: 20px" href="{{route('arsip')}}"><i class="bi bi-person-lines-fill"></i> Arsip Karyaa</a>
       </li>
     </ul>
   </div>
   <hr>
-  <div class="px-2 mt-4">
-    <a href="/admin/logout" class="nav-link text-white"><i class="bi bi-box-arrow-left"></i> Logout</a>
-  </div>
+    <div class=" my-4 mx-4 px-2 mt-4">
+        <a href="#" class="nav-link text-white" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <i class="bi bi-box-arrow-left"></i> Logout
+        </a>
+
+        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+    </div>
 </div> 
 <style>
     .sidebar .dropdown-menu {
         width: 100%;
     }
+      /* Ubah dropdown jadi mengalir dan tidak menutupi item di bawah */
+  .static-dropdown {
+    position: static !important;
+    float: none;
+    inset: unset !important;
+    transform: none !important;
+  }
+
+  /* Tambahan styling agar menu tetap rapi */
+  .dropdown-menu .dropdown-item:hover {
+    background-color: #2c4a6b;
+  }
 </style>

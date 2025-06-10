@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
@@ -46,32 +47,32 @@ class SessionController extends Controller
         return redirect('login')->with('success', 'Pendaftaran berhasil!');
     }
 
-   public function login(Request $request)
+public function login(Request $request)
 {
-    Session::flash('name', $request->name);
-
     $request->validate([
         'name' => 'required',
         'password' => 'required',
     ], [
         'name.required' => "Username harus diisi",
         'password.required' => "Password harus diisi",
-
     ]);
 
-    $infologin = [
-        'name' => $request->name,
-        'password' => $request->password,
-    ];
+    $credentials = $request->only('name', 'password');
 
-    if (Auth::attempt($infologin)) {
-        return redirect('/')->with('success', 'Berhasil Login');
-    } else {
-        return redirect('login')
-    ->withErrors(['login' => 'Username atau Password salah'])
-    ->withInput();
-
+    // Coba login sebagai admin dulu
+    if (Auth::guard('admin')->attempt($credentials)) {
+        return redirect('/admin')->with('success', 'Login sebagai Admin berhasil');
     }
+
+    // Jika gagal, coba login sebagai user
+    if (Auth::guard('web')->attempt($credentials)) {
+        return redirect('/')->with('success', 'Login sebagai User berhasil');
+    }
+
+    // Jika gagal dua-duanya
+    return redirect('login')
+        ->withErrors(['login' => 'Username atau Password salah'])
+        ->withInput();
 }
      public function logout(){
         Auth::logout();

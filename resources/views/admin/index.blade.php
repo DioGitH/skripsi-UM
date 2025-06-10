@@ -5,7 +5,26 @@
         <div class="fw-bold mx-2" style="font-size: 32px">Beranda</div>
 
         <div class="d-flex gap-5 mx-5">
-            <button style="width:33px"><img src="{{ asset('assets/img/notif.png') }}" alt=""></button>
+@auth('admin')
+    @php $admin = auth('admin')->user(); @endphp
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+        🔔 Notifikasi ({{ $admin->unreadNotifications->count() }})
+        </a>
+        <ul class="dropdown-menu">
+        @forelse($admin->unreadNotifications as $notification)
+            <li>
+            <a href="{{ route('karya.show', $notification->data['karya_id']) }}" class="dropdown-item">
+                {{ $notification->data['message'] }}
+            </a>
+            </li>
+        @empty
+            <li><span class="dropdown-item">Tidak ada notifikasi</span></li>
+        @endforelse
+        </ul>
+    </li>
+@endauth
+
             <button style="width: 44px"><img src="{{ asset('assets/img/setting.png') }}" alt=""></button>
         </div>
     </div>

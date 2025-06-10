@@ -15,6 +15,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Middleware\IsLogin;
+use App\Http\Middleware\OnLogin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,20 +31,21 @@ Route::get('/captcha-refresh', function () {
 });
 
 Route::get('/', [HomeController::class, 'index'])->middleware(IsLogin::class)->name('home');
-Route::get('/unggah/{jenisKarya}', [HomeController::class, 'create'])->name('karya.create');
-Route::post('/unggah', [HomeController::class, 'store'])->name('karya.store');
+Route::get('/unggah/{jenisKarya}', [HomeController::class, 'create'])->middleware(IsLogin::class)->name('karya.create');
+Route::post('/unggah', [HomeController::class, 'store'])->middleware(IsLogin::class)->name('karya.store');
 // Pilih jenis karya berdasarkan profesi
-Route::get('/jelajahi/{profesi}', [KaryaController::class, 'showJenis'])->name('jelajahi.profesi');
-Route::get('/karya/{id}', [KaryaController::class, 'show'])->name('karya.show');
-Route::delete('/karya/{id}', [ActivityController::class, 'destroy'])->name('karya.destroy');
+Route::get('/jelajahi/{profesi}', [KaryaController::class, 'showJenis'])->middleware(IsLogin::class)->name('jelajahi.profesi');
+Route::get('/karya/{id}', [KaryaController::class, 'show'])->middleware(IsLogin::class)->name('karya.show');
+Route::delete('/karya/{id}', [ActivityController::class, 'destroy'])->middleware(IsLogin::class)->name('karya.destroy');
 
 
 // Tampilkan karya berdasarkan profesi + jenis karya
-Route::get('/jelajahi/{profesi}/{jenisKarya}', [KaryaController::class, 'filterKarya'])->name('jelajahi.karya');
+Route::get('/jelajahi/{profesi}/{jenisKarya}', [KaryaController::class, 'filterKarya'])->middleware(IsLogin::class)->name('jelajahi.karya');
 
-Route::get('login', [SessionController::class, 'index'])->name('login');
+Route::get('login', [SessionController::class, 'index'])->middleware(OnLogin::class)->name('login');
 Route::post('login/store', [SessionController::class, 'login']);
-Route::get('register', [SessionController::class, 'register'])->name('register');
+Route::post('logout', [SessionController::class, 'logout'])->name('logout');
+Route::get('register', [SessionController::class, 'register'])->middleware(OnLogin::class)->name('register');
 Route::post('register/store', [SessionController::class, 'regisStore'])->name('register.store');
 Route::get('guide', [GuideController::class, 'index'])->middleware(IsLogin::class)->name('guide');
 Route::get('about', [AboutController::class, 'index'])->middleware(IsLogin::class)->name('about');
@@ -57,6 +59,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/karya', [KaryaMasukController::class, 'index'])->name('karya');
         Route::get('/karya/{id}/preview', [KaryaMasukController::class, 'preview'])->name('admin.karya.preview');
         Route::get('/konfirmasi', [KonfirmasiController::class, 'index'])->name('konfirmasi');
+        Route::get('/arsip', [KonfirmasiController::class, 'indexArsip'])->name('arsip');
         Route::get('/publikasi', [PublikasiController::class, 'index'])->name('publikasi');
         Route::get('/admin/konfirmasi/{id}/pratinjau', [KonfirmasiController::class, 'show'])->name('karya.pratinjau');
         Route::patch('/admin/karya/{id}/publish', [KonfirmasiController::class, 'publish'])->name('karya.publish');
@@ -65,5 +68,11 @@ Route::prefix('admin')->group(function () {
         Route::get('login', [SessionAdminController::class, 'index']);
         Route::post('session/store', [SessionAdminController::class, 'store']);
 
+});
+Route::middleware('auth:admin')->group(function () {
+    Route::post('/admin/logout', function () {
+        Auth::guard('admin')->logout();
+        return redirect('/login')->with('success', 'Berhasil logout');
+    })->name('admin.logout');
 });
 
