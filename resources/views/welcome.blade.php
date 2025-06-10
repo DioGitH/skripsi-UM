@@ -24,42 +24,64 @@
         </button>
         <div class="mt-4" style="height: 10px; width: 35%; background-color: #1F304B;"></div>
     </div>
-    <div class="p-5 mx-5">
+    <div class="p-5 mx-5 mt-5">
         <div class="fw-bold" style="font-size: 30px">Karya Terbaru</div>
-<div id="carouselKaryaTerbaru" class="carousel slide mx-5" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        @foreach($karyaTerbaru->chunk(5) as $index => $chunk)
-            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                <div class="d-flex gap-3">
-                    @foreach($chunk as $karya)
-                        <div class="card flex-fill" style="min-width: 18%;">
-                            @php
-                                $filePreview = $karya->files->first();
-                                $thumbnail = $filePreview && in_array($filePreview->format, ['jpg', 'jpeg', 'png'])
-                                    ? asset('storage/' . $filePreview->file_path)
-                                    : asset('assets/img/file-icon.png');
-                            @endphp
-                            <img src="{{ $thumbnail }}" class="card-img-top" style="height: 150px; object-fit: cover;" alt="Karya">
-                            <div class="card-body p-2">
-                                <h6 class="card-title mb-1">{{ Str::limit($karya->title, 40) }}</h6>
-                                <small class="text-muted">{{ Str::limit($karya->subject, 30) }}</small>
-                                <br/>
-                                <a href="{{ route('karya.show', $karya->id) }}" class="btn btn-sm btn-outline-primary mt-2">Lihat</a>
-                            </div>
+        <div id="carouselKaryaTerbaru" class="carousel slide position-relative mx-5" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @foreach($karyaTerbaru->chunk(5) as $index => $chunk)
+                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                        <div class="d-flex gap-3 justify-content-center">
+                            @foreach($chunk as $karya)
+                                @php
+                                    $filePreview = $karya->files->first();
+                                    $format = $filePreview->format ?? 'unknown';
+                                    $isImage = in_array($format, ['jpg', 'jpeg', 'png']);
+                                    $thumbnail = $isImage
+                                        ? asset('storage/' . $filePreview->file_path)
+                                        : asset('assets/img/file-icon.png'); // fallback (optional, not used here)
+                                @endphp
+                                <div class="card flex-fill shadow-sm" style="min-width: 18%; max-width: 18%; height: 400px; border-radius: 10px; overflow: hidden;">
+                                    <div class="d-flex justify-content-center align-items-center bg-light" style="height: 250px;">
+                                        @if ($isImage)
+                                            <img src="{{ $thumbnail }}" alt="Preview" style="height: 100%; width: 100%; object-fit: cover;">
+                                        @elseif($format === 'pdf')
+                                            <div class="text-center">
+                                                <i class="bi bi-file-earmark-pdf" style="font-size: 48px; color: red;"></i>
+                                                <p class="mt-2 mb-0 fw-bold">PDF File</p>
+                                            </div>
+                                        @elseif($format === 'mp4')
+                                            <div class="text-center">
+                                                <i class="bi bi-file-play" style="font-size: 48px; color: #007bff;"></i>
+                                                <p class="mt-2 mb-0 fw-bold">MP4 Video</p>
+                                            </div>
+                                        @else
+                                            <p class="text-muted">Format tidak dikenal</p>
+                                        @endif
+                                    </div>
+                                    <div class="card-body p-2 d-flex flex-column">
+                                        <h6 class="card-title mb-1" style="font-size: 14px;">{{ Str::limit($karya->title, 40) }}</h6>
+                                        <small class="text-muted" style="font-size: 12px;">{{ Str::limit($karya->subject, 30) }}</small>
+                                        <a href="{{ route('karya.show', $karya->id) }}" class="btn btn-sm btn-outline-primary mt-auto">Lihat</a>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
-                    @endforeach
-                </div>
-            </div>
-        @endforeach
-    </div>
+                    </div>
+                @endforeach
 
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselKaryaTerbaru" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon bg-dark"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselKaryaTerbaru" data-bs-slide="next">
-        <span class="carousel-control-next-icon bg-dark"></span>
-    </button>
-</div>
+            </div>
+
+            <!-- Tombol slide di kiri dan kanan -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselKaryaTerbaru" data-bs-slide="prev" style="width: 5%; top: 50%; transform: translateY(-50%);">
+                <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+                <span class="visually-hidden">Sebelumnya</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselKaryaTerbaru" data-bs-slide="next" style="width: 5%; top: 50%; transform: translateY(-50%);">
+                <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+                <span class="visually-hidden">Berikutnya</span>
+            </button>
+        </div>
+
 
 
     </div>
@@ -85,10 +107,12 @@
                                                 <img src="https://via.placeholder.com/150x100?text=No+Image" alt="No image" class="img-fluid rounded mb-2">
                                             @endif
 
-                                            <a href="{{ route('karya.create', $jenis->nama) }}" class="btn btn-outline-dark w-75 text-black m-auto fw-bold d-flex align-items-center justify-content-center gap-2">
+                                            <a href="{{ route('karya.create', $jenis->nama) }}"
+                                            class="btn btn-outline-dark w-75 text-black m-auto fw-bold d-flex align-items-center justify-content-center gap-2">
                                                 <img src="{{ asset('assets/img/upload.png') }}" alt="Unggah" style="width: 32px; height: 32px;">
                                                 <span>Unggah</span>
                                             </a>
+
                                         </div>
                                     @endforeach
                                 </div>
@@ -140,7 +164,13 @@
 
 </div>
 
-
+<style>
+    .btn-outline-dark:hover {
+        background-color: #6c757d !important; /* Bootstrap's secondary */
+        color: white !important;
+        border-color: #6c757d !important;
+    }
+</style>
 
 
 

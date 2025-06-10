@@ -71,7 +71,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="8" class="text-center">Belum ada karya untuk jenis ini.</td>
+                        <td colspan="8" classphp ="text-center">Belum ada karya untuk jenis ini.</td>
                     </tr>
                 @endforelse
             </tbody>

@@ -51,8 +51,10 @@
             </div>
     </div>
     
-    <div class="px-5">
-        <a class="px-2" href="">Kembali</a>
-    </div>
+<div class="px-5 mt-3">
+    <a href="{{ url()->previous() }}" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left-circle"></i> Kembali
+    </a>
+</div>
     
 @endsection

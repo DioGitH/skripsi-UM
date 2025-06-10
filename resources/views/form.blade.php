@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container bg-white p-5 mt-5" style="border-radius: 20px; border-top: 20px solid #1F304B">
+
+<div class="mb-5 container bg-white p-5 mt-5" style="border-radius: 20px; border-top: 20px solid #1F304B">
     <h3>Unggah Karya: {{ $jenisKarya->nama }}</h3>
 
     <form action="{{ route('karya.store') }}" method="POST" enctype="multipart/form-data">
@@ -91,18 +92,6 @@
                 <input type="text" name="relation" class="form-control">
             </div>
         </div>
-{{-- 
-        <div class="mb-3 d-flex flex-row">
-            <label class="w-25 fw-bold" style="font-size: 18px">Format</label>
-            <div class="w-100">
-                <span>Pilih salah satu format karya anda</span>
-                <select name="format" class="form-select" required>
-                    <option value="pdf">PDF</option>
-                    <option value="jpg">JPG</option>
-                    <option value="mp4">MP4</option>
-                </select>
-            </div>
-        </div> --}}
 
         <div class="mb-3 d-flex flex-row">
             <label class="w-25 fw-bold" style="font-size: 18px">Language</label>
@@ -159,10 +148,14 @@
                 </div>
             </div>
         </div>
-<button type="button" class="btn btn-secondary mb-3" onclick="addFileUpload()">Tambah</button>
-        <button class="btn btn-primary">Unggah</button>
+        <div class="d-flex flex-row justify-content-between mt-5">
+            <button type="button" class="btn btn-secondary" onclick="addFileUpload()">+ File</button>
+            <button class="btn text-white" style="background-color: #1F304B">Unggah</button>
+        </div>
     </form>
 </div>
+
+
 
 <script>
 function addFileUpload() {

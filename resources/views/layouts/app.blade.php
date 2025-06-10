@@ -17,15 +17,27 @@
         {{-- @if (Auth::check()) --}}
         @include('components.nav')
         {{-- @endif --}}
-                    @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul class="mb-0">
-                        @foreach ($errors->all() as $item)
-                            <li>{{ $item }}</li>
-                        @endforeach
-                    </ul>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $item)
+                        <li>{{ $item }}</li>
+                    @endforeach
+                </ul>
+            </div>
+         @endif
+         @if (session('success'))
+            <div class="position-fixed top-0 end-0 p-3" style="z-index: 1055">
+                <div class="toast show bg-success text-white align-items-center border-0" role="alert">
+                <div class="d-flex">
+                    <div class="toast-body">
+                    {{ session('success') }}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
-            @endif
+                </div>
+            </div>
+        @endif
 
         <div class="content" style="background: #efefef">
             @yield('content')
