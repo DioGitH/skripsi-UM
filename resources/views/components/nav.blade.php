@@ -36,6 +36,14 @@
         <li class="nav-item">
           <a class="nav-link {{ request()->routeIs('activity') ? 'active fw-bold' : '' }}" href="{{ route('activity') }}">Aktifitas</a>
         </li>
+        <li class="nav-item">
+          <form action="{{ route('logout') }}" method="POST" class="nav-link">
+            @csrf
+            <button type="submit" class="nav-link btn btn-link text-danger" style="padding: 0; border: none; background: none;">
+              Logout
+            </button>
+          </form>
+        </li>
       </ul>
     </div>
 
