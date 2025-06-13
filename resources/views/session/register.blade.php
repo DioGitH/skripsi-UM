@@ -17,14 +17,14 @@
     </head>
     <body class="d-flex flex-column justify-content-center align-items-center vh-100" style="background-color: #efefef;">
         @if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $item)
-            <li>{{$item}}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $item)
+                        <li>{{$item}}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
     <div class="m-auto bg-white d-flex flex-column justify-content-center py-4 px-5" style="border-radius: 2rem; width: 100%; max-width: 1000px;">
         <h1 class="text-center my-4 fw-bold">Formulir pendaftaran Pengguna</h1>
         
@@ -32,7 +32,7 @@
             @csrf
             <!-- Username -->
             <div class="form-floating mt-4 mb-3">
-                <input name="name" type="text" class="form-control" id="nameInput" value="{{ old('name') }}">
+                <input name="name" type="text" class="form-control" id="nameInput" value="{{ old('name') }}" placeholder="Nama Pengguna">
                 <label for="nameInput">Nama Pengguna</label>
             </div>
 
@@ -100,13 +100,19 @@
             </div>
 
             <!-- reCAPTCHA (opsional, server side handle juga diperlukan) -->
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="captcha">Captcha</label>
                 <div class="w-100 align-items-center d-flex flex-row">
                     <div>{!! captcha_img() !!}</div>
                     <button type="button" class="btn btn-secondary btn-refresh">⟳</button>
                 </div>
                 <input type="text" name="captcha" class="form-control mt-2" placeholder="Masukkan captcha">
+            </div> --}}
+
+            <!-- Google reCAPTCHA v2 -->
+            <div class="mb-3">
+                <label for="captcha">Captcha</label>
+                <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
             </div>
 
             <button class="w-100 mt-3 mb-3 btn btn-lg text-white" type="submit" style="background-color: #1F304B;">Daftar</button>
@@ -115,6 +121,8 @@
 
     <!-- JavaScript -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     <script>
             document.addEventListener("DOMContentLoaded", function () {
         const selectedProfesi = "{{ old('profesi') }}";
@@ -164,6 +172,7 @@
                 siswaInputs.style.display = "block";
             }
         }
+        
     </script>
     </body>
 

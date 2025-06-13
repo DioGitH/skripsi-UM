@@ -19,6 +19,6 @@ class AdminLogin
         if (Auth::guard('admin')->check()) {
             return $next($request);
         }
-        return redirect('/admin/login')->withErrors('Silakan Login Terlebih Dahulu');
+        return redirect('/login')->withErrors('Silakan Login Terlebih Dahulu');
     }
 }

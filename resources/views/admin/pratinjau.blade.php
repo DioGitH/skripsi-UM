@@ -1,16 +1,9 @@
 @extends('layouts.admin')
 
 @section('admin')
+@include('components.headerAdmin')
 <div class="d-flex flex-column " style="background-color: #efefef">
-    <div class=" p-3 d-flex justify-content-between w-100 bg-white">
-        <div class="fw-bold mx-2" style="font-size: 32px">Konfirmasi</div>
-
-        <div class="d-flex gap-5 mx-5">
-            <button style="width:33px"><img src="{{ asset('assets/img/notif.png') }}" alt=""></button>
-            <button style="width: 44px"><img src="{{ asset('assets/img/setting.png') }}" alt=""></button>
-        </div>
-    </div>
-    <div class="mb-4 fw-bold" style="font-size:30px">{{ $karya->title }}</div>
+    <div class=" fw-bold p-5" style="font-size:30px">{{ $karya->title }}</div>
     <div class="bg-white m-auto p-4" style="width: 80%; ">        
         <table class="table table-bordered">
             <tr><th>Judul</th><td>{{ $karya->title }}</td></tr>

@@ -1,34 +1,7 @@
 @extends('layouts.admin')
 
 @section('admin')
-    <div class=" p-3 d-flex justify-content-between w-100">
-        <div class="fw-bold mx-2" style="font-size: 32px">Beranda</div>
-
-        <div class="d-flex gap-5 mx-5">
-@auth('admin')
-    @php $admin = auth('admin')->user(); @endphp
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-        🔔 Notifikasi ({{ $admin->unreadNotifications->count() }})
-        </a>
-        <ul class="dropdown-menu">
-        @forelse($admin->unreadNotifications as $notification)
-            <li>
-            <a href="{{ route('karya.show', $notification->data['karya_id']) }}" class="dropdown-item">
-                {{ $notification->data['message'] }}
-            </a>
-            </li>
-        @empty
-            <li><span class="dropdown-item">Tidak ada notifikasi</span></li>
-        @endforelse
-        </ul>
-    </li>
-@endauth
-
-            <button style="width: 44px"><img src="{{ asset('assets/img/setting.png') }}" alt=""></button>
-        </div>
-    </div>
-    <div class="" style="height: 10px; width: 100%; background-color: #1F304B;"></div>
+    @include('components.headerAdmin')
     <div class="px-5 py-4 fw-bold" style="font-size: 32px; background-color: #fff">
         SELAMAT DATANG DI  DASHBOARD ADMIN e Skill-Lib Repository 
     </div>
@@ -79,7 +52,7 @@
     </div>
 
     {{-- Chart Karya --}}
-    <div class="my-4 p-4 bg-white shadow rounded" style="width: 100%; max-width: 800px;">
+    <div class="my-4 m-auto mb-5 p-4 bg-white shadow rounded" style="width: 100%; max-width: 800px;">
         <h4 class="mb-3">Grafik Karya (Guru vs Siswa)</h4>
         <canvas id="karyaChart"></canvas>
     </div>

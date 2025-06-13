@@ -28,8 +28,7 @@
         <div class="fw-bold" style="font-size: 30px">Karya Terbaru</div>
         <div id="carouselKaryaTerbaru" class="carousel slide position-relative mx-5" data-bs-ride="carousel">
             <div class="carousel-inner">
-                @foreach($karyaTerbaru->chunk(5) as $index => $chunk)
-                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                @foreach($karyaTerbaru->where('status', 'Terpublish')->chunk(5) as $index => $chunk)                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
                         <div class="d-flex gap-3 justify-content-center">
                             @foreach($chunk as $karya)
                                 @php

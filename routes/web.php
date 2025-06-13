@@ -15,6 +15,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Middleware\IsLogin;
+use App\Http\Middleware\AdminLogin;
 use App\Http\Middleware\OnLogin;
 /*
 |--------------------------------------------------------------------------
@@ -54,17 +55,18 @@ Route::get('activity', [ActivityController::class, 'index'])->middleware(IsLogin
 Route::get('activitylist', [ActivityController::class, 'activityList'])->middleware(IsLogin::class)->name('activitylist');
 
 Route::prefix('admin')->group(function () {
-        Route::get('/', [AdminController::class, 'index'])->name('admin');
-        Route::get('/data', [DataKaryaController::class, 'index'])->name('data.create');
+        Route::get('/', [AdminController::class, 'index'])->middleware(AdminLogin::class)->name('admin');
+        Route::post('/notifikasi/baca', [AdminController::class, 'bacaSemua'])->name('admin.notifikasi.baca');
+        Route::get('/data', [DataKaryaController::class, 'index'])->middleware(AdminLogin::class)->name('data.create');
         Route::get('/karya', [KaryaMasukController::class, 'index'])->name('karya');
-        Route::get('/karya/{id}/preview', [KaryaMasukController::class, 'preview'])->name('admin.karya.preview');
-        Route::get('/konfirmasi', [KonfirmasiController::class, 'index'])->name('konfirmasi');
-        Route::get('/arsip', [KonfirmasiController::class, 'indexArsip'])->name('arsip');
-        Route::get('/publikasi', [PublikasiController::class, 'index'])->name('publikasi');
-        Route::get('/admin/konfirmasi/{id}/pratinjau', [KonfirmasiController::class, 'show'])->name('karya.pratinjau');
-        Route::patch('/admin/karya/{id}/publish', [KonfirmasiController::class, 'publish'])->name('karya.publish');
-        Route::patch('/admin/karya/{id}/arsip', [KonfirmasiController::class, 'arsip'])->name('karya.arsip');
-        Route::post('/data/store', [DataKaryaController::class, 'store'])->name('data.store');
+        Route::get('/karya/{id}/preview', [KaryaMasukController::class, 'preview'])->middleware(AdminLogin::class)->name('admin.karya.preview');
+        Route::get('/konfirmasi', [KonfirmasiController::class, 'index'])->middleware(AdminLogin::class)->name('konfirmasi');
+        Route::get('/arsip', [KonfirmasiController::class, 'indexArsip'])->middleware(AdminLogin::class)->name('arsip');
+        Route::get('/publikasi', [PublikasiController::class, 'index'])->middleware(AdminLogin::class)->name('publikasi');
+        Route::get('/admin/konfirmasi/{id}/pratinjau', [KonfirmasiController::class, 'show'])->middleware(AdminLogin::class)->name('karya.pratinjau');
+        Route::patch('/admin/karya/{id}/publish', [KonfirmasiController::class, 'publish'])->middleware(AdminLogin::class)->name('karya.publish');
+        Route::patch('/admin/karya/{id}/arsip', [KonfirmasiController::class, 'arsip'])->middleware(AdminLogin::class)->name('karya.arsip');
+        Route::post('/data/store', [DataKaryaController::class, 'store'])->middleware(AdminLogin::class)->name('data.store');
         Route::get('login', [SessionAdminController::class, 'index']);
         Route::post('session/store', [SessionAdminController::class, 'store']);
 

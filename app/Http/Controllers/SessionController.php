@@ -30,8 +30,7 @@ class SessionController extends Controller
             'mata_pelajaran' => 'nullable|string|max:100',
             'kelas' => 'nullable|in:10,11,12',
             'jurusan' => 'nullable|string|max:100',
-            'captcha' => 'required|captcha'
-
+            'g-recaptcha-response' => 'required',
         ]);
 
         User::create([
@@ -43,6 +42,18 @@ class SessionController extends Controller
             'kelas' => $request->profesi === 'siswa' ? $request->kelas : null,
             'jurusan' => $request->profesi === 'siswa' ? $request->jurusan : null,
         ]);
+
+        // Verifikasi reCAPTCHA
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret'   => env('RECAPTCHA_SECRET_KEY'),
+            'response' => $request->input('g-recaptcha-response'),
+            'remoteip' => $request->ip(),
+        ]);
+        $body = $response->json();
+
+        if (!$body['success']) {
+            return back()->withErrors(['captcha' => 'Captcha tidak valid'])->withInput();
+        }
 
         return redirect('login')->with('success', 'Pendaftaran berhasil!');
     }

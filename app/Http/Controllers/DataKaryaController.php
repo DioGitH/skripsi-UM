@@ -30,4 +30,9 @@ class DataKaryaController extends Controller
 
     return redirect()->route('karya')->with('success', 'Jenis karya berhasil disimpan.');
 }
+    public function bacaSemua(Request $request)
+    {
+        auth('admin')->user()->unreadNotifications->markAsRead();
+        return back()->with('success', 'Semua notifikasi telah ditandai sebagai dibaca.');
+    }
 }

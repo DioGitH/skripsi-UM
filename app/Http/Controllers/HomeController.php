@@ -18,7 +18,11 @@ class HomeController extends Controller
 public function index()
 {
     $jenisKaryas = JenisKarya::all(); 
-$karyaTerbaru = Karya::latest()->take(15)->get();
+    $karyaTerbaru = Karya::with('files')
+    ->where('status', 'Terpublish')
+    ->latest()
+    ->take(15) // atau sesuai jumlah yang diinginkan
+    ->get();
     $user = Auth::user();
 
     return view('welcome', compact('jenisKaryas', 'karyaTerbaru', 'user'));

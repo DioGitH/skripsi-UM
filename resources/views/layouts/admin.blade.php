@@ -16,6 +16,27 @@
     <div class="d-flex flex-row">
 
         @include('components.admin')
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $item)
+                        <li>{{ $item }}</li>
+                    @endforeach
+                </ul>
+            </div>
+         @endif
+         @if (session('success'))
+            <div class="position-fixed top-0 end-0 p-3" style="z-index: 1055">
+                <div class="toast show bg-success text-white align-items-center border-0" role="alert">
+                <div class="d-flex">
+                    <div class="toast-body">
+                    {{ session('success') }}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                </div>
+            </div>
+        @endif
 
         <div class="content" style="background: #ffff; width: 100vw; margin-left: 300px;">
             @yield('admin')

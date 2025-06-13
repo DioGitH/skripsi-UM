@@ -74,4 +74,9 @@ public function indexArsip(Request $request){
 
     return view('admin.arsip', compact('karyas'));
 }
+    public function bacaSemua(Request $request)
+    {
+        auth('admin')->user()->unreadNotifications->markAsRead();
+        return back()->with('success', 'Semua notifikasi telah ditandai sebagai dibaca.');
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Karya;
 
 class PublikasiController extends Controller
@@ -29,5 +30,10 @@ class PublikasiController extends Controller
     $karyas = $query->get();
 
     return view('admin.publikasi', compact('karyas'));
+    }
+        public function bacaSemua(Request $request)
+    {
+        auth('admin')->user()->unreadNotifications->markAsRead();
+        return back()->with('success', 'Semua notifikasi telah ditandai sebagai dibaca.');
     }
 }

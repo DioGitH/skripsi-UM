@@ -23,33 +23,44 @@
         <a class="nav-link text-white mt-1 d-flex gap-2" style="font-size: 20px" href="{{route('admin')}}"><i class="bi bi-house-door-fill"></i> Beranda</a>
       </li>
       <li class="">
-        <a class="nav-link text-white mt-1 d-flex gap-2" style="font-size: 20px" href="{{route('karya')}}">Karya Masuk</a>
+        <a class="nav-link text-white mt-1 d-flex gap-2" style="font-size: 20px" href="{{route('karya')}}">
+          <i class="bi bi-inbox"></i>        
+          Karya Masuk
+        </a>
       </li>
       <li class="nav-item dropdown position-relative">
         <a class="nav-link text-white mt-1 d-flex justify-content-between align-items-center"
           href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 20px;">
           <span class="d-flex gap-2 align-items-center">
-            <i class="bi bi-clipboard2-data-fill"></i> Verifikasi
+            <i class="bi bi-patch-check-fill"></i> 
+            Verifikasi
           </span>
           <i class="bi bi-caret-down-fill"></i>
         </a>
         <ul class="dropdown-menu border-0 shadow w-100 mt-1 static-dropdown" style="background-color: #1F304B;">
           <li>
-            <a class="dropdown-item text-white nav-link mt-1" href="{{route('konfirmasi')}}">Konfirmasi</a>
+            <a class="dropdown-item text-white nav-link mt-1" href="{{route('konfirmasi')}}">
+              <i class="bi bi-check-circle"></i> 
+              Konfirmasi
+            </a>
           </li>
           <li>
-            <a class="dropdown-item text-white nav-link mt-1" href="{{route('publikasi')}}">Publikasi</a>
+            <a class="dropdown-item text-white nav-link mt-1" href="{{route('publikasi')}}">
+              <i class="bi bi-upload"></i>
+              Publikasi
+            </a>
           </li>
         </ul>
       </li>
       <li class="">
-        <a class="nav-link text-white mt-1 d-flex gap-2" style="font-size: 20px" href="{{route('arsip')}}"><i class="bi bi-person-lines-fill"></i> Arsip Karyaa</a>
+        <a class="nav-link text-white mt-1 d-flex gap-2" style="font-size: 20px" href="{{route('arsip')}}"><i class="bi bi-archive"></i>
+           Arsip Karyaa</a>
       </li>
     </ul>
   </div>
   <hr>
     <div class=" my-4 mx-4 px-2 mt-4">
-        <a href="#" class="nav-link text-white" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+        <a href="#" class="nav-link fw-bold text-white" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="bi bi-box-arrow-left"></i> Logout
         </a>
 
