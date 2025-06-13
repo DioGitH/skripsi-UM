@@ -21,28 +21,20 @@
     <!-- Menu Navigasi -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
       <ul class="navbar-nav gap-2 fw-bold px-5">
-        <li class="nav-item {{ (request()->is('/')) ? 'active' : '' }}">
-          <a class="nav-link active" href="{{route('home')}}">Beranda</a>
+        <li class="nav-item">
+          <a class="nav-link {{ request()->routeIs('home') ? 'active fw-bold' : '' }}" href="{{ route('home') }}">Beranda</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"href="{{route('guide')}}">Panduan Unggah</a>
+          <a class="nav-link {{ request()->routeIs('guide') ? 'active fw-bold' : '' }}" href="{{ route('guide') }}">Panduan Unggah</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{route('about')}}">Tentang Kami</a>
+          <a class="nav-link {{ request()->routeIs('about') ? 'active fw-bold' : '' }}" href="{{ route('about') }}">Tentang Kami</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{route('faq')}}">FAQ</a>
+          <a class="nav-link {{ request()->routeIs('faq') ? 'active fw-bold' : '' }}" href="{{ route('faq') }}">FAQ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{route('activity')}}">Aktifitas</a>
-        </li>
-        <li class="nav-item">
-          <form action="{{ route('logout') }}" method="POST" class="nav-link">
-            @csrf
-            <button type="submit" class="nav-link btn btn-link text-danger" style="padding: 0; border: none; background: none;">
-              Logout
-            </button>
-          </form>
+          <a class="nav-link {{ request()->routeIs('activity') ? 'active fw-bold' : '' }}" href="{{ route('activity') }}">Aktifitas</a>
         </li>
       </ul>
     </div>

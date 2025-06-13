@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="d-flex flex-row justify-content-between">
-        <div class="mt-4" style="height: 10px; width: 35%; background-color: #1F304B;"></div>
+        <div class="mt-4" style="height: 10px; width: 30%; background-color: #1F304B;"></div>
       <button class="d-flex flex-row p-4 gap-1 text-white shadow align-items-center" data-bs-target="#modal-unggah" data-bs-toggle="modal" style="background-color: #1F304B; margin-top: -40px; border-radius: 1rem; border: 3px solid white;">
             <img src="{{asset('assets/img/unggah.svg')}}" style="width: 50px" alt="">
             <h3>Unggah</h3>
@@ -22,7 +22,7 @@
             <img src="{{asset('assets/img/jelajahi.svg')}}"  alt="">
             <h3>Jelajahi</h3>
         </button>
-        <div class="mt-4" style="height: 10px; width: 35%; background-color: #1F304B;"></div>
+        <div class="mt-4" style="height: 10px; width: 30%; background-color: #1F304B;"></div>
     </div>
     <div class="p-5 mx-5 mt-5">
         <div class="fw-bold" style="font-size: 30px">Karya Terbaru</div>

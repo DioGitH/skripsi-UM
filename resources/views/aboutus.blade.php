@@ -11,8 +11,7 @@
         <div class="p-5 bg-white" style="width: 55%">
             <div style="font-size: 16px">Website ini dikembangkan oleh Aghnia Tsania Syahputri, mahasiswa Universitas Negeri Malang, Program Studi D4 Perpustakaan Digital. Pengembangan ini sebagai bagian dari Tugas Akhir dengan arahan dan bimbingan dari Bapak Dr. Setiawan, S.sos., M.IP.
 Saya berharap e Skill-Lib dapat menjadi kontribusi nyata dalam pengembangan teknologi informasi di lingkungan sekolah, khususnya dalam mendukung budaya literasi dan dokumentasi karya secara digital.
-Website ini dikembangkan oleh Aghnia Tsania Syahputri, mahasiswa Universitas Negeri Malang, Program Studi D4 Perpustakaan Digital. Pengembangan ini sebagai bagian dari Tugas Akhir dengan arahan dan bimbingan dari Bapak Dr. Setiawan, S.sos., M.IP.
-Saya berharap e Skill-Lib dapat menjadi kontribusi nyata dalam pengembangan teknologi informasi di lingkungan sekolah, khususnya dalam mendukung budaya literasi dan dokumentasi karya secara digital.</div>
+</div>
             <div>
                 {{-- << IMG PEMBIMBING  >> --}}
                 <div class="mt-4 d-flex flex-row">

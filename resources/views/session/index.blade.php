@@ -61,7 +61,7 @@
             <!-- Daftar link -->
             <div class="d-flex justify-content-center mb-2 gap-1">
                 <span>Belum punya akun?</span>
-                <a href="{{route('register')}}" class="text-decoration-none" style="color: black;" onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'">Daftar</a>
+                <a href="{{route('register')}}" class="text-decoration-none fw-bold" style="color: #1F304B;" onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'">Daftar</a>
             </div>
         </div>
 
