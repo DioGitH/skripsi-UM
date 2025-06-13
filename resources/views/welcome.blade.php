@@ -4,7 +4,7 @@
 <div class=" ">
     <div class="w-100 p-5" style="background-image: url('{{ asset('assets/img/banner.png') }}'); background-size: cover; background-position: center; height: 500px;">
         <div class="ml-10 p-10 w-75 mt-7" style="font-family: 'Instrument Sans', sans-serif;">
-            <div class="fw-bold" style="font-size: 55px; color: #1F304B; text-shadow: 0 4px 0 white;">
+            <div class="fw-bold mt-5" style="font-size: 55px; color: #1F304B; text-shadow: 0 4px 0 white;">
                 Selamat Datang
             </div>
 

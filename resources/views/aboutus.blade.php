@@ -36,11 +36,10 @@ Saya berharap e Skill-Lib dapat menjadi kontribusi nyata dalam pengembangan tekn
                         <div>PEMBIMBING</div>
                         <br>
                         <div class="d-flex flex-column align-items-end">
-                            <h7>Setiawan, S.Sos., M.IP.</h7>
-                            <h7>Asisten Ahli</h7>
+                            <h7>Aghnia Tsania Syahputri</h7>
                             <h7>Program Studi D4 Perpustakaan Digital</h7>
                             <h7>Universitas Negeri Malang</h7>
-                            <h7>setiawan@um.ac.id</h7>
+                            <h7>aghnia.tsania.210235@students.um.ac.id</h7>
                         </div>
                     </div>
                     <img src="{{ asset('assets/img/writer.png') }}" alt="" style="width: 135px; height: 170px">

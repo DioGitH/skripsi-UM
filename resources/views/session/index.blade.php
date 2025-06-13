@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <link rel="icon" href="{{ asset('assets/img/logo-title.png') }}" type="image/png">
+        <title>SMKN 3 Malang</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

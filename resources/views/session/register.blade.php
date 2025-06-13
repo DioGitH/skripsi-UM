@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <link rel="icon" href="{{ asset('assets/img/logo-title.png') }}" type="image/png">
+        <title>SMKN 3 Malang</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -114,7 +115,11 @@
                 <label for="captcha">Captcha</label>
                 <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
             </div>
-
+            <!-- Login link -->
+            <div class="d-flex justify-content-center mb-2 gap-1">
+                <span>Sudah punya akun?</span>
+                <a href="{{route('login')}}" class="text-decoration-none fw-bold" style="color: #1F304B;" onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'">Daftar</a>
+            </div>
             <button class="w-100 mt-3 mb-3 btn btn-lg text-white" type="submit" style="background-color: #1F304B;">Daftar</button>
         </form>
     </div>
