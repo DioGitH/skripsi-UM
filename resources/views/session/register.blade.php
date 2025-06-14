@@ -49,7 +49,9 @@
             <!-- Konfirmasi Password -->
             <div class="form-floating mt-4 mb-3">
                 <input name="password_confirmation" type="password" class="form-control" id="passwordConfirm" placeholder="Ulangi Kata Sandi">
-                <label for="passwordConfirm">Kata Sandi Ulang</label>
+                <label for="passwordConfirm">Kata Sandi Ulang</label><button type="button" class="btn position-absolute top-50 end-0 translate-middle-y me-3 border-0 bg-transparent" onclick="togglePasswordTry()" tabindex="-1">
+                    <i class="bi bi-eye" id="eyeIcon"></i>
+                </button>
             </div>
 
             <!-- Email -->
@@ -118,7 +120,7 @@
             <!-- Login link -->
             <div class="d-flex justify-content-center mb-2 gap-1">
                 <span>Sudah punya akun?</span>
-                <a href="{{route('login')}}" class="text-decoration-none fw-bold" style="color: #1F304B;" onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'">Daftar</a>
+                <a href="{{route('login')}}" class="text-decoration-none fw-bold" style="color: #1F304B;" onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'">Login</a>
             </div>
             <button class="w-100 mt-3 mb-3 btn btn-lg text-white" type="submit" style="background-color: #1F304B;">Daftar</button>
         </form>
@@ -158,11 +160,11 @@
             eyeIcon.className = isVisible ? "bi bi-eye" : "bi bi-eye-slash";
         }
           function togglePasswordTry() {
-            const passwordInput = document.getElementById("passwordInputTry");
+            const passwordConfirm = document.getElementById("passwordConfirm");
             const eyeIcon = document.getElementById("eyeIcon");
 
-            const isVisible = passwordInput.type === "text";
-            passwordInput.type = isVisible ? "password" : "text";
+            const isVisible = passwordConfirm.type === "text";
+            passwordConfirm.type = isVisible ? "password" : "text";
             eyeIcon.className = isVisible ? "bi bi-eye" : "bi bi-eye-slash";
         }
             function showInputs(role) {
