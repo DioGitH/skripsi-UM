@@ -12,7 +12,7 @@
      style="position: fixed; top: 0; bottom: 0; left: 0; width: 300px; background: #1F304B; z-index: 1030;">
     <a href="/admin" class="mt-5  d-flex flex-column align-items-center justify-content-center text-white text-decoration-none text-center" style="margin: auto;">
         <div style="font-size: 24px;">Admin</div>
-        <img class="logo-custom my-2 w-75" src="{{ asset('assets/img/logo-title.png') }}" alt="Logo">
+        <img class="logo-custom my-2" src="{{ asset('assets/img/logo-title.png') }}" style="width: 149px; height: 140px"  alt="Logo">
         <h6 class="mb-0">e Skill-Lib Repository <br> SMKN 3 Malang</h6>
     </a>
 

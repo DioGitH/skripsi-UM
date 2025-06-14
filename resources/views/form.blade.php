@@ -48,6 +48,15 @@
                 <input type="text" name="source" class="form-control">
             </div>
         </div>
+        <div class="mb-3 d-flex flex-row">
+            <label class="w-25 fw-bold" style="font-size: 18px">Source</label>
+            <div class="w-100">
+                <span>Masukkan sumber terkait karya anda  </span>
+                <select name="publisher" class="form-select" required>
+                    <option disabled>-</option>
+                </select>
+            </div>
+        </div>
 
         <div class="mb-3 d-flex flex-row">
             <label class="w-25 fw-bold" style="font-size: 18px">Publisher</label>
@@ -101,7 +110,7 @@
             </div>
         </div>
         <div class="mb-3 d-flex flex-row">
-            <label class="w-25 fw-bold" style="font-size: 18px">Tyoe</label>
+            <label class="w-25 fw-bold" style="font-size: 18px">Type</label>
             <div class="w-100">
                 <span>Pilih jenis Karya anda</span>
                 <div class="form-control" style="background-color: #efefef"> Karya {{$user->profesi}}</div>
@@ -111,7 +120,7 @@
             <label class="w-25 fw-bold" style="font-size: 18px">Identifier</label>
             <div class="w-100">
                 <span>Masukkan NIPD/NIP/Nomor Identitas Anda</span>
-                <input type="text" name="identifier" class="form-control">
+                <input type="number" name="identifier" class="form-control">
             </div>
         </div>
 

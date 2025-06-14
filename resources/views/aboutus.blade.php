@@ -16,7 +16,7 @@ Saya berharap e Skill-Lib dapat menjadi kontribusi nyata dalam pengembangan tekn
                 {{-- << IMG PEMBIMBING  >> --}}
                 <div class="mt-4 d-flex flex-row">
                     <img src="{{ asset('assets/img/pembimbing.png') }}" alt="" style="width: 135px; height: 170px">
-                    <div class="mx-4">
+                    <div class="mx-1">
                         <div>PEMBIMBING</div>
                         <br>
                         <h7>Setiawan, S.Sos., M.IP.</h7>
@@ -32,8 +32,8 @@ Saya berharap e Skill-Lib dapat menjadi kontribusi nyata dalam pengembangan tekn
                 </div>
                 {{-- << IMG PENULIS  >> --}}
                 <div class="d-flex justify-content-end flex-row">
-                     <div class="mx-3 d-flex flex-column align-items-end">
-                        <div>PEMBIMBING</div>
+                     <div class="mx-1 d-flex h-100 flex-column align-items-end justify-content-between">
+                        <div>PENULIS</div>
                         <br>
                         <div class="d-flex flex-column align-items-end">
                             <h7>Aghnia Tsania Syahputri</h7>
