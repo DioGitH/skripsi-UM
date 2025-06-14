@@ -2,10 +2,15 @@
 
 @section('content')
 
-<div class="mb-5 container bg-white p-5 mt-5" style="border-radius: 20px; border-top: 20px solid #1F304B">
-    <h3>Unggah Karya: {{ $jenisKarya->nama }}</h3>
+<div class="mb-5 container bg-white px-5 pb-5 mt-5" style="border-radius: 20px; border-top: 20px solid #1F304B">
+    <div class="fw-bold mt-2" style="font-size: 36px; font-family: 'Instrument Sans', sans-serif">
+        Dublin Core
+    </div>
+    <div class="mb-5" style="font-size: 24px; font-family: 'Instrument Sans', sans-serif">
+    Silahkan mengisi data dibawah ini dengan lengkap dan benar!
+    </div>
 
-    <form action="{{ route('karya.store') }}" method="POST" enctype="multipart/form-data">
+    <form class="" action="{{ route('karya.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="jenis_karya_id" value="{{ $jenisKarya->id }}">
 
