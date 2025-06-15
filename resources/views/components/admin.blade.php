@@ -9,10 +9,10 @@
   }
 </style>
 <div class="sidebar d-flex flex-column flex-shrink-0 text-white"
-     style="position: fixed; top: 0; bottom: 0; left: 0; width: 300px; background: #1F304B; z-index: 1030;">
+     style="position: fixed; top: 0; bottom: 0; left: 0; width: 250px; background: #1F304B; z-index: 1030;">
     <a href="/admin" class="mt-5  d-flex flex-column align-items-center justify-content-center text-white text-decoration-none text-center" style="margin: auto;">
         <div style="font-size: 24px;">Admin</div>
-        <img class="logo-custom my-2" src="{{ asset('assets/img/logo-title.png') }}" style="width: 149px; height: 140px"  alt="Logo">
+        <img class="logo-custom my-2" src="{{ asset('assets/img/logo-title.png') }}" style="width: 120px; height: 115px"  alt="Logo">
         <h6 class="mb-0">e Skill-Lib Repository <br> SMKN 3 Malang</h6>
     </a>
 
@@ -20,17 +20,17 @@
   <div class="collapse mx-3 mr-5 navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
     <ul class="nav w-100 nav-pills flex-column mb-auto">
       <li class="">
-        <a class="nav-link text-white mt-1 d-flex gap-2" style="font-size: 20px" href="{{route('admin')}}"><i class="bi bi-house-door-fill"></i> Beranda</a>
+        <a class="nav-link text-white mt-1 d-flex gap-2" style="font-size: 18px" href="{{route('admin')}}"><i class="bi bi-house-door-fill"></i> Beranda</a>
       </li>
       <li class="">
-        <a class="nav-link text-white mt-1 d-flex gap-2" style="font-size: 20px" href="{{route('karya')}}">
+        <a class="nav-link text-white mt-1 d-flex gap-2" style="font-size: 18px" href="{{route('karya')}}">
           <i class="bi bi-inbox"></i>        
           Karya Masuk
         </a>
       </li>
       <li class="nav-item dropdown position-relative">
         <a class="nav-link text-white mt-1 d-flex justify-content-between align-items-center"
-          href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 20px;">
+          href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 18px;">
           <span class="d-flex gap-2 align-items-center">
             <i class="bi bi-patch-check-fill"></i> 
             Verifikasi
@@ -53,7 +53,7 @@
         </ul>
       </li>
       <li class="">
-        <a class="nav-link text-white mt-1 d-flex gap-2" style="font-size: 20px" href="{{route('arsip')}}"><i class="bi bi-archive"></i>
+        <a class="nav-link text-white mt-1 d-flex gap-2" style="font-size: 18px" href="{{route('arsip')}}"><i class="bi bi-archive"></i>
            Arsip Karyaa</a>
       </li>
     </ul>

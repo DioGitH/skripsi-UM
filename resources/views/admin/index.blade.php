@@ -2,7 +2,7 @@
 
 @section('admin')
     @include('components.headerAdmin')
-    <div class="px-5 py-4 fw-bold" style="font-size: 32px; background-color: #fff">
+    <div class="px-5 py-4 fw-bold w-100" style="font-size: 28px; background-color: #fff">
         SELAMAT DATANG DI  DASHBOARD ADMIN e Skill-Lib Repository 
     </div>
     <div class="d-flex px-5 py-4 flex-row justify-content-between gap-3" style="background-color: #fff;">

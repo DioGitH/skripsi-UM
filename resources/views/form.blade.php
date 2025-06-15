@@ -49,20 +49,10 @@
         <div class="mb-3 d-flex flex-row">
             <label class="w-25 fw-bold" style="font-size: 18px">Source</label>
             <div class="w-100">
-                <span>Masukkan sumber terkait karya anda  </span>
+                <span>Masukkan sumber terkait karya anda  </span><span style="font-size: 12px"> *jika tidak ada isi dengan tanda "-"</span>
                 <input type="text" name="source" class="form-control">
             </div>
         </div>
-        <div class="mb-3 d-flex flex-row">
-            <label class="w-25 fw-bold" style="font-size: 18px">Source</label>
-            <div class="w-100">
-                <span>Masukkan sumber terkait karya anda  </span>
-                <select name="publisher" class="form-select" required>
-                    <option disabled>-</option>
-                </select>
-            </div>
-        </div>
-
         <div class="mb-3 d-flex flex-row">
             <label class="w-25 fw-bold" style="font-size: 18px">Publisher</label>
             <div class="w-100">
@@ -95,14 +85,19 @@
             <label class="w-25 fw-bold" style="font-size: 18px">Rights</label>
             <div class="w-100">
                 <span>pilih hak akses untuk karya anda</span>
-                <input type="text" name="rights" class="form-control">
+
+                <select name="rights" class="form-select" required>
+                    <option disabled></option>
+                    <option value="Semua">Semua</option>
+                    <option value="Arsip">Arsip</option>
+                </select>
             </div>
         </div>
 
         <div class="mb-3 d-flex flex-row">
             <label class="w-25 fw-bold" style="font-size: 18px">Relation</label>
             <div class="w-100">
-                <span>hubungan</span>
+                <span>hubungan</span><span style="font-size: 12px"> *jika tidak ada isi dengan tanda "-"</span>
                 <input type="text" name="relation" class="form-control">
             </div>
         </div>
@@ -124,7 +119,7 @@
         <div class="mb-3 d-flex flex-row">
             <label class="w-25 fw-bold" style="font-size: 18px">Identifier</label>
             <div class="w-100">
-                <span>Masukkan NIPD/NIP/Nomor Identitas Anda</span>
+                <span>Masukkan NIPD/NIP/Nomor Identitas Anda</span><span style="font-size: 12px"> *diisi angka</span>
                 <input type="number" name="identifier" class="form-control">
             </div>
         </div>
@@ -132,7 +127,7 @@
         <div class="mb-3 d-flex flex-row">
             <label class="w-25 fw-bold" style="font-size: 18px">Coverage</label>
             <div class="w-100">
-                <span>Masukan Cakupan</span>
+                <span>Masukan Cakupan</span><span style="font-size: 12px"> *jika tidak ada isi dengan tanda "-"</span>
                 <input type="text" name="coverage" class="form-control">
             </div>
         </div>

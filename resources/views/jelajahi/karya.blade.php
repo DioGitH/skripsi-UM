@@ -2,26 +2,29 @@
 
 @section('content')
 <div class="p-5 m-5">
-    <div class="m-auto d-flex flex-column w-50">
+    <div class="m-auto d-flex flex-column " style="width: 75%">
         <h2>Daftar Karya {{ ucfirst($profesi) }}</h2>
             {{-- Form Search --}}
         <form action="{{ route('jelajahi.karya', ['profesi' => $profesi, 'jenisKarya' => $jenisKarya]) }}" method="GET" class=" d-flex">
             <input type="text" name="query" class="px-2 me-2" placeholder="Cari karya berdasarkan judul, pembuat, atau subjek"
-                value="{{ request('query') }}" style="width: 1100px; height:40px">
+                value="{{ request('query') }}" style="width: 1200px; height:40px">
             <input type="hidden" name="starts_with" value="{{ request('starts_with') }}">
             <button type="submit" class="btn text-white" style="background-color: #1F304B; width:150px; height: 40px">Cari</button>
         </form>
         {{-- Jump to A-Z --}}
-        <div class="mb-4 d-flex flex-row">
-            <div class="m-1">Jump to : </div>
-            @foreach (range('A', 'Z') as $letter)
-                <a href="{{ route('jelajahi.karya', ['profesi' => $profesi, 'jenisKarya' => $jenisKarya, 'starts_with' => $letter]) }}"
-                class="text-black text-decoration-none {{ request('starts_with') == $letter ? 'btn-dark' : 'btn-outline-secondary' }} m-1">
-                    {{ $letter }} |
-                </a>
-
-            @endforeach
+        <div class="mb-4">
+            <div class="d-flex flex-nowrap mt-3 align-items-center overflow-auto" style="white-space: nowrap;">
+                <div class="me-2 flex-shrink-0">Jump to:</div>
+                @foreach (range('A', 'Z') as $letter)
+                    <a href="{{ route('jelajahi.karya', ['profesi' => $profesi, 'jenisKarya' => $jenisKarya, 'starts_with' => $letter]) }}"
+                    class="btn btn-sm {{ request('starts_with') == $letter ? 'btn-dark' : 'btn-outline-secondary' }} me-1 flex-shrink-0" style="font-size: 10px">
+                        {{ $letter }}
+                    </a>
+                @endforeach
+            </div>
         </div>
+
+
     </div>
         <ul>
     @if(request('query'))

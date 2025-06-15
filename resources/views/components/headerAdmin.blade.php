@@ -5,7 +5,7 @@
 @endphp
 
 <div class="p-3 d-flex justify-content-between w-100">
-    <div class="fw-bold mx-2" style="font-size: 32px">
+    <div class="fw-bold mx-2" style="font-size: 28px">
         @switch(true)
             @case(Request::is('admin'))
                 Beranda

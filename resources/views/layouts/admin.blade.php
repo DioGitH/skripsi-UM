@@ -38,7 +38,7 @@
             </div>
         @endif
 
-        <div class="content" style="background: #ffff; width: 100vw; margin-left: 300px;">
+        <div class="content" style="background: #ffff; width: 100vw; margin-left: 250px;">
             @yield('admin')
         </div>
     </div>
