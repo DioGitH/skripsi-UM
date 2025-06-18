@@ -4,87 +4,87 @@
     <div class="container mt-5">
         <h3>{{ $karya->title }}</h3>
         <div class="bg-white d-flex flex-column p-3 gap-4" style="border-top: 20px solid #1F304B">
-            <div class=" d-flex flex-row">
-                <div class="w-50">
+            <div class=" d-flex flex-row gap-4">
+                <div>
                     <strong>Title</strong>
                     <div>{{ $karya->title }}</div>
                 </div>
-                <div class="w-50">
+                <div>
                     <strong>Right</strong>
                     <div>{{ $karya->rights }}</div>
                 </div>
             </div>
-            <div class=" d-flex flex-row gap-3">
-                <div class="w-50">
+            <div class=" d-flex flex-row gap-4">
+                <div>
                     <strong>Subject</strong>
                     <div>{{ $karya->subject }}</div>
                 </div>
-                <div class="w-50">
+                <div>
                     <strong>Relation</strong>
                     <div>{{ $karya->relation }}</div>
                 </div>
             </div>  
-            <div class="d-flex flex-row gap-3">
-                <div class="w-50">
+            <div class="d-flex flex-row gap-4">
+                <div>
                     <strong>Relation</strong>
                     <div>{{ $karya->relation }}</div>
                 </div>
-                <div class="w-50">
+                <div>
                     <strong>Format</strong>
                     <div>{{ $karya->format }}</div>
                 </div>
             </div>
-            <div class="d-flex flex-row gap-3">
-                <div class="w-50">
+            <div class="d-flex flex-row gap-4">
+                <div>
                     <strong>Description</strong>
                     <div>{{ $karya->description }}</div>
                 </div>
-                <div class="w-50">
+                <div>
                     <strong>Format</strong>
                     <div>{{ $karya->format }}</div>
                 </div>
             </div>
-            <div class="d-flex flex-row gap-3">
-                <div class="w-50">
+            <div class="d-flex flex-row gap-4">
+                <div>
                     <strong>creator</strong>
                     <div>{{ $karya->creator }}</div>
                 </div>
-                <div class="w-50">
+                <div>
                     <strong>Language</strong>
                     <div>{{ $karya->language }}</div>
                 </div>
             </div>
-            <div class="d-flex flex-row gap-3">
-               <div class="w-50">
+            <div class="d-flex flex-row gap-4">
+               <div>
                     <strong>Publisher</strong>
                     <div>{{ $karya->publisher }}</div>
                 </div>
-                <div class="w-50">
+                <div>
                     <strong>Identifier</strong>
                     <div>{{ $karya->identifier }}</div>
                 </div>
             </div>
-            <div class="d-flex flex-row gap-3">
-                <div class="w-50">
+            <div class="d-flex flex-row gap-4">
+                <div>
                     <strong>Date</strong>
                     <div>{{ $karya->date }}</div>
                 </div>
-                <div class="w-50">
+                <div>
                     <strong>Type</strong>
                     <div>{{ $karya->date }}</div>
                 </div>
             </div>
-            <div class="d-flex flex-row gap-3">
-                <div class="w-50">
+            <div class="d-flex flex-row gap-4">
+                <div>
                     <strong>Source</strong>
                     <div>{{ $karya->source }}</div>
                 </div>
-                <div class="w-50">
+                <div>
                     <strong>Coverage</strong>
                     <div>{{ $karya->coverage }}</div>
                 </div>
             </div>
-            <div class="d-flex flex-row gap-3">
+            <div class="d-flex flex-row gap-4">
                 <div>
                     <strong>Contributor</strong>
                     <div>{{ $karya->contributor }}<div>
