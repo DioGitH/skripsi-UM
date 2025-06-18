@@ -14,7 +14,7 @@
                     <div>{{ $karya->rights }}</div>
                 </div>
             </div>
-            <div class=" d-flex flex-row">
+            <div class=" d-flex flex-row gap-3">
                 <div class="w-50">
                     <strong>Subject</strong>
                     <div>{{ $karya->subject }}</div>
@@ -24,7 +24,7 @@
                     <div>{{ $karya->relation }}</div>
                 </div>
             </div>  
-            <div class="d-flex flex-row">
+            <div class="d-flex flex-row gap-3">
                 <div class="w-50">
                     <strong>Relation</strong>
                     <div>{{ $karya->relation }}</div>
@@ -34,7 +34,7 @@
                     <div>{{ $karya->format }}</div>
                 </div>
             </div>
-            <div class="d-flex flex-row">
+            <div class="d-flex flex-row gap-3">
                 <div class="w-50">
                     <strong>Description</strong>
                     <div>{{ $karya->description }}</div>
@@ -44,7 +44,7 @@
                     <div>{{ $karya->format }}</div>
                 </div>
             </div>
-            <div class="d-flex flex-row">
+            <div class="d-flex flex-row gap-3">
                 <div class="w-50">
                     <strong>creator</strong>
                     <div>{{ $karya->creator }}</div>
@@ -54,7 +54,7 @@
                     <div>{{ $karya->language }}</div>
                 </div>
             </div>
-            <div class="d-flex flex-row">
+            <div class="d-flex flex-row gap-3">
                <div class="w-50">
                     <strong>Publisher</strong>
                     <div>{{ $karya->publisher }}</div>
@@ -64,7 +64,7 @@
                     <div>{{ $karya->identifier }}</div>
                 </div>
             </div>
-            <div class="d-flex flex-row">
+            <div class="d-flex flex-row gap-3">
                 <div class="w-50">
                     <strong>Date</strong>
                     <div>{{ $karya->date }}</div>
@@ -74,7 +74,7 @@
                     <div>{{ $karya->date }}</div>
                 </div>
             </div>
-            <div class="d-flex flex-row">
+            <div class="d-flex flex-row gap-3">
                 <div class="w-50">
                     <strong>Source</strong>
                     <div>{{ $karya->source }}</div>
@@ -84,7 +84,7 @@
                     <div>{{ $karya->coverage }}</div>
                 </div>
             </div>
-            <div class="d-flex flex-row">
+            <div class="d-flex flex-row gap-3">
                 <div>
                     <strong>Contributor</strong>
                     <div>{{ $karya->contributor }}<div>

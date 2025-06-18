@@ -92,7 +92,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                     </div>
                     <div class="modal-body">
-                        Apakah Anda yakin ingin mempublikasikan karya ini?
+                        Apakah anda yakin ingin mengarsipkan karya in?
                     </div>
                     <div class="modal-footer">
                         <form action="{{ route('karya.arsip', $karya->id) }}" method="POST">
