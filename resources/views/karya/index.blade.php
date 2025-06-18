@@ -5,87 +5,87 @@
         <h3>{{ $karya->title }}</h3>
         <div class="bg-white d-flex flex-column p-3 gap-4" style="border-top: 20px solid #1F304B">
             <div class=" d-flex flex-row">
-                <div style="width: 40%">
+                <div style="width: 45%">
                     <strong>Title</strong>
                     <div>{{ $karya->title }}</div>
                 </div>
-                <div style="width: 40%">
+                <div style="width: 45%">
                     <strong>Right</strong>
                     <div>{{ $karya->rights }}</div>
                 </div>
             </div>
-            <div class=" d-flex flex-row gap-3">
-                <div style="width: 40%">
+            <div class=" d-flex flex-row">
+                <div style="width: 45%">
                     <strong>Subject</strong>
                     <div>{{ $karya->subject }}</div>
                 </div>
-                <div style="width: 40%">
+                <div style="width: 45%">
                     <strong>Relation</strong>
                     <div>{{ $karya->relation }}</div>
                 </div>
             </div>  
-            <div class="d-flex flex-row gap-3">
-                <div style="width: 40%">
+            <div class="d-flex flex-row">
+                <div style="width: 45%">
                     <strong>Relation</strong>
                     <div>{{ $karya->relation }}</div>
                 </div>
-                <div style="width: 40%">
+                <div style="width: 45%">
                     <strong>Format</strong>
                     <div>{{ $karya->format }}</div>
                 </div>
             </div>
-            <div class="d-flex flex-row gap-3">
-                <div style="width: 40%">
+            <div class="d-flex flex-row">
+                <div style="width: 45%">
                     <strong>Description</strong>
                     <div>{{ $karya->description }}</div>
                 </div>
-                <div style="width: 40%">
+                <div style="width: 45%">
                     <strong>Format</strong>
                     <div>{{ $karya->format }}</div>
                 </div>
             </div>
-            <div class="d-flex flex-row gap-3">
-                <div style="width: 40%">
+            <div class="d-flex flex-row">
+                <div style="width: 45%">
                     <strong>creator</strong>
                     <div>{{ $karya->creator }}</div>
                 </div>
-                <div style="width: 40%">
+                <div style="width: 45%">
                     <strong>Language</strong>
                     <div>{{ $karya->language }}</div>
                 </div>
             </div>
-            <div class="d-flex flex-row gap-3">
-               <div style="width: 40%">
+            <div class="d-flex flex-row">
+               <div style="width: 45%">
                     <strong>Publisher</strong>
                     <div>{{ $karya->publisher }}</div>
                 </div>
-                <div style="width: 40%">
+                <div style="width: 45%">
                     <strong>Identifier</strong>
                     <div>{{ $karya->identifier }}</div>
                 </div>
             </div>
-            <div class="d-flex flex-row gap-3">
-                <div style="width: 40%">
+            <div class="d-flex flex-row">
+                <div style="width: 45%">
                     <strong>Date</strong>
                     <div>{{ $karya->date }}</div>
                 </div>
-                <div style="width: 40%">
+                <div style="width: 45%">
                     <strong>Type</strong>
                     <div>{{ $karya->date }}</div>
                 </div>
             </div>
-            <div class="d-flex flex-row gap-3">
-                <div style="width: 40%">
+            <div class="d-flex flex-row">
+                <div style="width: 45%">
                     <strong>Source</strong>
                     <div>{{ $karya->source }}</div>
                 </div>
-                <div style="width: 40%">
+                <div style="width: 45%">
                     <strong>Coverage</strong>
                     <div>{{ $karya->coverage }}</div>
                 </div>
             </div>
-            <div class="d-flex flex-row gap-3">
-                <div style="width: 40%">
+            <div class="d-flex flex-row">
+                <div style="width: 45%">
                     <strong>Contributor</strong>
                     <div>{{ $karya->contributor }}<div>
                 </div>
@@ -108,7 +108,7 @@
 
         @if (in_array(strtolower($ext), ['jpg', 'jpeg', 'png', 'gif', 'webp']))
             {{-- Tampilkan Gambar --}}
-            <img src="{{ $url }}" alt="Gambar Karya" class="img-fluid rounded mb-3">
+            <img src="{{ $url }}" alt="Gambar Karya" class="img-fluid rounded mb-3 m-auto" style="max-width: 100%; height: auto;">
 
         @elseif (strtolower($ext) === 'pdf')
             {{-- Tampilkan PDF --}}
@@ -116,7 +116,7 @@
 
         @elseif (in_array(strtolower($ext), ['mp4', 'webm']))
             {{-- Tampilkan Video --}}
-            <video controls width="100%" height="auto" class="mb-3">
+            <video controls width="100%" height="auto" class="mb-3 m-auto w-100">
                 <source src="{{ $url }}" type="video/{{ $ext }}">
                 Browser Anda tidak mendukung video ini.
             </video>
