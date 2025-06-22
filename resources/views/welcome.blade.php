@@ -18,7 +18,10 @@
             <img src="{{asset('assets/img/unggah.svg')}}" style="width: 50px" alt="">
             <h3>Unggah</h3>
         </button>
-        <button class="d-flex flex-row p-4 gap-1  shadow" data-bs-toggle="modal" data-bs-target="#modal-jelajahi" style="background-color: #fff; margin-top: -40px; border-radius: 1rem; border: 3px solid #1F304B; color: #1F304B">
+        <button class="d-flex flex-row p-4 gap-1 shadow"
+                onclick="bukaModalJelajahi()"
+                style="background-color: #fff; margin-top: -40px; border-radius: 1rem; border: 3px solid #1F304B; color: #1F304B">
+
             <img src="{{asset('assets/img/jelajahi.svg')}}"  alt="">
             <h3>Jelajahi</h3>
         </button>
@@ -178,39 +181,78 @@
     const semuaJenisKarya = @json($jenisKaryas);
 
     function tampilkanModalJenis(profesi) {
-        // Tutup modal sebelumnya
+        closeAllModals();
+
+        setTimeout(() => {
+            document.getElementById('profesi-terpilih').textContent =
+                profesi.charAt(0).toUpperCase() + profesi.slice(1);
+
+            const container = document.getElementById('list-jenis-karya');
+            container.innerHTML = '';
+
+            semuaJenisKarya.forEach(jk => {
+                const col = document.createElement('div');
+                col.className = 'col-md-3 mb-3 text-center';
+
+                const imgPath = jk.foto_path
+                    ? `/storage/${jk.foto_path}`
+                    : 'https://via.placeholder.com/150x100?text=No+Image';
+
+                col.innerHTML = `
+                    <div class="fw-bold mb-1">${jk.nama}</div>
+                    <img src="${imgPath}" alt="${jk.nama}" class="img-fluid m-auto rounded mb-2" 
+                        style="max-height: 150px; object-fit: cover;">
+                    <a href="/jelajahi/${profesi}/${jk.nama}" class="btn btn-outline-dark w-100">Lihat</a>
+                `;
+
+                container.appendChild(col);
+            });
+
+            const modalJenis = new bootstrap.Modal(document.getElementById('modal-jenis-karya'));
+            modalJenis.show();
+        }, 300);
+    }
+
+    function closeAllModals() {
+        const modalJenis = bootstrap.Modal.getInstance(document.getElementById('modal-jenis-karya'));
+        if (modalJenis) modalJenis.hide();
+
+        const modalUnggah = bootstrap.Modal.getInstance(document.getElementById('modal-unggah'));
+        if (modalUnggah) modalUnggah.hide();
+
         const modalJelajahi = bootstrap.Modal.getInstance(document.getElementById('modal-jelajahi'));
-        modalJelajahi.hide();
+        if (modalJelajahi) modalJelajahi.hide();
 
-        // Tampilkan profesi di judul
-        document.getElementById('profesi-terpilih').textContent = profesi.charAt(0).toUpperCase() + profesi.slice(1);
+        // Hapus semua backdrop agar tidak menumpuk
+        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+    }
+    document.addEventListener('click', function () {
+        const backdrop = document.querySelector('.modal-backdrop');
+        if (backdrop && !document.body.classList.contains('modal-open')) {
+            backdrop.remove();
+        }
+    });
+    function bukaModalJelajahi() {
+    closeAllModals(); // pastikan semua modal lain ditutup
 
-        // Isi jenis karya
-        const container = document.getElementById('list-jenis-karya');
-        container.innerHTML = '';
-
-        semuaJenisKarya.forEach(jk => {
-        const col = document.createElement('div');
-        col.className = 'col-md-3 mb-3 text-center';
-
-        const imgPath = jk.foto_path
-            ? `/storage/${jk.foto_path}`
-            : 'https://via.placeholder.com/150x100?text=No+Image';
-
-        col.innerHTML = `
-            <div class="fw-bold mb-1">${jk.nama}</div>
-            <img src="${imgPath}" alt="${jk.nama}" class="img-fluid m-auto rounded mb-2" style="max-height: 150px; object-fit: cover;">
-            <a href="/jelajahi/${profesi}/${jk.nama}" class="btn btn-outline-dark w-100">Lihat</a>
-        `;
-
-        container.appendChild(col);
+    const modal = new bootstrap.Modal(document.getElementById('modal-jelajahi'));
+    modal.show();
+}
+function closeAllModals() {
+    ['modal-jenis-karya', 'modal-unggah', 'modal-jelajahi'].forEach(id => {
+        const modalEl = document.getElementById(id);
+        const instance = bootstrap.Modal.getInstance(modalEl);
+        if (instance) instance.hide();
     });
 
+    // Paksa hapus backdrop sisa
+    setTimeout(() => {
+        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+        document.body.classList.remove('modal-open'); // pastikan scroll aktif
+    }, 300);
+}
 
-        // Tampilkan modal jenis karya
-        const modalJenis = new bootstrap.Modal(document.getElementById('modal-jenis-karya'));
-        modalJenis.show();
-    }
+
 </script>
 
 
