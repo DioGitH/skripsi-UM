@@ -21,16 +21,17 @@ class AdminController extends Controller
 
         foreach ($years as $year) {
             // Hitung karya untuk guru
+            // Hitung karya untuk guru
             $guruData[] = Karya::whereYear('date', $year)
-                ->whereHas('user', function ($query) {
-                    $query->where('profesi', 'guru'); // pastikan kolom role = 'guru'
+                ->whereHas('jenisKarya.user', function ($query) {
+                    $query->where('profesi', 'guru');
                 })
                 ->count();
 
             // Hitung karya untuk siswa
             $siswaData[] = Karya::whereYear('date', $year)
-                ->whereHas('user', function ($query) {
-                    $query->where('profesi', 'siswa'); // pastikan kolom role = 'siswa'
+                ->whereHas('jenisKarya.user', function ($query) {
+                    $query->where('profesi', 'siswa');
                 })
                 ->count();
         }

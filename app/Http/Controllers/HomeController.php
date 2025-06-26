@@ -17,17 +17,19 @@ class HomeController extends Controller
 {
 public function index()
 {
-    $jenisKaryas = JenisKarya::all(); 
-    $karyaTerbaru = Karya::with('files')
-    ->where('status', 'Terpublish')
-    ->latest()
-    ->take(15) // atau sesuai jumlah yang diinginkan
-    ->get();
     $user = Auth::user();
+
+    // Ambil jenis karya yang sesuai profesi user
+    $jenisKaryas = JenisKarya::where('profesi_id', $user->profesi_id)->get();
+
+    $karyaTerbaru = Karya::with('files')
+        ->where('status', 'Terpublish')
+        ->latest()
+        ->take(15)
+        ->get();
 
     return view('welcome', compact('jenisKaryas', 'karyaTerbaru', 'user'));
 }
-
 
 
     public function create($jenisKarya)
@@ -93,11 +95,11 @@ public function index()
                 'size' => $file->getSize(),
             ]);
         }
-            \Log::info('Menyimpan file:', [
-        'path' => $path,
-        'format' => $formats[$index] ?? $file->getClientOriginalExtension(),
-        'size' => $file->getSize(),
-    ]);
+        \Log::info('Menyimpan file:', [
+            'path' => $path,
+            'format' => $formats[$index] ?? $file->getClientOriginalExtension(),
+            'size' => $file->getSize(),
+        ]);
         \Log::info('Data Karya Tersimpan:', $karya->toArray());
 
 
@@ -112,7 +114,12 @@ public function index()
         return redirect()->route('karya.create', ['jenisKarya' => $jenisKarya->nama])
             ->with('success', 'Karya berhasil diunggah.');
     }
+    public function getJenisByProfesi($id)
+    {
+        $jenisKaryas = JenisKarya::where('profesi_id', $id)->get();
 
+        return response()->json($jenisKaryas);
+    }
 public function jenisByType($type)
 {
     $jenisKaryas = JenisKarya::where('type', $type)->get();

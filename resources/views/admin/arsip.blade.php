@@ -4,26 +4,24 @@
 <div class="d-flex flex-column">
    @include('components.headerAdmin')   
     <div class=" p-3 px-5 mt-4" style="background-color: #efefef">
-        <form action="" method="GET" class="row g-3 align-items-end">
+                <form method="GET" action=""class="row g-3 align-items-end">
             <div class="col-md-3">
                 <label for="kategori" class="form-label">Kategori Karya</label>
-                <select name="kategori" id="kategori" class="form-select">
-                    <option value="">Semua</option>
-                    <option value="siswa">Karya Siswa</option>
-                    <option value="guru">Karya Guru</option>
+                <select name="kategori" class="form-select">
+                    <option value="">-- Semua Profesi --</option>
+                    <option value="1" {{ request('kategori') == 1 ? 'selected' : '' }}>Guru</option>
+                    <option value="2" {{ request('kategori') == 2 ? 'selected' : '' }}>Siswa</option>
                 </select>
             </div>
-
             <div class="col-md-4">
                 <label for="search" class="form-label">Cari Judul / Kreator</label>
                 <input type="text" name="search" id="search" class="form-control" placeholder="Cari karya...">
             </div>
-
             <div class="col-md-3">
                 <label for="tanggal" class="form-label">Tanggal Unggah</label>
-                <input type="date" name="tanggal" id="tanggal" class="form-control">
-            </div>
 
+                <input type="date" name="tanggal" value="{{ request('tanggal') }}"  id="tanggal" class="form-control">
+            </div>
             <div class="col-md-1">
                 <button type="submit" class="btn btn-primary w-100">Cari</button>
             </div>

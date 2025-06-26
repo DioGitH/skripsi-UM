@@ -31,7 +31,7 @@ return new class extends Migration
                 $table->integer('identifier')->nullable(); // DOI, link, atau kode
                 $table->enum('status', ['Menunggu', 'Terpublish', 'Ditolak','Arsip']);
                 $table->string('coverage')->nullable();
-            $table->timestamps();
+                $table->timestamps();
         });
     }
 

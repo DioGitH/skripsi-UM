@@ -32,6 +32,7 @@ Route::get('/captcha-refresh', function () {
 });
 
 Route::get('/', [HomeController::class, 'index'])->middleware(IsLogin::class)->name('home');
+Route::get('/jenis-karya/profesi/{id}', [HomeController::class, 'getJenisByProfesi'])->middleware(IsLogin::class);
 Route::get('/unggah/{jenisKarya}', [HomeController::class, 'create'])->middleware(IsLogin::class)->name('karya.create');
 Route::post('/unggah', [HomeController::class, 'store'])->middleware(IsLogin::class)->name('karya.store');
 // Pilih jenis karya berdasarkan profesi

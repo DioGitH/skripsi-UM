@@ -9,10 +9,25 @@ use App\Models\Karya;
 
 class KaryaMasukController extends Controller
 {
-    public function index(){
-    $jenisKarya = JenisKarya::all(); // Ambil semua jenis karya
-    return view('admin.karya', compact('jenisKarya'));
+public function index(Request $request)
+{
+    $query = JenisKarya::with('profesi');
+
+    // Mapping teks ke ID
+    $profesiMap = [
+        'guru' => 1,
+        'siswa' => 2,
+    ];
+
+    if ($request->filled('profesi') && isset($profesiMap[$request->profesi])) {
+        $query->where('profesi_id', $profesiMap[$request->profesi]);
     }
+
+    $jenisKarya = $query->get();
+
+    return view('admin.karya', compact('jenisKarya'));
+}
+
 public function preview($id, Request $request)
 {
     $jenisKarya = JenisKarya::findOrFail($id);
@@ -42,24 +57,26 @@ public function preview($id, Request $request)
 }
 
     public function store(Request $request)
-{
-    $request->validate([
-        'nama' => 'required|string|max:255',
-        'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-    ]);
+    {
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'profesi' => 'required|in:guru,siswa', // tambahkan validasi profesi
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
 
-    $fotoPath = null;
-    if ($request->hasFile('foto')) {
-        $fotoPath = $request->file('foto')->store('jenis_karya_foto', 'public');
+        $fotoPath = null;
+        if ($request->hasFile('foto')) {
+            $fotoPath = $request->file('foto')->store('jenis_karya_foto', 'public');
+        }
+
+        JenisKarya::create([
+            'nama' => $request->nama,
+            'foto_path' => $fotoPath,
+            'profesi' => $request->profesi, // simpan profesinya
+        ]);
+
+        return redirect()->back()->with('success', 'Jenis Karya berhasil ditambahkan');
     }
-
-    JenisKarya::create([
-        'nama' => $request->nama,
-        'foto_path' => $fotoPath,
-    ]);
-
-    return redirect()->route('data.create')->with('success', 'Jenis karya berhasil disimpan.');
-}
     public function bacaSemua(Request $request)
     {
         auth('admin')->user()->unreadNotifications->markAsRead();

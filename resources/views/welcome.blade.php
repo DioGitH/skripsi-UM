@@ -87,26 +87,31 @@
 
 
     </div>
-   
     {{-- modal unggah --}}
     <div class="modal fade" id="modal-unggah" tabindex="-1" aria-labelledby="modalLabel-unggah" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered ">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content p-3">
                 <div class="modal-header justify-content-center">
                     <h5 class="modal-title text-center">Pilih Jenis Karya</h5>
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        <div class="row flex-column-reverse">
-                            @foreach($jenisKaryas->chunk(4)->reverse() as $row)
+                        <div class="row">
+                            @forelse($jenisKaryas->chunk(4)->reverse() as $row)
                                 <div class="d-flex flex-wrap justify-content-center mb-4 w-100">
                                     @foreach($row as $jenis)
                                         <div class="col-md-3 mb-4 text-center">
-                                            <div class="fw-bold" >{{ ucfirst($jenis->nama) }}</div>
-                                            @if($jenis->foto_path)
-                                                <img src="{{ asset('storage/' . $jenis->foto_path) }}" alt="{{ $jenis->nama }}" class="img-fluid m-auto rounded mb-2" style="max-height: 150px; object-fit: cover;">
+                                            <div class="fw-bold mb-2">{{ ucfirst($jenis->nama) }}</div>
+
+                                            @if($jenis->foto_path && file_exists(public_path('storage/' . $jenis->foto_path)))
+                                                <img src="{{ asset('storage/' . $jenis->foto_path) }}" 
+                                                    alt="{{ $jenis->nama }}" 
+                                                    class="img-fluid m-auto rounded mb-2" 
+                                                    style="max-height: 150px; object-fit: cover;">
                                             @else
-                                                <img src="https://via.placeholder.com/150x100?text=No+Image" alt="No image" class="img-fluid rounded mb-2">
+                                                <img src="https://via.placeholder.com/150x100?text=No+Image" 
+                                                    alt="No image" 
+                                                    class="img-fluid rounded mb-2">
                                             @endif
 
                                             <a href="{{ route('karya.create', $jenis->nama) }}"
@@ -114,34 +119,36 @@
                                                 <img src="{{ asset('assets/img/upload.png') }}" alt="Unggah" style="width: 32px; height: 32px;">
                                                 <span>Unggah</span>
                                             </a>
-
                                         </div>
                                     @endforeach
                                 </div>
-                            @endforeach
+                            @empty
+                                <div class="text-center text-muted">
+                                    <p>Tidak ada jenis karya tersedia untuk profesi Anda.</p>
+                                </div>
+                            @endforelse
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <!-- Modal Jelajahi -->
+    <div class="modal fade" id="modal-jelajahi" tabindex="-1" aria-labelledby="modalLabel-unggah" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content p-3">
+                <div class="modal-header justify-content-center">
+                    <h5 class="modal-title text-center">Pilih Profesi</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="container d-flex justify-content-center gap-4">
+                       <button class="btn btn-outline-primary" onclick="tampilkanModalJenis('siswa')">Siswa</button>
+<button class="btn btn-outline-success" onclick="tampilkanModalJenis('guru')">Guru</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-        <!-- Modal Jelajahi -->
-        <div class="modal fade" id="modal-jelajahi" tabindex="-1" aria-labelledby="modalLabel-unggah" aria-hidden="true">
-            <div class="modal-dialog modal-xl modal-dialog-centered">
-                <div class="modal-content p-3">
-                    <div class="modal-header justify-content-center">
-                        <h5 class="modal-title text-center">Pilih Profesi</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container d-flex justify-content-center gap-4">
-                            <button class="btn btn-outline-primary" onclick="tampilkanModalJenis('siswa')">Siswa</button>
-                            <button class="btn btn-outline-success" onclick="tampilkanModalJenis('guru')">Guru</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- Modal Jenis Karya -->
 <div class="modal fade" id="modal-jenis-karya" tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -251,6 +258,43 @@ function closeAllModals() {
         document.body.classList.remove('modal-open'); // pastikan scroll aktif
     }, 300);
 }
+    function tampilkanModalJenis(profesi) {
+        const profesiId = profesi === 'guru' ? 1 : 2;
+
+        fetch(`/jenis-karya/profesi/${profesiId}`)
+            .then(res => res.json())
+            .then(data => {
+                let isi = '';
+                if (data.length === 0) {
+                    isi = `<div class="text-center text-muted">Tidak ada jenis karya untuk ${profesi}.</div>`;
+                } else {
+                    data.forEach(jenis => {
+                        isi += `
+                            <div class="col-md-3 mb-4 text-center">
+                                <div class="fw-bold mb-2">${jenis.nama}</div>
+                                <img src="${jenis.foto_path ? '/storage/' + jenis.foto_path : 'https://via.placeholder.com/150x100?text=No+Image'}" 
+                                     class="img-fluid m-auto rounded mb-2" style="max-height: 150px; object-fit: cover;" alt="${jenis.nama}">
+                                <a href="/unggah/${jenis.nama}"
+                                   class="btn btn-outline-dark w-75 text-black m-auto fw-bold d-flex align-items-center justify-content-center gap-2">
+                                    <img src="/assets/img/upload.png" alt="Unggah" style="width: 32px; height: 32px;">
+                                    <span>Unggah</span>
+                                </>
+                            </div>
+                        `;
+                    });
+                }
+
+                document.getElementById('profesi-terpilih').innerText = profesi.charAt(0).toUpperCase() + profesi.slice(1);
+                document.getElementById('list-jenis-karya').innerHTML = isi;
+
+                // Tampilkan modal jenis karya
+                const modalJenis = new bootstrap.Modal(document.getElementById('modal-jenis-karya'));
+                modalJenis.show();
+            })
+            .catch(err => {
+                console.error("Gagal ambil data jenis karya:", err);
+            });
+    }
 
 
 </script>

@@ -17,14 +17,14 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-           'name',
-            'email',
-            'password',
-            'profesi',
-            'mata_pelajaran',
-            'kelas',
-            'jurusan',
+        protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'profesi_id', // ✅ ← ini WAJIB
+        'mata_pelajaran',
+        'kelas',
+        'jurusan',
     ];
 
     /**
@@ -50,6 +50,10 @@ class User extends Authenticatable
     public function karyas()
     {
         return $this->hasMany(Karya::class);
+    }
+    public function profesi()
+    {
+        return $this->belongsTo(Profesi::class);
     }
 
 }

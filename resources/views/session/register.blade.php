@@ -64,14 +64,18 @@
             <div class="mb-3">
                 <label class="mb-2 fw-bold">Daftar Sebagai</label>
                 <div class="d-flex gap-4">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="profesi" id="guruRadio" value="guru" onchange="showInputs('guru')" {{ old('profesi') == 'guru' ? 'checked' : '' }}>
-                        <label class="form-check-label" for="guruRadio">Guru</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="profesi" id="siswaRadio" value="siswa" onchange="showInputs('siswa')" {{ old('profesi') == 'siswa' ? 'checked' : '' }}>
-                        <label class="form-check-label" for="siswaRadio">Siswa</label>
-                    </div>
+                    @foreach ($profesis as $profesi)
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="profesi_id"
+                                id="profesi{{ $profesi->id }}"
+                                value="{{ $profesi->id }}"
+                                onchange="showInputs('{{ strtolower($profesi->nama) }}')"
+                                {{ old('profesi_id') == $profesi->id ? 'checked' : '' }}>
+                            <label class="form-check-label" for="profesi{{ $profesi->id }}">
+                                {{ $profesi->nama }}
+                            </label>
+                        </div>
+                    @endforeach
                 </div>
             </div>
 
