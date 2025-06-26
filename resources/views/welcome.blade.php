@@ -143,29 +143,34 @@
                 <div class="modal-body">
                     <div class="container d-flex justify-content-center gap-4">
                        <button class="btn btn-outline-primary" onclick="tampilkanModalJenis('siswa')">Siswa</button>
-<button class="btn btn-outline-success" onclick="tampilkanModalJenis('guru')">Guru</button>
+                        <button class="btn btn-outline-success" onclick="tampilkanModalJenis('guru')">Guru</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
         <!-- Modal Jenis Karya -->
-<div class="modal fade" id="modal-jenis-karya" tabindex="-1">
+  <div class="modal fade" id="modal-jenis-karya" tabindex="-1" aria-labelledby="modalJenisKaryaLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content p-3">
-            <div class="modal-header justify-content-center">
-                <h5 class="modal-title">Pilih Jenis Karya untuk <span id="profesi-terpilih"></span></h5>
+            <div class="modal-header justify-content-center border-bottom-0 position-relative">
+                <h5 class="modal-title text-center" id="modalJenisKaryaLabel">
+                    Pilih Jenis Karya untuk <span id="profesi-terpilih" class="text-primary fw-bold"></span>
+                </h5>
+                <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <div class="row" id="list-jenis-karya">
-                        {{-- Isi dinamis via JavaScript --}}
+                    <div class="row align-items-center g-4" id="list-jenis-karya">
+                        {{-- Akan diisi dinamis oleh JavaScript --}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 
 
     </div>
@@ -188,37 +193,41 @@
     const semuaJenisKarya = @json($jenisKaryas);
 
     function tampilkanModalJenis(profesi) {
-        closeAllModals();
+    closeAllModals(); // pastikan ini menutup modal lain kalau ada
 
-        setTimeout(() => {
-            document.getElementById('profesi-terpilih').textContent =
-                profesi.charAt(0).toUpperCase() + profesi.slice(1);
+    setTimeout(() => {
+        document.getElementById('profesi-terpilih').textContent =
+            profesi.charAt(0).toUpperCase() + profesi.slice(1);
 
-            const container = document.getElementById('list-jenis-karya');
-            container.innerHTML = '';
+        const container = document.getElementById('list-jenis-karya');
+        container.innerHTML = ''; // kosongkan sebelum isi ulang
 
-            semuaJenisKarya.forEach(jk => {
-                const col = document.createElement('div');
-                col.className = 'col-md-3 mb-3 text-center';
+        semuaJenisKarya.forEach(jk => {
+            const col = document.createElement('div');
+            col.className = 'col-md-3 col-sm-6 text-center';
 
-                const imgPath = jk.foto_path
-                    ? `/storage/${jk.foto_path}`
-                    : 'https://via.placeholder.com/150x100?text=No+Image';
+            const imgPath = jk.foto_path
+                ? `/storage/${jk.foto_path}`
+                : 'https://via.placeholder.com/150x100?text=No+Image';
 
-                col.innerHTML = `
-                    <div class="fw-bold mb-1">${jk.nama}</div>
-                    <img src="${imgPath}" alt="${jk.nama}" class="img-fluid m-auto rounded mb-2" 
-                        style="max-height: 150px; object-fit: cover;">
-                    <a href="/jelajahi/${profesi}/${jk.nama}" class="btn btn-outline-dark w-100">Lihat</a>
-                `;
+            col.innerHTML = `
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="${imgPath}" alt="${jk.nama}" class="card-img-top img-fluid rounded-top" style="height: 150px; object-fit: cover;">
+                    <div class="card-body p-3">
+                        <h6 class="card-title fw-semibold mb-2">${jk.nama}</h6>
+                        <a href="/jelajahi/${profesi}/${jk.nama}" class="btn btn-outline-dark btn-sm w-100">Lihat</a>
+                    </div>
+                </div>
+            `;
 
-                container.appendChild(col);
-            });
+            container.appendChild(col);
+        });
 
-            const modalJenis = new bootstrap.Modal(document.getElementById('modal-jenis-karya'));
-            modalJenis.show();
-        }, 300);
-    }
+        const modalJenis = new bootstrap.Modal(document.getElementById('modal-jenis-karya'));
+        modalJenis.show();
+    }, 300);
+}
+
 
     function closeAllModals() {
         const modalJenis = bootstrap.Modal.getInstance(document.getElementById('modal-jenis-karya'));
@@ -278,7 +287,7 @@ function closeAllModals() {
                                    class="btn btn-outline-dark w-75 text-black m-auto fw-bold d-flex align-items-center justify-content-center gap-2">
                                     <img src="/assets/img/upload.png" alt="Unggah" style="width: 32px; height: 32px;">
                                     <span>Unggah</span>
-                                </>
+                                </a>
                             </div>
                         `;
                     });
