@@ -48,10 +48,10 @@
 
             <div class="mb-3">
               <label class="form-label">Profesi</label>
-              <select name="profesi" class="form-control" required>
+              <select name="profesi_id" class="form-control" required>
                   <option value="">-- Pilih Profesi --</option>
-                  <option value="guru">Guru</option>
-                  <option value="siswa">Siswa</option>
+                  <option value="1">Guru</option>
+                  <option value="2">Siswa</option>
               </select>
           </div>
 

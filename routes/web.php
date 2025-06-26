@@ -67,7 +67,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/admin/konfirmasi/{id}/pratinjau', [KonfirmasiController::class, 'show'])->middleware(AdminLogin::class)->name('karya.pratinjau');
         Route::patch('/admin/karya/{id}/publish', [KonfirmasiController::class, 'publish'])->middleware(AdminLogin::class)->name('karya.publish');
         Route::patch('/admin/karya/{id}/arsip', [KonfirmasiController::class, 'arsip'])->middleware(AdminLogin::class)->name('karya.arsip');
-        Route::post('/data/store', [DataKaryaController::class, 'store'])->middleware(AdminLogin::class)->name('data.store');
+        Route::post('/data/store', [KaryaMasukController::class, 'store'])->middleware(AdminLogin::class)->name('data.store');
         Route::get('login', [SessionAdminController::class, 'index']);
         Route::post('session/store', [SessionAdminController::class, 'store']);
 

@@ -12,7 +12,7 @@
     </div>
     <div class="" style="height: 10px; width: 100%; background-color: #1F304B;"></div>
     <div class=" p-3 px-5 mt-4" style="background-color: #efefef">
-                <form method="GET" action=""class="row g-3 align-items-end">
+        <form method="GET" action=""class="row g-3 align-items-end">
             <div class="col-md-3">
                 <label for="kategori" class="form-label">Kategori Karya</label>
                 <select name="kategori" class="form-select">

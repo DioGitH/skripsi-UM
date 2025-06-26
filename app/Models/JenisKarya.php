@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class JenisKarya extends Model
 {
     use HasFactory;
-    protected $fillable = ['nama', 'foto_path', 'profesi'];
+    protected $fillable = ['nama', 'foto_path'];
 
     protected $table = 'jenis_karyas'; // kalau kamu tetap ingin pakai nama ini
     public function karyas()

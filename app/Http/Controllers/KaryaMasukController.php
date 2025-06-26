@@ -58,21 +58,15 @@ public function preview($id, Request $request)
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nama' => 'required|string|max:255',
-            'profesi' => 'required|in:guru,siswa', // tambahkan validasi profesi
-            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
 
         $fotoPath = null;
         if ($request->hasFile('foto')) {
             $fotoPath = $request->file('foto')->store('jenis_karya_foto', 'public');
         }
-
         JenisKarya::create([
             'nama' => $request->nama,
             'foto_path' => $fotoPath,
-            'profesi' => $request->profesi, // simpan profesinya
+            'profesi_id' => $request->profesi_id, // simpan profesinya
         ]);
 
         return redirect()->back()->with('success', 'Jenis Karya berhasil ditambahkan');

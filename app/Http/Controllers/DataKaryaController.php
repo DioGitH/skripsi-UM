@@ -14,7 +14,7 @@ class DataKaryaController extends Controller
     public function store(Request $request)
 {
     $request->validate([
-        'nama' => 'required|string|max:255',
+        'nama' => 'required|string|max:255',    
         'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
     ]);
 
