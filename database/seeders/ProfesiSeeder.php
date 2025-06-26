@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Profesi;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,9 +13,13 @@ class ProfesiSeeder extends Seeder
      */
     public function run(): void
     {
-        Profesi::insert([
-            ['nama' => 'Guru'],
-            ['nama' => 'Siswa'],
+
+
+        Profesi::create([
+            'nama' => 'Guru'
+        ]);
+        Profesi::create([
+            'nama' => 'Siswa'
         ]);
     }
 }
