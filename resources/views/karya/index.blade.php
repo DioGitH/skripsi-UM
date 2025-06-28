@@ -61,7 +61,7 @@
                 </div>
                 <div style="width: 40%">
                     <strong>Type</strong>
-                    <div>{{ $karya->date }}</div>
+                    <div>{{ $karya->jenisKarya->nama }}</div>
                 </div>
             </div>
             <div class="d-flex flex-row">

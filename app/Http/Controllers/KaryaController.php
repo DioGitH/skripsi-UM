@@ -17,7 +17,7 @@ public function showJenis($profesi)
 }
 public function show($id)
 {
-    $karya = Karya::with('files')->findOrFail($id);
+    $karya = Karya::with(['files','jenisKarya'])->findOrFail($id);
     return view('karya.index', compact('karya'));
 }
 
