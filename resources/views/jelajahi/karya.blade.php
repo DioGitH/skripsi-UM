@@ -43,6 +43,12 @@
         @empty
             <li>Tidak ada karya ditemukan.</li>
         @endforelse
+
+        {{-- Pagination links --}}
+        <div class="mt-4">
+            {{ $karyas->links() }}
+        </div>
+
     </div>
         </ul>
     <div class="px-5">

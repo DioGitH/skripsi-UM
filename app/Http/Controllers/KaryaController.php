@@ -22,32 +22,33 @@ public function show($id)
 }
 
 
-public function filterKarya($profesi, $jenisKarya, Request $request)
-{
+    public function filterKarya($profesi, $jenisKarya, Request $request)
+    {
         $query = $request->input('query');
-    $startsWith = $request->input('starts_with');
+        $startsWith = $request->input('starts_with');
 
-    $karyas = Karya::whereHas('jenisKarya', function ($q) use ($jenisKarya) {
+        $karyas = Karya::whereHas('jenisKarya', function ($q) use ($jenisKarya) {
             $q->where('nama', $jenisKarya);
         })
-        ->whereHas('user', function ($q) use ($profesi) {
-            $q->where('profesi', $profesi);
+        ->whereHas('user.profesi', function ($q) use ($profesi) {
+            $q->where('nama', $profesi);
         });
 
-    if ($query) {
-        $karyas = $karyas->where(function ($q) use ($query) {
-            $q->where('title', 'like', "%$query%")
-              ->orWhere('creator', 'like', "%$query%")
-              ->orWhere('subject', 'like', "%$query%");
-        });
+        if ($query) {
+            $karyas = $karyas->where(function ($q) use ($query) {
+                $q->where('title', 'like', "%$query%")
+                ->orWhere('creator', 'like', "%$query%")
+                ->orWhere('subject', 'like', "%$query%");
+            });
+        }
+
+        if ($startsWith) {
+            $karyas = $karyas->where('title', 'like', $startsWith . '%');
+        }
+
+        $karyas = $karyas->latest()->paginate(5)->withQueryString();
+
+        return view('jelajahi.karya', compact('karyas', 'profesi', 'jenisKarya'));
     }
 
-    if ($startsWith) {
-        $karyas = $karyas->where('title', 'like', $startsWith . '%');
-    }
-
-    $karyas = $karyas->latest()->get();
-
-    return view('jelajahi.karya', compact('karyas', 'profesi', 'jenisKarya'));
-}
 }

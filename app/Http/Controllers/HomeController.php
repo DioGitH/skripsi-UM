@@ -34,8 +34,8 @@ public function index()
 
     public function create($jenisKarya)
     {
-        $jenisKarya = JenisKarya::where('nama', $jenisKarya)->firstOrFail();
-          $user = Auth::user(); // Ambil user yang sedang login
+        $jenisKarya = JenisKarya::with('profesi')->where('nama', $jenisKarya)->firstOrFail();
+        $user = Auth::user();
         return view('form', compact('jenisKarya', 'user'));
     }
     public function store(Request $request)
@@ -120,13 +120,13 @@ public function index()
 
         return response()->json($jenisKaryas);
     }
-public function jenisByType($type)
-{
-    $jenisKaryas = JenisKarya::where('type', $type)->get();
-    $types = Karya::select('type')->distinct()->pluck('type'); // ambil semua type unik
+    public function jenisByType($type)
+    {
+        $jenisKaryas = JenisKarya::where('type', $type)->get();
+        $types = Karya::select('type')->distinct()->pluck('type'); // ambil semua type unik
 
-    return view('jenikarya', compact('jenisKaryas', 'type', 'types'));
-}
+        return view('jenikarya', compact('jenisKaryas', 'type', 'types'));
+    }
 
 
 

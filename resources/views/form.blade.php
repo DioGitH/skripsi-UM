@@ -113,7 +113,7 @@
             <label class="w-25 fw-bold" style="font-size: 18px">Type</label>
             <div class="w-100">
                 <span>Pilih jenis Karya anda</span>
-                <div class="form-control" style="background-color: #efefef"> Karya {{$user->profesi}}</div>
+                <div class="form-control" style="background-color: #efefef">Karya {{ $jenisKarya->profesi->nama ?? '-' }}</div>
             </div>
         </div>
         <div class="mb-3 d-flex flex-row">
