@@ -19,22 +19,21 @@ class AdminController extends Controller
         $guruData = [];
         $siswaData = [];
 
-        foreach ($years as $year) {
-            // Hitung karya untuk guru
-            // Hitung karya untuk guru
-            $guruData[] = Karya::whereYear('date', $year)
-                ->whereHas('jenisKarya.user', function ($query) {
-                    $query->where('profesi', 'guru');
-                })
-                ->count();
+    foreach ($years as $year) {
+    // Hitung karya untuk guru (profesi_id = 1)
+    $guruData[] = Karya::whereYear('date', $year)
+        ->whereHas('jenisKarya', function ($query) {
+            $query->where('profesi_id', 1);
+        })
+        ->count();
 
-            // Hitung karya untuk siswa
-            $siswaData[] = Karya::whereYear('date', $year)
-                ->whereHas('jenisKarya.user', function ($query) {
-                    $query->where('profesi', 'siswa');
-                })
-                ->count();
-        }
+    // Hitung karya untuk siswa (profesi_id = 2)
+    $siswaData[] = Karya::whereYear('date', $year)
+        ->whereHas('jenisKarya', function ($query) {
+            $query->where('profesi_id', 2);
+        })
+        ->count();
+}
 
         return view('admin.index', compact('totalUsers', 'totalKarya', 'menungguVerifikasi'),[
             'years' => $years,
