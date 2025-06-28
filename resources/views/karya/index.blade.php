@@ -3,84 +3,92 @@
 @section('content')
     <div class="container mt-5">
         <h3>{{ $karya->title }}</h3>
-        <div class="bg-white d-flex flex-column p-3 gap-4" style="border-top: 20px solid #1F304B">
-            <div class=" d-flex flex-row">
-                <div style="width: 40%">
-                    <strong>Title</strong>
-                    <div>{{ $karya->title }}</div>
-                </div>
-                <div style="width: 40%">
-                    <strong>Right</strong>
-                    <div>{{ $karya->rights }}</div>
-                </div>
-            </div>
-            <div class=" d-flex flex-row">
-                <div style="width: 40%">
-                    <strong>Subject</strong>
-                    <div>{{ $karya->subject }}</div>
-                </div>
-                <div style="width: 40%">
-                    <strong>Relation</strong>
-                    <div>{{ $karya->relation }}</div>
-                </div>
-            </div>  
-            <div class="d-flex flex-row">
-                <div style="width: 40%">
-                    <strong>Description</strong>
-                    <div>{{ $karya->description }}</div>
-                </div>
-                <div style="width: 40%">
-                    <strong>Format</strong>
-                    <div>{{ $karya->files->first()->format ?? '-' }}</div>
-                </div>
-            </div>
-            <div class="d-flex flex-row">
-                <div style="width: 40%">
-                    <strong>creator</strong>
-                    <div>{{ $karya->creator }}</div>
-                </div>
-                <div style="width: 40%">
-                    <strong>Language</strong>
-                    <div>{{ $karya->language }}</div>
-                </div>
-            </div>
-            <div class="d-flex flex-row">
-               <div style="width: 40%">
-                    <strong>Publisher</strong>
-                    <div>{{ $karya->publisher }}</div>
-                </div>
-                <div style="width: 40%">
-                    <strong>Identifier</strong>
-                    <div>{{ $karya->identifier }}</div>
-                </div>
-            </div>
-            <div class="d-flex flex-row">
-                <div style="width: 40%">
-                    <strong>Date</strong>
-                    <div>{{ $karya->date }}</div>
-                </div>
-                <div style="width: 40%">
-                    <strong>Type</strong>
-                    <div>{{ $karya->jenisKarya->nama }}</div>
-                </div>
-            </div>
-            <div class="d-flex flex-row">
-                <div style="width: 40%">
-                    <strong>Source</strong>
-                    <div>{{ $karya->source }}</div>
-                </div>
-                <div style="width: 40%">
-                    <strong>Coverage</strong>
-                    <div>{{ $karya->coverage }}</div>
-                </div>
-            </div>
-            <div class="d-flex flex-row">
-                <div style="width: 40%">
-                    <strong>Contributor</strong>
-                    <div>{{ $karya->contributor }}<div>
-                </div>
-            </div>
+<div class="bg-white p-3" style="border-top: 20px solid #1F304B">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <strong>Title</strong>
+            <div>{{ $karya->title }}</div>
         </div>
+        <div class="col-md-6">
+            <strong>Right</strong>
+            <div>{{ $karya->rights }}</div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <strong>Subject</strong>
+            <div>{{ $karya->subject }}</div>
+        </div>
+        <div class="col-md-6">
+            <strong>Relation</strong>
+            <div>{{ $karya->relation }}</div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <strong>Description</strong>
+            <div>{{ $karya->description }}</div>
+        </div>
+        <div class="col-md-6">
+            <strong>Format</strong>
+            <div>{{ $karya->files->first()->format ?? '-' }}</div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <strong>Creator</strong>
+            <div>{{ $karya->creator }}</div>
+        </div>
+        <div class="col-md-6">
+            <strong>Language</strong>
+            <div>{{ $karya->language }}</div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <strong>Publisher</strong>
+            <div>{{ $karya->publisher }}</div>
+        </div>
+        <div class="col-md-6">
+            <strong>Identifier</strong>
+            <div>{{ $karya->identifier }}</div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <strong>Date</strong>
+            <div>{{ $karya->date }}</div>
+        </div>
+        <div class="col-md-6">
+            <strong>Type</strong>
+            <div>{{ $karya->jenisKarya->nama }}</div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <strong>Source</strong>
+            <div>{{ $karya->source }}</div>
+        </div>
+        <div class="col-md-6">
+            <strong>Coverage</strong>
+            <div>{{ $karya->coverage }}</div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <strong>Contributor</strong>
+            <div>{{ $karya->contributor }}</div>
+        </div>
+    </div>
+</div>
+
             </div>
         </div>
         <div class="bg-white mt-5 py-4 ">
