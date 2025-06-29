@@ -41,8 +41,7 @@
             @endif
         </button>
 
-        <!-- Tombol Setting -->
-        <button style="width: 44px"><img src="{{ asset('assets/img/setting.png') }}" alt="Pengaturan"></button>
+
     </div>
 </div>
 
