@@ -54,3 +54,49 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+  /* Logo agar tidak terlalu besar di mobile */
+  .navbar-brand .logo-custom {
+    width: 60px;
+    height: auto;
+  }
+
+  /* Teks logo responsif */
+  @media (max-width: 576px) {
+    .navbar-brand .fs-3 {
+      font-size: 1.25rem !important;
+    }
+
+    .navbar-brand h6 {
+      font-size: 0.75rem !important;
+    }
+
+    .navbar-nav {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    .navbar-nav .nav-link {
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+    }
+
+    .navbar-collapse {
+      background-color: #f8f9fa;
+      padding: 1rem;
+    }
+  }
+
+  /* Buat tombol toggle tidak terlalu besar di mobile */
+  .navbar-toggler {
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+  }
+
+  /* Garis bawah navbar */
+  .navbar + div {
+    height: 10px;
+    width: 100%;
+    background-color: #1F304B;
+  }
+</style>

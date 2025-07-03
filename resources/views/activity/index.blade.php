@@ -1,28 +1,82 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="m-auto mb-5" style="width: 80%" >
-        <a href="{{route('activitylist')}}" style="text-decoration: none;">
-            <div class="d-flex p-5 align-items-center mt-5" style="width:15%; height:50px; background-color: #1F304B; font-family: 'Inknut Antiqua', serif;">
-                <div class="d-flex fw-semibold justify-content-center align-items-center text-white mx-auto"
-                    style="font-family: 'Instrument Sans', sans-serif; font-size: 32px; width: 50%; height: 50%;">
-                    Aktifitas
-                </div>
-            </div>
-        </a>    
+    <div class="activity-container">
+        <a href="{{ route('activitylist') }}" class="activity-button">
+            <div class="activity-button-text">Aktifitas</div>
+        </a>
+
         <!-- Chart tahunan -->
-<div class="p-6 mt-5 bg-white rounded shadow w-75">
-    <canvas id="chartTahunan" height="100"></canvas>
-</div>
-
-
+        <div class="chart-wrapper">
+            <canvas id="chartTahunan" height="100"></canvas>
+        </div>
     </div>
+
     
 <div class="px-5 mt-5">
     <a href="{{ url()->previous() }}" class="btn btn-outline-secondary">
         <i class="bi bi-arrow-left-circle"></i> Kembali
     </a>
 </div>
+<style>
+    .activity-container {
+        width: 80%;
+        margin: 0 auto 3rem auto;
+    }
+
+    .activity-button {
+        width: 15%;
+        height: 50px;
+        background-color: #1F304B;
+        font-family: 'Inknut Antiqua', serif;
+        display: flex;
+        align-items: center;
+        padding: 1.5rem;
+        margin-top: 2rem;
+        text-decoration: none;
+    }
+
+    .activity-button-text {
+        color: white;
+        font-family: 'Instrument Sans', sans-serif;
+        font-size: 32px;
+        font-weight: 600;
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .chart-wrapper {
+        margin-top: 2rem;
+        background-color: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        width: 75%;
+        height: 350px;
+
+    }
+
+    @media (max-width: 576px) {
+        .activity-button {
+            width: 100%;
+            padding: 1rem;
+            height: auto;
+        }
+
+        .activity-button-text {
+            font-size: 20px;
+            width: 100%;
+        }
+
+        .chart-wrapper {
+            width: 100%;
+            height: 350px;
+            position: relative;
+        }
+    }
+</style>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     const ctx = document.getElementById('chartTahunan').getContext('2d');
@@ -39,6 +93,7 @@
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false, // ⬅️ ini wajib jika ingin kontrol tinggi via CSS
             scales: {
                 y: {
                     beginAtZero: true,
