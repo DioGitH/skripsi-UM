@@ -10,9 +10,50 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua&display=swap" rel="stylesheet">
+    <style>
+        /* Sidebar responsive */
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -250px;
+    width: 250px;
+    background: #1F304B;
+    z-index: 1050;
+    transition: left 0.3s ease-in-out;
+}
 
+.sidebar.show {
+    left: 0;
+}
+
+.content.with-sidebar {
+    margin-left: 250px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        left: 0;
+    }
+    .content {
+        margin-left: 250px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .content {
+        margin-left: 0 !important;
+    }
+}
+
+    </style>
 </head>
 <body>
+    <button class="btn btn-primary d-md-none position-fixed shadow" id="sidebarToggle"
+        style="top: 60px; left: 15px; z-index: 1100;">
+        <i class="bi bi-list"></i>
+    </button>
     <div class="d-flex flex-row">
 
         @include('components.admin')
@@ -42,7 +83,22 @@
             @yield('admin')
         </div>
     </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const sidebar = document.querySelector('.sidebar');
+        const content = document.querySelector('.content');
+        const toggleBtn = document.getElementById('sidebarToggle');
 
+        if (sidebar && toggleBtn) {
+            toggleBtn.addEventListener('click', function () {
+                sidebar.classList.toggle('show');
+                if (content) {
+                    content.classList.toggle('with-sidebar');
+                }
+            });
+        }
+    });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>

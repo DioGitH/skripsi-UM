@@ -5,9 +5,9 @@
     <div class="px-5 py-4 fw-bold w-100" style="font-size: 28px; background-color: #fff">
         SELAMAT DATANG DI  DASHBOARD ADMIN e Skill-Lib Repository 
     </div>
-    <div class="d-flex px-5 py-4 flex-row justify-content-between gap-3" style="background-color: #fff;">
+    <div class="card-container px-5 py-4" style="background-color: #fff;">
         {{-- Keanggotaan --}}
-        <div class="bg-white mx-3 mb-4 shadow border p-4 d-flex flex-column justify-content-between" style="width: 20%; border-radius:18px; min-width: 200px; border: 1px solid #ccc;">
+        <div class="dashboard-card">
             <div class="fw-bold fs-4">Keanggotaan</div>
             <div class="d-flex align-items-center gap-3">
                 <div style="width: 54px;">
@@ -18,7 +18,7 @@
         </div>
 
         {{-- Jumlah Pengunjung --}}
-        <div class="bg-white mx-3 mb-4 shadow border p-4 d-flex flex-column justify-content-between" style="width: 20%; border-radius:18px; min-width: 200px; border: 1px solid #ccc;">
+        <div class="dashboard-card">
             <div class="fw-bold fs-4">Jumlah Pengunjung</div>
             <div class="d-flex align-items-center gap-3">
                 <div style="width: 54px;">
@@ -29,7 +29,7 @@
         </div>
 
         {{-- Total Karya --}}
-        <div class="bg-white mx-3 mb-4 shadow border p-4 d-flex flex-column justify-content-between" style="width: 20%; border-radius:18px; min-width: 200px; border: 1px solid #ccc;">
+        <div class="dashboard-card">
             <div class="fw-bold fs-4">Total Karya</div>
             <div class="d-flex align-items-center gap-3">
                 <div style="width: 54px;">
@@ -40,7 +40,7 @@
         </div>
 
         {{-- Menunggu Verifikasi --}}
-        <div class="bg-white mx-3 mb-4 shadow border p-4 d-flex flex-column justify-content-between" style="width: 20%; border-radius:18px; min-width: 200px; border: 1px solid #ccc;">
+        <div class="dashboard-card">
             <div class="fw-bold fs-4">Menunggu Verifikasi</div>
             <div class="d-flex align-items-center gap-3">
                 <div style="width: 54px;">
@@ -56,6 +56,40 @@
         <h4 class="mb-3">Grafik Karya (Guru vs Siswa)</h4>
         <canvas id="karyaChart"></canvas>
     </div>
+
+    <style>
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: space-between;
+        }
+
+        .dashboard-card {
+            background-color: #fff;
+            border-radius: 18px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 23%; /* 4 cards per row */
+            min-width: 200px;
+        }
+
+        @media (max-width: 992px) {
+            .dashboard-card {
+                width: 48%; /* 2 cards per row on tablets */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .dashboard-card {
+                width: 100%; /* 1 card per row on mobile */
+            }
+        }
+    </style>
 
     {{-- Tambah CDN Chart.js --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

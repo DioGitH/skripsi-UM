@@ -9,7 +9,7 @@
   }
 </style>
 <div class="sidebar d-flex flex-column flex-shrink-0 text-white"
-     style="position: fixed; top: 0; bottom: 0; left: 0; width: 250px; background: #1F304B; z-index: 1030;">
+     style="position: fixed; top: 0; bottom: 0; width: 250px; background: #1F304B; z-index: 1030;">
     <a href="/admin" class="mt-5  d-flex flex-column align-items-center justify-content-center text-white text-decoration-none text-center" style="margin: auto;">
         <div style="font-size: 24px;">Admin</div>
         <img class="logo-custom my-2" src="{{ asset('assets/img/logo-title.png') }}" style="width: 120px; height: 115px"  alt="Logo">
