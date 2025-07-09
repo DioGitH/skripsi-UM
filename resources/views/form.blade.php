@@ -6,8 +6,11 @@
     <div class="fw-bold mt-2" style="font-size: 36px; font-family: 'Instrument Sans', sans-serif">
         Dublin Core
     </div>
-    <div class="mb-5" style="font-size: 24px; font-family: 'Instrument Sans', sans-serif">
-    Silahkan mengisi data dibawah ini dengan lengkap dan benar!
+    <div style="font-size: 24px; font-family: 'Instrument Sans', sans-serif">
+        Silahkan mengisi data dibawah ini dengan lengkap dan benar!
+    </div>
+    <div class="mb-5 fw-bold" style="font-size: 20px; font-family: 'Instrument Sans', sans-serif">
+        (*) Tanda ini menunjukkan bahwa kolom pada formulir wajib diisi.
     </div>
 
     <form class="" action="{{ route('karya.store') }}" method="POST" enctype="multipart/form-data">
@@ -15,48 +18,48 @@
         <input type="hidden" name="jenis_karya_id" value="{{ $jenisKarya->id }}">
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-40 w-md-25 fw-bold" style="font-size: 18px">Title</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Judul</label>
             <div class="w-100">
-                <span>Masukkan judul lengkap karya anda</span> 
+                <span>*Masukkan judul lengkap karya anda</span> 
                 <input type="text" name="title" class="form-control" required>
             </div>
         </div>
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-40 w-md-25 fw-bold" style="font-size: 18px">Subject</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Subjek</label>
             <div class="w-100">
-                <span>Masukkan subjek atau kata kunci karya anda </span><span style="font-size: 12px"> *contoh: busana, makanan sunda, dll </span>
+                <span>*Masukkan subjek atau kata kunci karya anda </span><span style="font-size: 12px"> *contoh: busana, makanan sunda, dll </span>
                 <input type="text" name="subject" class="form-control" required>
             </div>
         </div>
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-40 w-md-25 fw-bold" style="font-size: 18px">Description</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Deskripsi</label>
             <div class="w-100">    
-                <span>Tulis deskripsi dari karya anda </span><span style="font-size: 12px"> *minimal 10 kata contoh: makanan ini berasal dari Jawa Timur...  </span>
+                <span>*Tulis deskripsi dari karya anda </span><span style="font-size: 12px"> *minimal 10 kata contoh: makanan ini berasal dari Jawa Timur...  </span>
                 <textarea name="description" class="form-control" required></textarea>
             </div>
         </div>
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-40 w-md-25 fw-bold" style="font-size: 18px">Creator</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Pencipta</label>
             <div class="w-100">
-                <span>Masukkan nama lengkap anda </span>
+                <span>@Masukkan nama lengkap anda </span>
                 <input type="text" name="creator" class="form-control" required>
             </div>
         </div>
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-40 w-md-25 fw-bold" style="font-size: 18px">Source</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Sumber</label>
             <div class="w-100">
-                <span>Masukkan sumber terkait karya anda  </span><span style="font-size: 12px"> *jika tidak ada isi dengan tanda "-"</span>
+                <span>Masukkan sumber terkait karya anda  </span>
                 <input type="text" name="source" class="form-control">
             </div>
         </div>
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-40 w-md-25 fw-bold" style="font-size: 18px">Publisher</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Penerbit</label>
             <div class="w-100">
-                <span>Masukkan sumber Penerbit karya  </span>
+                <span>*Masukkan sumber Penerbit karya  </span>
                 <select name="publisher" class="form-select" required>
                     <option disabled>-</option>
                     <option value="SMKN 3 Malang ">SMKN 3 Malang</option>
@@ -66,25 +69,25 @@
 
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-40 w-md-25 fw-bold" style="font-size: 18px">Date</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Tanggal</label>
             <div class="w-100">
-                <span>Isi tanggal unggah karya anda (saat ini)  </span>
+                <span>*Isi tanggal unggah karya anda (saat ini)  </span>
                 <input type="date" name="date" class="form-control" required>
             </div>
         </div>
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-40 w-md-25 fw-bold" style="font-size: 18px">contributor</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Penanggung Jawab</label>
             <div class="w-100">
-                <span>Masukan nama penanggung jawab karya</span>
-                <input type="text" name="contributor" class="form-control">
+                <span>*Masukan nama penanggung jawab karya</span>
+                <input type="text" name="contributor" class="form-control" required>
             </div>
         </div>
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-40 w-md-25 fw-bold" style="font-size: 18px">Rights</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Hak Akses</label>
             <div class="w-100">
-                <span>pilih hak akses untuk karya anda</span>
+                <span>*Pilih hak akses untuk karya anda</span>
 
                 <select name="rights" class="form-select" required>
                     <option disabled></option>
@@ -95,46 +98,46 @@
         </div>
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-40 w-md-25 fw-bold" style="font-size: 18px">Relation</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Hubungan</label>
             <div class="w-100">
-                <span>hubungan</span><span style="font-size: 12px"> *jika tidak ada isi dengan tanda "-"</span>
+                <span>hubungan</span>
                 <input type="text" name="relation" class="form-control">
             </div>
         </div>
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-40 w-md-25 fw-bold" style="font-size: 18px">Language</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Bahasa</label>
             <div class="w-100">
-                <span>Pilih bahasa yang digunakan</span>
-                <input type="text" name="language" class="form-control">
+                <span>*Pilih bahasa yang digunakan</span>
+                <input type="text" name="language" class="form-control" required>
             </div>
         </div>
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-40 w-md-25 fw-bold" style="font-size: 18px">Type</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Jenis</label>
             <div class="w-100">
-                <span>Pilih jenis Karya anda</span>
+                <span>*Pilih jenis Karya anda</span>
                 <div class="form-control" style="background-color: #efefef">Karya {{ $jenisKarya->nama ?? '-' }}</div>
             </div>
         </div>
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-40 w-md-25 fw-bold" style="font-size: 18px">Identifier</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Identitas</label>
             <div class="w-100">
-                <span>Masukkan NIPD/NIP/Nomor Identitas Anda</span><span style="font-size: 12px"> *diisi angka</span>
-                <input type="number" name="identifier" class="form-control">
+                <span>*Masukkan NIPD/NIP/Nomor Identitas Anda</span>
+                <input type="number" name="identifier" class="form-control" required>
             </div>
         </div>
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-40 w-md-25 fw-bold" style="font-size: 18px">Coverage</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Cakupan</label>
             <div class="w-100">
-                <span>Masukan Cakupan</span><span style="font-size: 12px"> *jika tidak ada isi dengan tanda "-"</span>
+                <span>Masukan Cakupan</span>
                 <input type="text" name="coverage" class="form-control">
             </div>
         </div>
        <div id="file-upload-wrapper">
             <div class="file-upload-group mb-3">
                 <div class="mb-3 d-flex flex-column flex-md-row">                    
-                    <label class="w-40 w-md-25 fw-bold" style="font-size: 18px">
+                    <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">
                         Format
                     </label>
                     <div class="w-100">
@@ -147,7 +150,7 @@
                     </div>
                 </div>
                 <div class="mb-3 d-flex flex-column flex-md-row">                    
-                     <label class="w-40 w-md-25 fw-bold">File</label>
+                     <label class="w-md-50 fw-bold" style=" width: 20%">File</label>
                     <div class="w-100 d-flex gap-2">
                         <div class="flex-grow-1">
                             <span>Unggah Karya Anda</span>
@@ -165,7 +168,31 @@
         </div>
     </form>
 </div>
+<!-- Modal Sukses -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="max-width: 40%;">
+    <div class="modal-content bg-white">
+      <div class="modal-body text-center">
+        <div style="font-size:25px" class="fw-bold mb-3">
+            Unggahan Anda Berhasil Dilakukan,<br>
+            Silahkan Tunggu Konfirmasi Melalui Email!
+        </div>
+        <img src="{{ asset('assets/img/success.png') }}" class="m-auto" style="width: 110px;" alt="">
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tetap di Halaman</button>
+        <a href="/" class="btn btn-light">Keluar dari Halaman</a>
+      </div>
+    </div>
+  </div>
+</div>
 
+@if (session('success'))
+<script>
+    const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+    successModal.show();
+</script>
+@endif
 <style>
     @media (max-width: 768px) {
         label.fw-bold {
@@ -182,7 +209,7 @@ function addFileUpload() {
     group.classList.add('file-upload-group', 'mb-3');
     group.innerHTML = `
             <div class="mb-3 d-flex flex-column flex-md-row">                    
-                <label class="w-40 w-md-25 fw-bold" style="font-size: 18px">
+                <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">
                     Format
                 </label>
                 <div class="w-100">
@@ -195,7 +222,7 @@ function addFileUpload() {
                 </div>
             </div>
             <div class="mb-3 d-flex flex-column flex-md-row">                    
-                <label class="w-40 w-md-25 fw-bold">File</label>
+                <label class="w-md-50 fw-bold">File</label>
                 <div class="w-100 d-flex gap-2">
                     <div class="flex-grow-1">
                         <span>Unggah Karya Anda</span>

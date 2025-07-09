@@ -142,41 +142,43 @@
                 </div>
                 <div class="modal-body">
                     <div class="container d-flex justify-content-center gap-4">
-                       <button class="btn btn-outline-primary" onclick="tampilkanModalJenis('siswa')">Siswa</button>
-                        <button class="btn btn-outline-success" onclick="tampilkanModalJenis('guru')">Guru</button>
+                        @if($showSiswa == '1')
+                            <button class="btn btn-outline-primary" onclick="tampilkanModalJenis('siswa')">Siswa</button>
+                        @endif
+                        @if($showGuru == '1')
+                            <button class="btn btn-outline-success" onclick="tampilkanModalJenis('guru')">Guru</button>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
         <!-- Modal Jenis Karya -->
-  <div class="modal fade" id="modal-jenis-karya" tabindex="-1" aria-labelledby="modalJenisKaryaLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-        <div class="modal-content p-3">
-            <div class="modal-header justify-content-center border-bottom-0 position-relative">
-                <h5 class="modal-title text-center" id="modalJenisKaryaLabel">
-                    Pilih Jenis Karya untuk <span id="profesi-terpilih" class="text-primary fw-bold"></span>
-                </h5>
-                <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="container">
-                    <div class="row align-items-center g-4" id="list-jenis-karya">
-                        {{-- Akan diisi dinamis oleh JavaScript --}}
+    <div class="modal fade" id="modal-jenis-karya" tabindex="-1" aria-labelledby="modalJenisKaryaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content p-3">
+                <div class="modal-header justify-content-center border-bottom-0 position-relative">
+                    <h5 class="modal-title text-center" id="modalJenisKaryaLabel">
+                        Pilih Jenis Karya untuk <span id="profesi-terpilih" class="text-primary fw-bold"></span>
+                    </h5>
+                    <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row align-items-center g-4" id="list-jenis-karya">
+                            {{-- Akan diisi dinamis oleh JavaScript --}}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-
-
-
-    </div>
+ </div>
 
 
 </div>
+    <x-footer /> <!-- ⬅️ Panggil component footer -->
 
 <style>
     .btn-outline-dark:hover {

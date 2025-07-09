@@ -4,19 +4,48 @@
        @include('components.headerAdmin')   
 
     <div class="m-5">
-      <div>
-        <button type="button" class=" mb-5 btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambah">
-            + Tambah
-        </button>
-        <form method="GET" class="mb-4 ms-5 d-flex align-items-center gap-3">
-          <label for="filterProfesi" class="form-label mb-0 fw-bold">Filter Profesi:</label>
-          <select name="profesi" id="filterProfesi" class="form-select w-auto" onchange="this.form.submit()">
-              <option value="">Semua</option>
-              <option value="guru" {{ request('profesi') == 'guru' ? 'selected' : '' }}>Guru</option>
-              <option value="siswa" {{ request('profesi') == 'siswa' ? 'selected' : '' }}>Siswa</option>
-          </select>
-        </form>
+      <div class="container bg-white p-4 rounded mb-4">
+          <form action="{{ route('admin.setting.update') }}" method="POST" class="row g-3 align-items-end">
+              @csrf
+              <div class="col-md-auto">
+                  <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="show_guru" id="show_guru" {{ $showGuru == '1' ? 'checked' : '' }}>
+                      <label class="form-check-label" for="show_guru">
+                          Tampilkan Jelajahi Guru
+                      </label>
+                  </div>
+              </div>
+
+              <div class="col-md-auto">
+                  <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="show_siswa" id="show_siswa" {{ $showSiswa == '1' ? 'checked' : '' }}>
+                      <label class="form-check-label" for="show_siswa">
+                          Tampilkan Jelajahi Siswa
+                      </label>
+                  </div>
+              </div>
+
+              <div class="col-md-auto">
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+              </div>
+          </form>
       </div>
+
+      <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 px-2">
+          <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#modalTambah">
+              + Tambah
+          </button>
+
+          <form method="GET" class="d-flex align-items-center gap-2">
+              <label for="filterProfesi" class="form-label fw-bold mb-0">Filter Profesi:</label>
+              <select name="profesi" id="filterProfesi" class="form-select w-auto" onchange="this.form.submit()">
+                  <option value="">Semua</option>
+                  <option value="guru" {{ request('profesi') == 'guru' ? 'selected' : '' }}>Guru</option>
+                  <option value="siswa" {{ request('profesi') == 'siswa' ? 'selected' : '' }}>Siswa</option>
+              </select>
+          </form>
+      </div>
+
 
       <div class=" mt- 5 container d-flex flex-wrap gap-4">
           @foreach ($jenisKarya as $jenis)

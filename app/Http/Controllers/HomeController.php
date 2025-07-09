@@ -9,8 +9,7 @@ use App\Models\Karya;
 use App\Notifications\KaryaBaruNotification;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
-
-
+use App\Models\Setting;
 
 
 class HomeController extends Controller
@@ -27,8 +26,10 @@ public function index()
         ->latest()
         ->take(15)
         ->get();
+    $showGuru = Setting::where('key', 'show_jelajahi_guru')->value('value');
+$showSiswa = Setting::where('key', 'show_jelajahi_siswa')->value('value');
 
-    return view('welcome', compact('jenisKaryas', 'karyaTerbaru', 'user'));
+    return view('welcome', compact('jenisKaryas', 'karyaTerbaru', 'user', 'showGuru', 'showSiswa'));
 }
 
 

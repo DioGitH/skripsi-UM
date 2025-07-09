@@ -38,13 +38,24 @@
             @forelse ($karyas as $karya)
                 <a href="{{ route('karya.show', $karya->id) }}" class="text-decoration-none text-dark">
                     <div class="bg-white p-3 mb-3 border rounded shadow-sm">
+                        <h5 class="fw-bold mb-1">
+                            {{ $karya->creator }}({{ \Carbon\Carbon::parse($karya->date)->format('Y') }}), {{ $karya->title }} 
+                        </h5>
+                    </div>
+                </a>
+            @empty
+                <p class="text-muted">Tidak ada karya ditemukan.</p>
+            @endforelse
+                       {{-- @forelse ($karyas as $karya)
+                <a href="{{ route('karya.show', $karya->id) }}" class="text-decoration-none text-dark">
+                    <div class="bg-white p-3 mb-3 border rounded shadow-sm">
                         <h5 class="fw-bold mb-1">{{ $karya->title }}</h5>
                         <p class="mb-0"><small>Pembuat: {{ $karya->creator }}</small></p>
                     </div>
                 </a>
             @empty
                 <p class="text-muted">Tidak ada karya ditemukan.</p>
-            @endforelse
+            @endforelse --}}
         </div>
 
         {{-- Pagination --}}
