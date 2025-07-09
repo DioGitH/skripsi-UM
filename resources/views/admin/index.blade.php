@@ -101,11 +101,11 @@
             data: {
                 labels: @json($years),
                 datasets: [
-                    {
-                        label: 'Guru',
-                        backgroundColor: 'rgba(255, 99, 132, 0.8)', // Merah
-                        data: @json($guruData)
-                    },
+                    // {
+                    //     label: 'Guru',
+                    //     backgroundColor: 'rgba(255, 99, 132, 0.8)', // Merah
+                    //     data: @json($guruData)
+                    // },
                     {
                         label: 'Siswa',
                         backgroundColor: 'rgba(30, 64, 175, 0.8)', // Biru tua

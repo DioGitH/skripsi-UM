@@ -12,10 +12,10 @@
             <table class="w-100" style="background-color: #D9D9D9; border-collapse: collapse;">
                 <thead>
                     <tr>
-                        <th style="border: 1px solid #000; padding: 8px;">Title</th>
-                        <th style="border: 1px solid #000; padding: 8px;">Subject</th>
-                        <th style="border: 1px solid #000; padding: 8px;">Description</th>
-                        <th style="border: 1px solid #000; padding: 8px;">Contribution</th>
+                        <th style="border: 1px solid #000; padding: 8px;">Judul</th>
+                        <th style="border: 1px solid #000; padding: 8px;">Subjek</th>
+                        <th style="border: 1px solid #000; padding: 8px;">Deskripsi</th>
+                        <th style="border: 1px solid #000; padding: 8px;">Penanggung Jawab</th>
                         <th style="border: 1px solid #000; padding: 8px;">Status</th>
                         <th style="border: 1px solid #000; padding: 8px;">Aksi</th>
                     </tr>

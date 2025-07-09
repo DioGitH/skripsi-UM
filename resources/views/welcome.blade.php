@@ -142,11 +142,11 @@
                 </div>
                 <div class="modal-body">
                     <div class="container d-flex justify-content-center gap-4">
-                        @if($showSiswa == '1')
-                            <button class="btn btn-outline-primary" onclick="tampilkanModalJenis('siswa')">Siswa</button>
+                       @if($showSiswa == '1')
+                            <button id="btn-siswa" class="btn btn-outline-primary" onclick="tampilkanModalJenis('siswa')">Siswa</button>
                         @endif
                         @if($showGuru == '1')
-                            <button class="btn btn-outline-success" onclick="tampilkanModalJenis('guru')">Guru</button>
+                            <button id="btn-guru" class="btn btn-outline-success" onclick="tampilkanModalJenis('guru')">Guru</button>
                         @endif
                     </div>
                 </div>
@@ -295,6 +295,45 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     const semuaJenisKarya = @json($jenisKaryas);
+    document.addEventListener('DOMContentLoaded', function () {
+        const showSiswa = {{ $showSiswa }};
+        const showGuru = {{ $showGuru }};
+
+        const autoOpen = false; // <-- atur ke false agar tidak auto buka modal
+    });
+
+    function tampilkanModalJenis(profesi) {
+        // Tampilkan nama profesi di modal
+        document.getElementById('profesi-terpilih').textContent = profesi.charAt(0).toUpperCase() + profesi.slice(1);
+
+        // Muat data dinamis (simulasi)
+        const list = document.getElementById('list-jenis-karya');
+        list.innerHTML = '';
+
+        const jenisKarya = {
+            siswa: @json($jenisKaryaSiswa ?? []),
+            guru: @json($jenisKaryaGuru ?? [])
+        };
+
+        const karya = jenisKarya[profesi] ?? [];
+
+        karya.forEach(item => {
+            const col = document.createElement('div');
+            col.className = 'col-md-4';
+            col.innerHTML = `
+                <div class="card shadow-sm p-3 text-center">
+                    <strong>${item.nama}</strong>
+                    <img src="${item.foto_path ? '/storage/' + item.foto_path : 'https://via.placeholder.com/150x100?text=No+Image'}" class="img-fluid my-2 rounded" style="height: 150px; object-fit: cover;">
+                    <a href="/karya/create/${item.nama}" class="btn btn-outline-primary">Unggah</a>
+                </div>
+            `;
+            list.appendChild(col);
+        });
+
+        // Tampilkan modal
+        var modal = new bootstrap.Modal(document.getElementById('modal-jenis-karya'));
+        modal.show();
+    }
 
     function tampilkanModalJenis(profesi) {
         closeAllModals();
@@ -358,11 +397,21 @@
         }
     });
     function bukaModalJelajahi() {
-    closeAllModals(); // pastikan semua modal lain ditutup
+        closeAllModals();
 
-    const modal = new bootstrap.Modal(document.getElementById('modal-jelajahi'));
-    modal.show();
-}
+        const showSiswa = {{ $showSiswa }};
+        const showGuru = {{ $showGuru }};
+
+        if (showSiswa === 1 && showGuru === 0) {
+            tampilkanModalJenis('siswa');
+        } else if (showGuru === 1 && showSiswa === 0) {
+            tampilkanModalJenis('guru');
+        } else {
+            const modal = new bootstrap.Modal(document.getElementById('modal-jelajahi'));
+            modal.show();
+        }
+    }
+
 
 
 </script>

@@ -18,7 +18,14 @@ public function index()
 {
     $user = Auth::user();
 
-    // Ambil jenis karya yang sesuai profesi user
+    $showGuru = Setting::where('key', 'show_jelajahi_guru')->value('value');
+    $showSiswa = Setting::where('key', 'show_jelajahi_siswa')->value('value');
+
+    // Ambil jenis karya per profesi
+    $jenisKaryaSiswa = JenisKarya::where('nama', 'karya siswa')->get(['nama', 'foto_path']);
+    $jenisKaryaGuru = JenisKarya::where('nama', 'karya guru')->get(['nama', 'foto_path']);
+
+    // Ambil jenis karya hanya untuk profesi user (opsional)
     $jenisKaryas = JenisKarya::where('profesi_id', $user->profesi_id)->get();
 
     $karyaTerbaru = Karya::with('files')
@@ -26,11 +33,18 @@ public function index()
         ->latest()
         ->take(15)
         ->get();
-    $showGuru = Setting::where('key', 'show_jelajahi_guru')->value('value');
-$showSiswa = Setting::where('key', 'show_jelajahi_siswa')->value('value');
 
-    return view('welcome', compact('jenisKaryas', 'karyaTerbaru', 'user', 'showGuru', 'showSiswa'));
+    return view('welcome', compact(
+        'jenisKaryas',
+        'jenisKaryaSiswa',
+        'jenisKaryaGuru',
+        'karyaTerbaru',
+        'user',
+        'showGuru',
+        'showSiswa'
+    ));
 }
+
 
 
     public function create($jenisKarya)

@@ -5,23 +5,23 @@
         <h3>{{ $karya->title }}</h3>
         <div class="bg-white p-3 karya-detail" style="border-top: 20px solid #1F304B">
             <div class="field title">
-                <strong>Title</strong>
+                <strong>Judul</strong>
                 <div>{{ $karya->title }}</div>
             </div>
             <div class="field right">
-                <strong>Right</strong>
+                <strong>Hak Akses</strong>
                 <div>{{ $karya->rights }}</div>
             </div>
             <div class="field subject">
-                <strong>Subject</strong>
+                <strong>Subjek</strong>
                 <div>{{ $karya->subject }}</div>
             </div>
             <div class="field relation">
-                <strong>Relation</strong>
+                <strong>Hubungan</strong>
                 <div>{{ $karya->relation }}</div>
             </div>
             <div class="field description">
-                <strong>Description</strong>
+                <strong>Deskripsi</strong>
                 <div>{{ $karya->description }}</div>
             </div>
             <div class="field format">
@@ -29,39 +29,39 @@
                 <div>{{ $karya->files->first()->format ?? '-' }}</div>
             </div>
             <div class="field creator">
-                <strong>Creator</strong>
+                <strong>Pencipta</strong>
                 <div>{{ $karya->creator }}</div>
             </div>
             <div class="field language">
-                <strong>Language</strong>
+                <strong>Bahasa</strong>
                 <div>{{ $karya->language }}</div>
             </div>
             <div class="field publisher">
-                <strong>Publisher</strong>
+                <strong>Penerbit</strong>
                 <div>{{ $karya->publisher }}</div>
             </div>
             <div class="field identifier">
-                <strong>Identifier</strong>
+                <strong>Identitas</strong>
                 <div>{{ $karya->identifier }}</div>
             </div>
             <div class="field date">
-                <strong>Date</strong>
+                <strong>Tanggal</strong>
                 <div>{{ $karya->date }}</div>
             </div>
             <div class="field type">
-                <strong>Type</strong>
+                <strong>Tipe</strong>
                 <div>{{ $karya->jenisKarya->nama }}</div>
             </div>
             <div class="field source">
-                <strong>Source</strong>
+                <strong>Sumber</strong>
                 <div>{{ $karya->source }}</div>
             </div>
             <div class="field coverage">
-                <strong>Coverage</strong>
+                <strong>Masukan Cakupan</strong>
                 <div>{{ $karya->coverage }}</div>
             </div>
             <div class="field contributor">
-                <strong>Contributor</strong>
+                <strong>Penanggung Jawab</strong>
                 <div>{{ $karya->contributor }}</div>
             </div>
         </div>

@@ -6,9 +6,9 @@
                 e Skill-Lib Repository SMKN 3 Malang
             </div>
             <div>
-                <a href="https://wa.me/6281234567890" target="_blank" class="text-white text-decoration-none">
+                {{-- <a href="https://wa.me/6281234567890" target="_blank" class="text-white text-decoration-none">
                     <i class="bi bi-whatsapp" style="color: #47DE52; font-size: 48px;"></i>
-                </a>
+                </a> --}}
             </div>
         </div>
 
