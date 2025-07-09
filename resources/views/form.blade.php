@@ -44,7 +44,7 @@
         <div class="mb-3 d-flex flex-column flex-md-row">
             <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Pencipta</label>
             <div class="w-100">
-                <span>@Masukkan nama lengkap anda </span>
+                <span>Masukkan nama lengkap anda </span>
                 <input type="text" name="creator" class="form-control" required>
             </div>
         </div>
