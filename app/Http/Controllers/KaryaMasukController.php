@@ -86,5 +86,17 @@ class KaryaMasukController extends Controller
 
         return redirect()->back()->with('success', 'Pengaturan berhasil disimpan.');
     }
+    public function destroy($id)
+{
+    $jenis = JenisKarya::findOrFail($id);
 
+    // Hapus file gambar jika ada
+    if ($jenis->foto_path && file_exists(public_path('storage/' . $jenis->foto_path))) {
+        unlink(public_path('storage/' . $jenis->foto_path));
+    }
+
+    $jenis->delete();
+
+    return redirect()->back()->with('success', 'Jenis karya berhasil dihapus.');
+}
 }

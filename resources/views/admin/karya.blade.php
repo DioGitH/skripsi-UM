@@ -47,17 +47,25 @@
       </div>
 
 
-      <div class=" mt- 5 container d-flex flex-wrap gap-4">
-          @foreach ($jenisKarya as $jenis)
-              <div class="card" style="width: 18rem;">
-                  <img src="{{ asset('storage/' .  $jenis->foto_path) }}" class="card-img-top" alt="{{ $jenis->nama }}">
-                  <div class="card-body">
-                      <h5 class="card-title">{{ $jenis->nama }}</h5>
-                      <a href="{{ route('admin.karya.preview', $jenis->id) }}" class="btn btn-primary">Pratinjau</a>
-                  </div>
-              </div>
-          @endforeach
-      </div>
+      <div class=" mt-5 container d-flex flex-wrap gap-4">
+    @foreach ($jenisKarya as $jenis)
+        <div class="card" style="width: 18rem;">
+            <img src="{{ asset('storage/' . $jenis->foto_path) }}" class="card-img-top" alt="{{ $jenis->nama }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ $jenis->nama }}</h5>
+                <a href="{{ route('admin.karya.preview', $jenis->id) }}" class="btn btn-primary">Pratinjau</a>
+
+                <form action="{{ route('admin.karya.destroy', $jenis->id) }}" method="POST" class="mt-2"
+                    onsubmit="return confirm('Apakah Anda yakin ingin menghapus jenis karya ini?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger w-100">Hapus</button>
+                </form>
+            </div>
+        </div>
+    @endforeach
+</div>
+
     </div>
   <!-- Modal Tambah Jenis Karya -->
   <div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">

@@ -60,6 +60,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/notifikasi/baca', [AdminController::class, 'bacaSemua'])->name('admin.notifikasi.baca');
         Route::get('/data', [DataKaryaController::class, 'index'])->middleware(AdminLogin::class)->name('data.create');
         Route::get('/karya', [KaryaMasukController::class, 'index'])->name('karya');
+        Route::delete('/karya/{id}', [KaryaMasukController::class, 'destroy'])->name('admin.karya.destroy');
         Route::post('/setting', [KaryaMasukController::class, 'update'])->name('admin.setting.update');
         Route::get('/karya/{id}/preview', [KaryaMasukController::class, 'preview'])->middleware(AdminLogin::class)->name('admin.karya.preview');
         Route::get('/konfirmasi', [KonfirmasiController::class, 'index'])->middleware(AdminLogin::class)->name('konfirmasi');
