@@ -3,7 +3,7 @@
 @section('content')
     <div class="activity-container">
         <a href="{{ route('activitylist') }}" class="activity-button">
-            <div class="activity-button-text">Aktifitas</div>
+            <div class="activity-button-text">Aktivitas</div>
         </a>
 
         <!-- Chart tahunan -->

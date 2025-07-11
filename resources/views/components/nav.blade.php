@@ -34,7 +34,7 @@
           <a class="nav-link {{ request()->routeIs('faq') ? 'active fw-bold' : '' }}" href="{{ route('faq') }}">FAQ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ request()->routeIs('activity') ? 'active fw-bold' : '' }}" href="{{ route('activity') }}">Aktifitas</a>
+          <a class="nav-link {{ request()->routeIs('activity') ? 'active fw-bold' : '' }}" href="{{ route('activity') }}">Aktivitas</a>
         </li>
         <li class="nav-item">
           <form action="{{ route('logout') }}" method="POST" class="nav-link">
