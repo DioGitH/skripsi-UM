@@ -56,10 +56,10 @@
                 <strong>Sumber</strong>
                 <div>{{ $karya->source }}</div>
             </div>
-            <div class="field coverage">
+            {{-- <div class="field coverage">
                 <strong>Masukan Cakupan</strong>
                 <div>{{ $karya->coverage }}</div>
-            </div>
+            </div> --}}
             <div class="field contributor">
                 <strong>Penanggung Jawab</strong>
                 <div>{{ $karya->contributor }}</div>

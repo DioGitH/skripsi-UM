@@ -53,7 +53,7 @@
 
     {{-- Chart Karya --}}
     <div class="my-4 m-auto mb-5 p-4 bg-white shadow rounded" style="width: 100%; max-width: 800px;">
-        <h4 class="mb-3">Grafik Karya (Guru vs Siswa)</h4>
+        <h4 class="mb-3">Grafik Karya Siswa</h4>
         <canvas id="karyaChart"></canvas>
     </div>
 
@@ -119,7 +119,7 @@
                     legend: { position: 'top' },
                     title: {
                         display: true,
-                        text: 'Jumlah Karya per Tahun (Guru vs Siswa)'
+                        text: 'Jumlah Karya per Tahun Siswa'
                     }
                 }
             }

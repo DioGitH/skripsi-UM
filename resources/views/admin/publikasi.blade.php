@@ -7,7 +7,7 @@
 
         <div class="d-flex gap-5 mx-5">
             <button style="width:33px"><img src="{{ asset('assets/img/notif.png') }}" alt=""></button>
-            <button style="width: 44px"><img src="{{ asset('assets/img/setting.png') }}" alt=""></button>
+            {{-- <button style="width: 44px"><img src="{{ asset('assets/img/setting.png') }}" alt=""></button> --}}
         </div>
     </div>
     <div class="" style="height: 10px; width: 100%; background-color: #1F304B;"></div>

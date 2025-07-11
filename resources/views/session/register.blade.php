@@ -124,7 +124,7 @@
             <!-- Login link -->
             <div class="d-flex justify-content-center mb-2 gap-1">
                 <span>Sudah punya akun?</span>
-                <a href="{{route('login')}}" class="text-decoration-none fw-bold" style="color: #1F304B;" onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'">Loging</a>
+                <a href="{{route('login')}}" class="text-decoration-none fw-bold" style="color: #1F304B;" onmouseover="this.style.color='gray'" onmouseout="this.style.color='black'">Login</a>
             </div>
             <button class="w-100 mt-3 mb-3 btn btn-lg text-white" type="submit" style="background-color: #1F304B;">Daftar</button>
         </form>
