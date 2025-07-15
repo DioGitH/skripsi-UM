@@ -88,7 +88,7 @@
                                 {{ $karya->status }}
                             </div>
 
-                            @if ($karya->keteranganStatus)
+                            @if ($karya->status == 'menunggu' && $karya->keteranganStatus)
                                 <div class="text-white py-1 px-2" style="background-color: #A2ABB9; border-radius: 14px; font-size: 13px;">
                                     {{ $karya->keteranganStatus }}
                                 </div>
