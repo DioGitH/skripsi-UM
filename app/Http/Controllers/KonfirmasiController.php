@@ -62,7 +62,7 @@ class KonfirmasiController extends Controller
     public function tolak($id, Request $request)
     {
         $karya = Karya::findOrFail($id);
-        $karya->statusKeterangan = $request->statusKeterangan;
+        $karya->keteranganStatus = $request->keteranganStatus;
         $karya->save();
 
         return redirect()->route('konfirmasi')->with('success', 'Karya berhasil Ditolak.');

@@ -144,8 +144,8 @@
                                     @method('PATCH')
 
                                     <div class="mb-3 w-100">
-                                        <label for="statusKeterangan" class="form-label">Alasan Penolakan</label>
-                                        <textarea name="statusKeterangan" id="statusKeterangan" rows="3" class="form-control" required
+                                        <label for="keteranganStatus" class="form-label">Alasan Penolakan</label>
+                                        <textarea name="keteranganStatus" id="keteranganStatus" rows="3" class="form-control" required
                                             placeholder="Tulis alasan penolakan karya..."></textarea>
                                     </div>
 
