@@ -53,19 +53,36 @@
 
                 </table>
             </div>
-                <div class="d-flex flex-row gap-5" style="width: 20%">
-                    <!-- Tombol Publish -->
-                    <button class="btn text-white" style="background-color: #1F304B; width: 80px; height: 70px;" data-bs-toggle="modal" data-bs-target="#publishModal">
-                        <img style="width: 50px" src="{{ asset('assets/img/publish.png') }}" alt="Publish">
-                    </button>
-                    <button class="btn text-white" style="background-color: #1F304B; width: 80px; height: 70px;" data-bs-toggle="modal" data-bs-target="#arsipModal">
-                        <img style="width: 50px" src="{{ asset('assets/img/arsip.png') }}" alt="Publish">
-                    </button>
-                    <button class="btn text-white" style="background-color: #1F304B; width: 80px; height: 70px;" data-bs-toggle="modal"
-                        data-bs-target="#tolakModal">
-                        <img style="width: 50px" src="{{ asset('assets/img/arsip.png') }}" alt="Publish">
-                    </button>
-                </div>
+            <div class="d-flex justify-content-between" style="width: 100%; max-width: 300px;">
+                <!-- Tombol Publish -->
+                <button class="btn text-white d-flex flex-column align-items-center justify-content-center"
+                    style="background-color: #1F304B; width: 80px; height: 70px;" data-bs-toggle="modal"
+                    data-bs-target="#publishModal">
+                    <img style="width: 32px;" src="{{ asset('assets/img/publish.png') }}" alt="Publish">
+                    <small class="mt-1">Publish</small>
+                </button>
+
+                <!-- Tombol Arsip -->
+                <button class="btn text-white d-flex flex-column align-items-center justify-content-center"
+                    style="background-color: #1F304B; width: 80px; height: 70px;" data-bs-toggle="modal"
+                    data-bs-target="#arsipModal">
+                    <img style="width: 32px;" src="{{ asset('assets/img/arsip.png') }}" alt="Arsip">
+                    <small class="mt-1">Arsip</small>
+                </button>
+
+                <!-- Tombol Tolak -->
+                <button class="btn text-white d-flex flex-column align-items-center justify-content-center"
+                    style="background-color: #1F304B; width: 80px; height: 70px;" data-bs-toggle="modal"
+                    data-bs-target="#tolakModal">
+                    {{-- SVG icon Tolak --}}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" viewBox="0 0 24 24">
+                        <path
+                            d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7A1 1 0 0 0 5.7 7.11L10.59 12l-4.89 4.89a1 1 0 1 0 1.41 1.41L12 13.41l4.89 4.89a1 1 0 0 0 1.41-1.41L13.41 12l4.89-4.89a1 1 0 0 0 0-1.4z" />
+                    </svg>
+                    <small class="mt-1">Tolak</small>
+                </button>
+            </div>
+
                 <!-- Modal Konfirmasi -->
                 <div class="modal fade" id="publishModal" tabindex="-1" aria-labelledby="publishModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
