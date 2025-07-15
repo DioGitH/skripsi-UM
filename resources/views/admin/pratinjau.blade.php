@@ -111,7 +111,7 @@
                     </div>
                 </div>
                 <!-- Modal Tolak -->
-                <div class="modal fade" id="arsipModal" tabindex="-1" aria-labelledby="publishModalLabel" aria-hidden="true">
+                <div class="modal fade" id="tolakModal" tabindex="-1" aria-labelledby="publishModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
