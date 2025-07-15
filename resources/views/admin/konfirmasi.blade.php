@@ -86,8 +86,8 @@
                         <td>
                             <div class="text-white py-1 px-2" style="background-color: #717F94; border-radius: 14px; font-size: 14px">
                                 {{ $karya->status }}
-                                @if ($karya->statusKeterangan)
-                                    - {{ $karya->statusKeterangan }}
+                                @if ($karya->keteranganStatus)
+                                    - {{ $karya->keteranganStatus }}
                                 @endif
                             </div>
                         </td>
