@@ -70,29 +70,33 @@
                 </thead>
                 <tbody>
                     @forelse ($karyas as $index => $karya)
-                        <tr>
-                            <td>{{ $index + 1 }}</td>
-                            <td>{{ $karya->title }}</td>
-                            <td>{{ $karya->subject }}</td>
-                            <td>{{ $karya->description }}</td>
-                            <td>{{ $karya->creator }}</td>
-                            <td>{{ $karya->date }}</td>
-                            <td>
-                                <a href="{{ route('karya.pratinjau', $karya->id) }}" class="btn btn-sm d-flex align-items-center gap-2">
-                                    <img src="{{ asset('assets/img/search.png') }}" alt="Pratinjau" style="width: 16px; height: 16px;">
-                                    <span>Pratinjau</span>
-                                </a>
-                            </td>
+                            <tr>
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $karya->title }}</td>
+                                <td>{{ $karya->subject }}</td>
+                                <td>{{ $karya->description }}</td>
+                                <td>{{ $karya->creator }}</td>
+                                <td>{{ $karya->date }}</td>
+                                <td>
+                                    <a href="{{ route('karya.pratinjau', $karya->id) }}" class="btn btn-sm d-flex align-items-center gap-2">
+                                        <img src="{{ asset('assets/img/search.png') }}" alt="Pratinjau" style="width: 16px; height: 16px;">
+                                        <span>Pratinjau</span>
+                                    </a>
+                                </td>
                         <td>
-                            <div class="text-white py-1 px-2" style="background-color: #717F94; border-radius: 14px; font-size: 14px">
+                            <div class="text-white py-1 px-2 mb-1" style="background-color: #717F94; border-radius: 14px; font-size: 14px;">
                                 {{ $karya->status }}
-                                @if ($karya->keteranganStatus)
-                                    - {{ $karya->keteranganStatus }}
-                                @endif
                             </div>
+
+                            @if ($karya->keteranganStatus)
+                                <div class="text-white py-1 px-2" style="background-color: #A2ABB9; border-radius: 14px; font-size: 13px;">
+                                    {{ $karya->keteranganStatus }}
+                                </div>
+                            @endif
                         </td>
 
-                        </tr>
+
+                            </tr>
                     @empty
                         <tr>
                             <td colspan="8" classphp ="text-center">Belum ada karya untuk jenis ini.</td>
