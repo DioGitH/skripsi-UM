@@ -21,7 +21,7 @@ class Karya extends Model
         'date',
         'contributor',
         'rights',
-        'statusKeterangan',
+        'keteranganStatus',
         'relation',
         'format',
         'identifier',
