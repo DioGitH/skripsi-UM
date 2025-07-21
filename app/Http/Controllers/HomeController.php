@@ -14,36 +14,36 @@ use App\Models\Setting;
 
 class HomeController extends Controller
 {
-public function index()
-{
-    $user = Auth::user();
+    public function index()
+    {
+        $user = Auth::user();
 
-    $showGuru = Setting::where('key', 'show_jelajahi_guru')->value('value');
-    $showSiswa = Setting::where('key', 'show_jelajahi_siswa')->value('value');
+        $showGuru = Setting::where('key', 'show_jelajahi_guru')->value('value');
+        $showSiswa = Setting::where('key', 'show_jelajahi_siswa')->value('value');
 
-    // Ambil jenis karya per profesi
-    $jenisKaryaSiswa = JenisKarya::where('nama', 'karya siswa')->get(['nama', 'foto_path']);
-    $jenisKaryaGuru = JenisKarya::where('nama', 'karya guru')->get(['nama', 'foto_path']);
+        // Ambil jenis karya per profesi
+        $jenisKaryaSiswa = JenisKarya::where('nama', 'karya siswa')->get(['nama', 'foto_path']);
+        $jenisKaryaGuru = JenisKarya::where('nama', 'karya guru')->get(['nama', 'foto_path']);
 
-    // Ambil jenis karya hanya untuk profesi user (opsional)
-    $jenisKaryas = JenisKarya::where('profesi_id', $user->profesi_id)->get();
+        // Ambil jenis karya hanya untuk profesi user (opsional)
+        $jenisKaryas = JenisKarya::where('profesi_id', $user->profesi_id)->get();
 
-    $karyaTerbaru = Karya::with('files')
-        ->where('status', 'Terpublish')
-        ->latest()
-        ->take(15)
-        ->get();
+        $karyaTerbaru = Karya::with('files')
+            ->where('status', 'Terpublish')
+            ->latest()
+            ->take(6)
+            ->get();
 
-    return view('welcome', compact(
-        'jenisKaryas',
-        'jenisKaryaSiswa',
-        'jenisKaryaGuru',
-        'karyaTerbaru',
-        'user',
-        'showGuru',
-        'showSiswa'
-    ));
-}
+        return view('welcome', compact(
+            'jenisKaryas',
+            'jenisKaryaSiswa',
+            'jenisKaryaGuru',
+            'karyaTerbaru',
+            'user',
+            'showGuru',
+            'showSiswa'
+        ));
+    }
 
 
 
@@ -121,7 +121,7 @@ public function index()
         $jenisKarya = JenisKarya::find($validated['jenis_karya_id']);
 
         // Kirim notifikasi hanya ke admin
-       $adminUsers = Admin::all();
+        $adminUsers = Admin::all();
         foreach ($adminUsers as $admin) {
             $admin->notify(new KaryaBaruNotification($karya));
         }
@@ -142,7 +142,4 @@ public function index()
 
         return view('jenikarya', compact('jenisKaryas', 'type', 'types'));
     }
-
-
-
 }

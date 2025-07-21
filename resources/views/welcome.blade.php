@@ -35,7 +35,7 @@
     <div id="carouselKaryaTerbaru" class="carousel slide mx-auto mt-5 px-3" style="max-width: 90%;" data-bs-ride="carousel">
         <div class="fw-bold karya-terbaru" style="font-size: 30px">Karya Terbaru</div>
         <div class="carousel-inner">
-            @foreach($karyaTerbaru->where('status', 'Terpublish')->chunk(5) as $index => $chunk)
+            @foreach($karyaTerbaru->where('status', 'Terpublish')->chunk(3) as $index => $chunk)
                 <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
                     <div class="row justify-content-center ">
                         @foreach($chunk as $karya)
@@ -104,13 +104,13 @@
                                         <div class="fw-bold mb-2">{{ ucfirst($jenis->nama) }}</div>
 
                                         @if($jenis->foto_path && file_exists(public_path('storage/' . $jenis->foto_path)))
-                                            <img src="{{ asset('storage/' . $jenis->foto_path) }}" 
-                                                alt="{{ $jenis->nama }}" 
-                                                class="img-fluid m-auto rounded mb-2" 
+                                            <img src="{{ asset('storage/' . $jenis->foto_path) }}"
+                                                alt="{{ $jenis->nama }}"
+                                                class="img-fluid m-auto rounded mb-2"
                                                 style="max-height: 150px; object-fit: cover;">
                                         @else
-                                            <img src="https://via.placeholder.com/150x100?text=No+Image" 
-                                                alt="No image" 
+                                            <img src="https://via.placeholder.com/150x100?text=No+Image"
+                                                alt="No image"
                                                 class="img-fluid rounded mb-2">
                                         @endif
 
@@ -132,7 +132,7 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
     <!-- Modal Jelajahi -->
     <div class="modal fade" id="modal-jelajahi" tabindex="-1" aria-labelledby="modalLabel-unggah" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -237,7 +237,7 @@
         }
         .karya-terbaru{
             margin: auto;
-            margin-bottom: 30px; 
+            margin-bottom: 30px;
         }
         .img-fluid {
             max-width: 100%;
@@ -351,7 +351,7 @@
                         isi += `
                             <div class="col-md-3 mb-4 text-center">
                                 <div class="fw-bold mb-2">${jenis.nama}</div>
-                                <img src="${jenis.foto_path ? '/storage/' + jenis.foto_path : 'https://via.placeholder.com/150x100?text=No+Image'}" 
+                                <img src="${jenis.foto_path ? '/storage/' + jenis.foto_path : 'https://via.placeholder.com/150x100?text=No+Image'}"
                                     class="img-fluid m-auto rounded mb-2" style="max-height: 150px; object-fit: cover;" alt="${jenis.nama}">
                                 <a href="/jelajahi/${profesi}/${jenis.nama}"
                                 class="btn btn-outline-dark w-75 text-black m-auto fw-bold d-flex align-items-center justify-content-center gap-2">
@@ -374,7 +374,7 @@
             });
     }
 
-    
+
 
 
     function closeAllModals() {
