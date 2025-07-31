@@ -53,7 +53,7 @@
 
                 </table>
             </div>
-            <div class="d-flex justify-content-center mr-4" style="width: 100%; max-width: 300px;">
+            <div class="d-flex justify-content-center py-4" style="width: 100%; max-width: 300px;">
                 <!-- Tombol Publish -->
                 <button class="btn text-white d-flex flex-column align-items-center justify-content-center"
                     style="background-color: #1F304B; width: 80px; height: 70px;" data-bs-toggle="modal"
