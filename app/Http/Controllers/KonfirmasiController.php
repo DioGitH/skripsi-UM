@@ -50,10 +50,11 @@ class KonfirmasiController extends Controller
 
         return redirect()->route('konfirmasi')->with('success', 'Karya berhasil dipublikasikan.');
     }
-    public function arsip($id)
+    public function arsip($id, Request $request)
     {
         $karya = Karya::findOrFail($id);
         $karya->status = 'Arsip';
+        $karya->keteranganStatus = $request->keteranganStatus;
         $karya->save();
 
         return redirect()->route('konfirmasi')->with('success', 'Karya berhasil dipublikasikan.');

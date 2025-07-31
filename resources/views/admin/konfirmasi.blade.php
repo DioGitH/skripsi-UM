@@ -64,8 +64,10 @@
                         <th>Description</th>
                         <th>Creator</th>
                         <th>Date</th>
+
                         <th>Aksi</th>
-                        <th>status</th>
+                        <th>Status</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -77,6 +79,7 @@
                                 <td>{{ $karya->description }}</td>
                                 <td>{{ $karya->creator }}</td>
                                 <td>{{ $karya->date }}</td>
+
                                 <td>
                                     <a href="{{ route('karya.pratinjau', $karya->id) }}" class="btn btn-sm d-flex align-items-center gap-2">
                                         <img src="{{ asset('assets/img/search.png') }}" alt="Pratinjau" style="width: 16px; height: 16px;">

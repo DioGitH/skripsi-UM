@@ -136,21 +136,21 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                             </div>
                             <div class="modal-body">
-                                Apakah anda yakin ingin Menolak karya in?
+                                Apakah anda yakin ingin Mengarsip karya in?
                             </div>
                             <div class="modal-footer">
-                                <form action="{{ route('karya.tolak', $karya->id) }}" method="POST" class="w-100">
+                                <form action="{{ route('karya.arsip', $karya->id) }}" method="POST" class="w-100">
                                     @csrf
                                     @method('PATCH')
 
                                     <div class="mb-3 w-100">
-                                        <label for="keteranganStatus" class="form-label">Alasan Penolakan</label>
+                                        <label for="keteranganStatus" class="form-label">Alasan Arsip</label>
                                         <textarea name="keteranganStatus" id="keteranganStatus" rows="3" class="form-control" required
                                             placeholder="Tulis alasan penolakan karya..."></textarea>
                                     </div>
 
                                     <div class="d-flex justify-content-end gap-2">
-                                        <button type="submit" class="btn btn-danger">Tolak</button>
+                                        <button type="submit" class="btn btn-danger">Arsip</button>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                                     </div>
                                 </form>

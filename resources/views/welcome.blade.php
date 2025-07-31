@@ -10,7 +10,7 @@
             </div>
             <div class="fw-semibold" style="font-size: clamp(16px, 2vw, 22px); color: #0B2B26; text-shadow: 0 4px 0 white;">
                 Di e Skill-Lib Repository SMKN 3 Malang.<br/>
-                Temukan berbagai karya terbaik siswa dan guru sebagai wujud kreativitas, inovasi,<br class="d-none d-md-block"/>
+                Temukan berbagai karya terbaik siswa  sebagai wujud kreativitas, inovasi,<br class="d-none d-md-block"/>
                 dan sumber belajar inspiratif untuk semua.
             </div>
         </div>
