@@ -70,17 +70,7 @@
                     <small class="mt-1">Arsip</small>
                 </button>
 
-                <!-- Tombol Tolak -->
-                <button class="btn text-white d-flex flex-column align-items-center justify-content-center"
-                    style="background-color: #1F304B; width: 80px; height: 70px;" data-bs-toggle="modal"
-                    data-bs-target="#tolakModal">
-                    {{-- SVG icon Tolak --}}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" viewBox="0 0 24 24">
-                        <path
-                            d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7A1 1 0 0 0 5.7 7.11L10.59 12l-4.89 4.89a1 1 0 1 0 1.41 1.41L12 13.41l4.89 4.89a1 1 0 0 0 1.41-1.41L13.41 12l4.89-4.89a1 1 0 0 0 0-1.4z" />
-                    </svg>
-                    <small class="mt-1">Tolak</small>
-                </button>
+
             </div>
 
                 <!-- Modal Konfirmasi -->
@@ -105,30 +95,9 @@
                         </div>
                     </div>
                 </div>
-                <!-- Modal Konfirmasi -->
+
+                <!-- Modal Arsip -->
                 <div class="modal fade" id="arsipModal" tabindex="-1" aria-labelledby="publishModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="publishModalLabel">Konfirmasi Publikasi</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-                        </div>
-                        <div class="modal-body">
-                            Apakah anda yakin ingin mengarsipkan karya in?
-                        </div>
-                        <div class="modal-footer">
-                            <form action="{{ route('karya.arsip', $karya->id) }}" method="POST">
-                                @csrf
-                                @method('PATCH')
-                                <button type="submit" class="btn btn-success">Iya</button>
-                            </form>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal Tolak -->
-                <div class="modal fade" id="tolakModal" tabindex="-1" aria-labelledby="publishModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
