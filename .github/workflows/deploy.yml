@@ -25,8 +25,6 @@ jobs:
           ssh -i ~/.ssh/id_ed25519 -p 64000 okkyproj@36.50.77.25 << 'EOF'
             cd laravel/skripsi-niaUM
             git pull origin main
-            composer install --no-interaction --prefer-dist --optimize-autoloader
             php artisan optimize:clear
-            php artisan migrate --force
             npm run build
           EOF
