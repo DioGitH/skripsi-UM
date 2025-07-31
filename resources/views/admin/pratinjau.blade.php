@@ -53,9 +53,9 @@
 
                 </table>
             </div>
-            <div class="d-flex justify-content-center py-4" style="width: 100%; max-width: 300px;">
+            <div class="d-flex justify-content-center gap-2" style="width: 100%; max-width: 300px;">
                 <!-- Tombol Publish -->
-                <button class="btn text-white d-flex flex-column align-items-center justify-content-center"
+                <button class="btn text-white d-flex flex-column align-items-center justify-content-center "
                     style="background-color: #1F304B; width: 80px; height: 70px;" data-bs-toggle="modal"
                     data-bs-target="#publishModal">
                     <img style="width: 32px;" src="{{ asset('assets/img/publish.png') }}" alt="Publish">
@@ -69,8 +69,6 @@
                     <img style="width: 32px;" src="{{ asset('assets/img/arsip.png') }}" alt="Arsip">
                     <small class="mt-1">Arsip</small>
                 </button>
-
-
             </div>
 
                 <!-- Modal Konfirmasi -->
