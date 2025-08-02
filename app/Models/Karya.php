@@ -28,6 +28,7 @@ class Karya extends Model
         'coverage',
         'file_path'
     ];
+
     public function user()
 
     {

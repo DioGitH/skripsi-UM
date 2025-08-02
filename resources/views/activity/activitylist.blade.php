@@ -6,7 +6,7 @@
                 <div class="d-flex justify-content-center align-items-center text-white mx-auto" style="font-size: 40px; width: 50%; height: 50%;">
                     Aktifitas
                 </div>
-            </div>        
+            </div>
         <!-- Chart Bulanan -->
         <div class="table-responsive-custom">
             <table class="w-100" style="background-color: #D9D9D9; border-collapse: collapse;">
@@ -16,6 +16,7 @@
                         <th style="border: 1px solid #000; padding: 8px;">Subjek</th>
                         <th style="border: 1px solid #000; padding: 8px;">Deskripsi</th>
                         <th style="border: 1px solid #000; padding: 8px;">Penanggung Jawab</th>
+                        <th style="border: 1px solid #000; padding: 8px;">Keterangan Revisi</th>
                         <th style="border: 1px solid #000; padding: 8px;">Status</th>
                         <th style="border: 1px solid #000; padding: 8px;">Aksi</th>
                     </tr>
@@ -27,6 +28,7 @@
                             <td style="border: 1px solid #000; padding: 8px;">{{ $karya->subject }}</td>
                             <td style="border: 1px solid #000; padding: 8px;">{{ Str::limit($karya->description, 80) }}</td>
                             <td style="border: 1px solid #000; padding: 8px;">{{ $karya->contributor }}</td>
+                            <td style="border: 1px solid #000; padding: 8px;">{{ $karya->keteranganStatus ?? '-' }}</td>
                             <td style="border: 1px solid #000; padding: 8px;">{{ $karya->status }}</td>
                             <td style="border: 1px solid #000; padding: 8px;">
                                 <a href="{{ route('karya.show', $karya->id) }}" class="btn btn-primary btn-sm">Detail</a>
@@ -35,6 +37,7 @@
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                                 </form>
+                                <a href="{{route('karya.edit',['id' => $karya->id])}}" class="btn btn-warning">Edit</a>
                             </td>
                         </tr>
                     @empty
@@ -49,7 +52,7 @@
         </div>
 
     </div>
-    
+
 <div class="px-5 mt-3">
     <a href="{{ url()->previous() }}" class="btn btn-outline-secondary">
         <i class="bi bi-arrow-left-circle"></i> Kembali
@@ -76,5 +79,5 @@
 }
 
 </style>
-    
+
 @endsection

@@ -39,6 +39,8 @@ Route::post('/unggah', [HomeController::class, 'store'])->middleware(IsLogin::cl
 // Pilih jenis karya berdasarkan profesi
 Route::get('/jelajahi/{profesi}', [KaryaController::class, 'showJenis'])->middleware(IsLogin::class)->name('jelajahi.profesi');
 Route::get('/karya/{id}', [KaryaController::class, 'show'])->middleware(IsLogin::class)->name('karya.show');
+Route::get('/karya/{id}/edit', [KaryaController::class, 'edit'])->middleware(IsLogin::class)->name('karya.edit');
+Route::patch('/karya/{id}', [KaryaController::class, 'update'])->middleware(IsLogin::class)->name('karya.update');
 Route::delete('/karya/{id}', [ActivityController::class, 'destroy'])->middleware(IsLogin::class)->name('karya.destroy');
 
 
