@@ -14,7 +14,7 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-        
+
     </head>
     <body class="d-flex flex-column justify-content-center align-items-center vh-100" style="background-color: #efefef;">
         @if ($errors->any())
@@ -28,7 +28,7 @@
             @endif
     <div class="m-auto bg-white d-flex flex-column justify-content-center py-4 px-5" style="border-radius: 2rem; width: 100%; max-width: 1000px;">
         <h1 class="text-center my-4 fw-bold">Formulir pendaftaran Pengguna</h1>
-        
+
         <form action="{{ route('register.store') }}" method="POST">
             @csrf
             <!-- Username -->
@@ -117,10 +117,10 @@
             </div> --}}
 
             <!-- Google reCAPTCHA v2 -->
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="captcha">Captcha</label>
                 <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
-            </div>
+            </div> --}}
             <!-- Login link -->
             <div class="d-flex justify-content-center mb-2 gap-1">
                 <span>Sudah punya akun?</span>
@@ -183,7 +183,7 @@
                 siswaInputs.style.display = "block";
             }
         }
-        
+
     </script>
     </body>
 

@@ -190,7 +190,7 @@
           <div class="modal-body text-center">
             <div style="font-size:25px" class="fw-bold mb-3">
                 Unggahan Anda Berhasil Dilakukan,<br>
-                Silahkan Tunggu Konfirmasi Melalui Email!
+                Silahkan Tunggu Dimenu Aktivitas Secara Berkala!
             </div>
             <img src="{{ asset('assets/img/success.png') }}" class="m-auto" style="width: 110px;" alt="">
           </div>

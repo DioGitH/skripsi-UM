@@ -20,7 +20,7 @@
         <div class="mb-3 d-flex flex-column flex-md-row">
             <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Judul</label>
             <div class="w-100">
-                <span>*Masukkan judul lengkap karya anda</span> 
+                <span>*Masukkan judul lengkap karya anda</span>
                 <input type="text" name="title" class="form-control" required>
             </div>
         </div>
@@ -35,7 +35,7 @@
 
         <div class="mb-3 d-flex flex-column flex-md-row">
             <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Deskripsi</label>
-            <div class="w-100">    
+            <div class="w-100">
                 <span>*Tulis deskripsi dari karya anda </span><span style="font-size: 12px"> *minimal 10 kata contoh: makanan ini berasal dari Jawa Timur...  </span>
                 <textarea name="description" class="form-control" required></textarea>
             </div>
@@ -136,7 +136,7 @@
         </div>
        <div id="file-upload-wrapper">
             <div class="file-upload-group mb-3">
-                <div class="mb-3 d-flex flex-column flex-md-row">                    
+                <div class="mb-3 d-flex flex-column flex-md-row">
                     <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">
                         Format
                     </label>
@@ -149,7 +149,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="mb-3 d-flex flex-column flex-md-row">                    
+                <div class="mb-3 d-flex flex-column flex-md-row">
                      <label class="w-md-50 fw-bold" style=" width: 20%">File</label>
                     <div class="w-100 d-flex gap-2">
                         <div class="flex-grow-1">
@@ -175,7 +175,7 @@
       <div class="modal-body text-center">
         <div style="font-size:25px" class="fw-bold mb-3">
             Unggahan Anda Berhasil Dilakukan,<br>
-            Silahkan Tunggu Konfirmasi Melalui Email!
+            Silahkan Tunggu Dimenu Aktivitas Secara Berkala!
         </div>
         <img src="{{ asset('assets/img/success.png') }}" class="m-auto" style="width: 110px;" alt="">
       </div>
@@ -208,7 +208,7 @@ function addFileUpload() {
     const group = document.createElement('div');
     group.classList.add('file-upload-group', 'mb-3');
     group.innerHTML = `
-            <div class="mb-3 d-flex flex-column flex-md-row">                    
+            <div class="mb-3 d-flex flex-column flex-md-row">
                 <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">
                     Format
                 </label>
@@ -221,7 +221,7 @@ function addFileUpload() {
                     </select>
                 </div>
             </div>
-            <div class="mb-3 d-flex flex-column flex-md-row">                    
+            <div class="mb-3 d-flex flex-column flex-md-row">
                 <label class="w-md-50 fw-bold">File</label>
                 <div class="w-100 d-flex gap-2">
                     <div class="flex-grow-1">

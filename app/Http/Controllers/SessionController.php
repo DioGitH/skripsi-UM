@@ -15,11 +15,13 @@ use Illuminate\Support\Facades\Http;
 
 class SessionController extends Controller
 {
-     public function index(){
+    public function index()
+    {
         return view('session.index');
     }
 
-    public function register(){
+    public function register()
+    {
         $profesis = Profesi::all(); // Ambil semua profesi dari tabel
         return view('session.register',  compact('profesis'));
     }
@@ -34,20 +36,20 @@ class SessionController extends Controller
             'mata_pelajaran' => 'nullable|string|max:100',
             'kelas' => 'nullable|in:10,11,12',
             'jurusan' => 'nullable|string|max:100',
-            'g-recaptcha-response' => 'required',
+            // 'g-recaptcha-response' => 'required',
         ]);
 
         // Verifikasi reCAPTCHA
-        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret'   => env('RECAPTCHA_SECRET_KEY'),
-            'response' => $request->input('g-recaptcha-response'),
-            'remoteip' => $request->ip(),
-        ]);
-        $body = $response->json();
+        // $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+        //     'secret'   => env('RECAPTCHA_SECRET_KEY'),
+        //     'response' => $request->input('g-recaptcha-response'),
+        //     'remoteip' => $request->ip(),
+        // ]);
+        // $body = $response->json();
 
-        if (!$body['success']) {
-            return back()->withErrors(['captcha' => 'Captcha tidak valid'])->withInput();
-        }
+        // if (!$body['success']) {
+        //     return back()->withErrors(['captcha' => 'Captcha tidak valid'])->withInput();
+        // }
 
         User::create([
             'name' => $request->name,
@@ -63,34 +65,35 @@ class SessionController extends Controller
     }
 
 
-public function login(Request $request)
-{
-    $request->validate([
-        'name' => 'required',
-        'password' => 'required',
-    ], [
-        'name.required' => "Username harus diisi",
-        'password.required' => "Password harus diisi",
-    ]);
+    public function login(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'password' => 'required',
+        ], [
+            'name.required' => "Username harus diisi",
+            'password.required' => "Password harus diisi",
+        ]);
 
-    $credentials = $request->only('name', 'password');
+        $credentials = $request->only('name', 'password');
 
-    // Coba login sebagai admin dulu
-    if (Auth::guard('admin')->attempt($credentials)) {
-        return redirect('/admin')->with('success', 'Login sebagai Admin berhasil');
+        // Coba login sebagai admin dulu
+        if (Auth::guard('admin')->attempt($credentials)) {
+            return redirect('/admin')->with('success', 'Login sebagai Admin berhasil');
+        }
+
+        // Jika gagal, coba login sebagai user
+        if (Auth::guard('web')->attempt($credentials)) {
+            return redirect('/')->with('success', 'Login sebagai User berhasil');
+        }
+
+        // Jika gagal dua-duanya
+        return redirect('login')
+            ->withErrors(['login' => 'Username atau Password salah'])
+            ->withInput();
     }
-
-    // Jika gagal, coba login sebagai user
-    if (Auth::guard('web')->attempt($credentials)) {
-        return redirect('/')->with('success', 'Login sebagai User berhasil');
-    }
-
-    // Jika gagal dua-duanya
-    return redirect('login')
-        ->withErrors(['login' => 'Username atau Password salah'])
-        ->withInput();
-}
-     public function logout(){
+    public function logout()
+    {
         Auth::logout();
         return redirect('login')->with('success', 'Berhasil Logout');
     }
