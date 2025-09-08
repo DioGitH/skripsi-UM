@@ -18,48 +18,115 @@
         <input type="hidden" name="jenis_karya_id" value="{{ $jenisKarya->id }}">
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Judul</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%;">
+                Judul <span class="text-danger">*</span>
+            </label>
             <div class="w-100">
-                <span>*Masukkan judul lengkap karya anda</span>
-                <input type="text" name="title" class="form-control" required>
+                <div class="mb-1">
+                  <span>Tulis judul lengkap karya anda</span>
+                  <br>
+                  <small class="text-muted d-block" style="font-size: 12px;">
+                      <strong>Contoh:</strong>  “Desain Kebaya Modern untuk Acara Pernikahan”
+                  </small>
+                
+                </div>
+                <input 
+                    type="text" 
+                    name="title" 
+                    class="form-control" 
+                    required
+                >
             </div>
         </div>
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Subjek</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%;">
+              Subjek <span class="text-danger">*</span>
+            </label>
+            
             <div class="w-100">
-                <span>*Masukkan subjek atau kata kunci karya anda </span><span style="font-size: 12px"> *contoh: busana, makanan sunda, dll </span>
-                <input type="text" name="subject" class="form-control" required>
+                <div class="mb-1">
+                    <span>Masukkan subjek atau kata kunci karya anda</span>
+                    <br>
+                    <small class="text-muted d-block" style="font-size: 12px;">
+                        <strong>Contoh:</strong> “busana, kebaya, pernikahan, makanan khas Jawa Timur”
+                    </small>
+                </div>
+              
+                <input 
+                    type="text" 
+                    name="subject" 
+                    class="form-control" 
+                    required
+                >
             </div>
         </div>
+          
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Deskripsi</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%;">
+                Deskripsi <span class="text-danger">*</span>
+            </label>
+            
             <div class="w-100">
-                <span>*Tulis deskripsi dari karya anda </span><span style="font-size: 12px"> *minimal 10 kata contoh: makanan ini berasal dari Jawa Timur...  </span>
+                <div class="mb-1">
+                    <span>Jelaskan isi karya secara singkat (minimal 10 kata)</span>
+                    <br>
+                    <small class="text-muted d-block" style="font-size: 12px;">
+                        <strong>Contoh:</strong> “Kebaya modern dengan bahan brokat, dipadukan dengan batik tulis khas Malang.”
+                    </small>
+                </div>
+            
                 <textarea name="description" class="form-control" required></textarea>
             </div>
         </div>
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Pencipta</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%;">
+                Pencipta <span class="text-danger">*</span>
+            </label>
+            
             <div class="w-100">
-                <span>Masukkan nama lengkap anda </span>
-                <input type="text" name="creator" class="form-control" required>
+                <div class="mb-1">
+                    <span>Tulis nama lengkap pembuat karya</span>
+                    <br>
+                    <small class="text-muted d-block" style="font-size: 12px;">
+                        <strong>Contoh:</strong> “Putri Ayu Lestari”
+                    </small>
+                </div>
+            
+                <input type="text" name="creator" class="form-control" value={{ $user->name ?? '' }} required>
             </div>
         </div>
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Sumber</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%;">
+                Sumber <span class="text-danger">*</span>
+            </label>
+            
             <div class="w-100">
-                <span>Masukkan sumber terkait karya anda  </span>
+                <div class="mb-1">
+                    <span>Sebutkan sumber inspirasi atau referensi karya (jika ada)</span>
+                    <br>
+                    <small class="text-muted d-block" style="font-size: 12px;">
+                        <strong>Contoh:</strong> “Terinspirasi dari Majalah Fashion Indonesia Edisi 2024, Mengadaptasi teknik dari pelatihan IMPLORA Beauty, Dikembangkan dari buku kuliner”
+                    </small>
+                </div>
+            
                 <input type="text" name="source" class="form-control">
             </div>
         </div>
+
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Penerbit</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%;">
+                Penerbit
+            </label>
+            
             <div class="w-100">
-                <span>*Masukkan sumber Penerbit karya  </span>
+                <div class="mb-1">
+                    <span>Pilih penerbit karya</span>
+                </div>
+            
                 <select name="publisher" class="form-select" required>
                     <option disabled>-</option>
                     <option value="SMKN 3 Malang ">SMKN 3 Malang</option>
@@ -69,79 +136,183 @@
 
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Tanggal</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%;">
+                Tanggal <span class="text-danger">*</span>
+            </label>
+            
             <div class="w-100">
-                <span>*Isi tanggal unggah karya anda (saat ini)  </span>
+                <div class="mb-1">
+                    <span>Isi tanggal saat karya diunggah</span>
+                    <br>
+                    <small class="text-muted d-block" style="font-size: 12px;">
+                        <strong>Contoh:</strong> “14/08/2025”
+                    </small>
+                </div>
+            
                 <input type="date" name="date" class="form-control" required>
             </div>
         </div>
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Penanggung Jawab</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%;">
+                Kontributor <span class="text-danger">*</span>
+            </label>
+            
             <div class="w-100">
-                <span>*Masukan nama penanggung jawab karya</span>
+                <div class="mb-1">
+                    <span>Tulis nama guru pembimbing atau pembina karya</span>
+                    <br>
+                    <small class="text-muted d-block" style="font-size: 12px;">
+                        <strong>Contoh:</strong> “Ibu Siti Nuraini, S.Pd.”
+                    </small>
+                </div>
+            
                 <input type="text" name="contributor" class="form-control" required>
             </div>
         </div>
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Hak Akses</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%;">
+                Hak Akses <span class="text-danger">*</span>
+            </label>
+            
             <div class="w-100">
-                <span>*Pilih hak akses untuk karya anda</span>
-
+                <div class="mb-1">
+                    <span>Pilih siapa saja yang dapat melihat karya</span>
+                    <br>
+                    <small class="text-muted d-block" style="font-size: 12px;">
+                        <strong>Contoh:</strong> “Semua” (untuk SMKN 3 Malang) atau “Terbatas”
+                    </small>
+                </div>
+            
                 <select name="rights" class="form-select" required>
                     <option disabled></option>
                     <option value="Semua">Semua</option>
-                    <option value="Arsip">Arsip</option>
+                    <option value="Terbatas">Terbatas</option>
                 </select>
             </div>
         </div>
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Hubungan</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%;">
+                Hubungan <span class="text-danger">*</span>
+            </label>
+            
             <div class="w-100">
-                <span>hubungan</span>
+                <div class="mb-1">
+                    <span>Jelaskan keterkaitan karya ini dengan karya, proyek, atau kegiatan lain</span>
+                    <br>
+                    <small class="text-muted d-block" style="font-size: 12px;">
+                        <strong>Contoh:</strong> “Bagian dari proyek busana adat, Karya ini adalah bagian dari proyek kelas, pameran sekolah, atau lomba”
+                    </small>
+                </div>
+            
                 <input type="text" name="relation" class="form-control">
             </div>
         </div>
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Bahasa</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%;">
+                Bahasa <span class="text-danger">*</span>
+            </label>
+            
             <div class="w-100">
-                <span>*Pilih bahasa yang digunakan</span>
-                <input type="text" name="language" class="form-control" required>
+                <div class="mb-1">
+                    <span>Pilih bahasa utama yang digunakan dalam karya</span>
+                    <br>
+                    <small class="text-muted d-block" style="font-size: 12px;">
+                        <strong>Contoh:</strong> “Indonesia”
+                    </small>
+                </div>
+            
+                <select id="language" name="language" class="form-select" required>
+                    <option value="" selected disabled>Pilih bahasa</option>
+                    <option value="Indonesia">Bahasa Indonesia</option>
+                    <option value="English">English</option>
+                    <option value="Malaysia">Bahasa Melayu</option>
+                    <option value="Jawa">Bahasa Jawa</option>
+                    <option value="Sunda">Bahasa Sunda</option>
+                    <option value="Arabic">Arabic (العربية)</option>
+                    <option value="Chinese">Chinese (中文)</option>
+                    <option value="Japanese">Japanese (日本語)</option>
+                    <option value="Korean">Korean (한국어)</option>
+                    <option value="French">French (Français)</option>
+                    <option value="German">German (Deutsch)</option>
+                    <option value="Spanish">Spanish (Español)</option>
+                    <option value="Portuguese">Portuguese (Português)</option>
+                    <option value="Russian">Russian (Русский)</option>
+                    <option value="Hindi">Hindi (हिन्दी)</option>
+                    <option value="Bengali">Bengali (বাংলা)</option>
+                    <option value="Tamil">Tamil (தமிழ்)</option>
+                    <option value="Turkish">Turkish (Türkçe)</option>
+                    <option value="Italian">Italian (Italiano)</option>
+                    <option value="Dutch">Dutch (Nederlands)</option>
+                  </select>
+                  
             </div>
         </div>
+
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Jenis</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%;">
+                Jenis
+            </label>
+            
             <div class="w-100">
-                <span>*Pilih jenis Karya anda</span>
+                <div class="mb-1">
+                    <span>Jenis karya</span>
+                </div>
+            
                 <div class="form-control" style="background-color: #efefef">Karya {{ $jenisKarya->nama ?? '-' }}</div>
             </div>
         </div>
+
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Identitas</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%;">
+                Identitas <span class="text-danger">*</span>
+            </label>
+            
             <div class="w-100">
-                <span>*Masukkan NIPD/NIP/Nomor Identitas Anda</span>
+                <div class="mb-1">
+                    <span>Masukkan NIPD anda</span>
+                    <br>
+                    <small class="text-muted d-block" style="font-size: 12px;">
+                        <strong>Contoh:</strong> “20224567”
+                    </small>
+                </div>
+            
                 <input type="number" name="identifier" class="form-control" required>
             </div>
         </div>
 
         <div class="mb-3 d-flex flex-column flex-md-row">
-            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Cakupan</label>
+            <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%;">
+                Cakupan <span class="text-danger">*</span>
+            </label>
+            
             <div class="w-100">
-                <span>Masukan Cakupan</span>
+                <div class="mb-1">
+                    <span>Sebutkan lokasi, waktu atau ruang lingkup karya</span>
+                    <br>
+                    <small class="text-muted d-block" style="font-size: 12px;">
+                        <strong>Contoh:</strong> “Kota Malang, 2025 atau SMKN 3 Malang, Oktober 2025 atau Kegiatan praktik”
+                    </small>
+                </div>
+            
                 <input type="text" name="coverage" class="form-control">
             </div>
         </div>
+
        <div id="file-upload-wrapper">
             <div class="file-upload-group mb-3">
                 <div class="mb-3 d-flex flex-column flex-md-row">
                     <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">
-                        Format
+                        Format <span class="text-danger">*</span>
                     </label>
                     <div class="w-100">
-                        <span>Pilih salah satu format karya anda</span>
+                        <span>Pilih format file karya</span>
+                        <small class="text-muted d-block" style="font-size: 12px;">
+                            <strong>Contoh:</strong> “PDF”
+                        </small>
                         <select name="format[]" class="form-select" required>
                             <option value="pdf">PDF</option>
                             <option value="jpg">JPG</option>
@@ -150,11 +321,14 @@
                     </div>
                 </div>
                 <div class="mb-3 d-flex flex-column flex-md-row">
-                     <label class="w-md-50 fw-bold" style=" width: 20%">File</label>
+                     <label class="w-md-50 fw-bold" style="font-size: 18px; width: 20%">Unggah File <span class="text-danger">*</span></label>
                     <div class="w-100 d-flex gap-2">
                         <div class="flex-grow-1">
-                            <span>Unggah Karya Anda</span>
-                            <span style="font-size: 12px"> *MAX FILE 50MB </span>
+                            <span>Pilih file karya yang ingin diunggah (maksimal 50 MB)</span>
+                            <br>
+                            <small class="text-muted d-block" style="font-size: 12px;">
+                                <strong>Contoh:</strong> Klik “Pilih File” lalu pilih file sesuai karya anda
+                            </small>
                             <input type="file" name="file[]" class="form-control" required>
                         </div>
                         <button type="button" class="btn btn-danger btn-sm mt-4" onclick="removeFileUpload(this)">Hapus</button>
@@ -240,6 +414,18 @@ function removeFileUpload(button) {
     const group = button.closest('.file-upload-group');
     group.remove();
 }
+</script>
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+      $('#language').select2({
+        placeholder: "Pilih atau ketik bahasa...",
+        allowClear: true
+      });
+    });
 </script>
 
 @endsection
