@@ -9,7 +9,7 @@
       <img class="logo-custom mx-3 w-20" src="{{ asset('assets/img/logo.png') }}" alt="Foto">
       <div class="d-flex flex-column">
         <div class=" fs-3 fw-bold">e Skill-Lib </div>
-        <h6>Repository SMKN 3 Malang</h6>
+        <h6>SMKN 3 Malang</h6>
       </div>
     </a>
 

@@ -95,7 +95,7 @@
                     </small>
                 </div>
             
-                <input type="text" name="creator" class="form-control" value={{ $user->name ?? '' }} required>
+                <input type="text" name="creator" class="form-control" value="{{ $user->name ?? '' }}" required>
             </div>
         </div>
 
