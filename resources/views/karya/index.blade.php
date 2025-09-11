@@ -61,7 +61,7 @@
                 <div>{{ $karya->coverage }}</div>
             </div>
             <div class="field contributor">
-                <strong>Penanggung Jawab</strong>
+                <strong>Kontributor</strong>
                 <div>{{ $karya->contributor }}</div>
             </div>
         </div>
